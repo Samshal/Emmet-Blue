@@ -1,0 +1,12 @@
+{
+    "name": "emmetblue/emmet-blue",
+    "type": "Library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samshal",
+            "email": "samueladeshina73@gmail.com"
+        }
+    ],
+    "require": {}
+}
