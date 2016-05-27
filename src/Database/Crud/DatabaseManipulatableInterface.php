@@ -17,17 +17,17 @@ interface DatabaseManipulatableInterface
      *
      * @return void;
      */
-	public function setData();
+    public function setData();
 
-	/**
-	 * The CrudAction method performs either create, retrieve, update
-	 * or delete actions to data in the database.
-	 */
-	public function crudAction();
+    /**
+     * The CrudAction method performs either create, retrieve, update
+     * or delete actions to data in the database.
+     */
+    public function crudAction();
 
-	/**
-	 * The getResponse method returns the result of 
-	 * the crudAction method.
-	 */
-	public function getResponse();
+    /**
+     * The getResponse method returns the result of 
+     * the crudAction method.
+     */
+    public function getResponse();
 }
