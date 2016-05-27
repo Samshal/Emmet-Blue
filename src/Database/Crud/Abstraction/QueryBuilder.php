@@ -56,7 +56,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 *
 	 * @param string $sqlStatement to set/replace global equivalent to.
 	 * @access private
-	 * @return null;
+	 * @return null
 	 */
 	private function setSqlStatement(string $sqlStatement = null)
 	{
