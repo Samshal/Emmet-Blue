@@ -37,7 +37,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 */
 	public function __construct(\String $sqlStatement = null)
 	{
-		$this->sqlStatement = $sqlStatement;
+		self::setSqlStatement($sqlStatement);
 	}
 
 	/**
