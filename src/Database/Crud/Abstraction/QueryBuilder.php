@@ -35,7 +35,7 @@ class QueryBuilder implements QueryBuildableInterface
      * @throws {@todo Write exception class}
      * @access public
      */
-    public function __construct(\string $sqlStatement = null)
+    public function __construct(string $sqlStatement = null)
     {
         self::setSqlStatement($sqlStatement);
     }
@@ -58,7 +58,7 @@ class QueryBuilder implements QueryBuildableInterface
      * @access private
      * @return null
      */
-    private function setSqlStatement(\string $sqlStatement = null)
+    private function setSqlStatement(string $sqlStatement = null)
     {
         $this->sqlStatement = $sqlStatement;
 
@@ -74,7 +74,7 @@ class QueryBuilder implements QueryBuildableInterface
      * @access public
      * @return QueryBuilder new instance of the QueryBuilder object.
      */
-    public function build(\string $sqlStringToAppend)
+    public function build(string $sqlStringToAppend)
     {
         $separator = (empty(self::getSqlStatement())) ? "" : self::SPACE;
         $newSqlString = self::getSqlStatement().$separator.$sqlStringToAppend;
