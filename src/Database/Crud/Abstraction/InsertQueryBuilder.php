@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @license MIT
  * @author Chukwuma Nwali <chukznwali@gmail.com>
@@ -12,19 +12,17 @@ namespace EmmetBlue\Database\Crud\Abstraction;
 class InsertQueryBuilder extends QueryBuilder
 {
     private $queryBuilder;
-    public function __construct(string $tableName = null)
+    public function __construct(\string $tableName = null)
     {
         $insertKeyword = (is_null($tableName)) ? "INSERT" : "INSERT INTO ".$tableName;
-        $this->queryBuilder = rtrim(parent::build($insertKeyword), parent::SPACE);
+        $this->queryBuilder = parent::build($insertKeyword);
     }
 
-    public function into(string $tableName)
+    public function into(\string $tableName)
     {
         $intoKeyword = "INTO ".$tableName;
+        $newQueryBuilder = $this->queryBuilder->build($intoKeyword);
 
-        echo (string)$this->queryBuilder();
-        $this->queryBuilder->build($intoKeyword);
-
-        return new self;
+        return $newQueryBuilder;
     }
 }

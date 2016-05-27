@@ -76,7 +76,8 @@ class QueryBuilder implements QueryBuildableInterface
      */
     public function build(\string $sqlStringToAppend)
     {
-        $newSqlString = self::getSqlStatement().self::SPACE.$sqlStringToAppend;
+        $separator = (empty(self::getSqlStatement())) ? "" : self::SPACE;
+        $newSqlString = self::getSqlStatement().$separator.$sqlStringToAppend;
         self::setSqlStatement($newSqlString);
 
         return new QueryBuilder(self::getSqlStatement());
