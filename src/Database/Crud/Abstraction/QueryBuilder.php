@@ -21,8 +21,9 @@ class QueryBuilder implements QueryBuildableInterface
 
 	/**
 	 * @var string $sqlStatement Global Sql Statement
+	 * @access private
 	 */
-	$sqlStatement;
+	private $sqlStatement;
 
 	/**
 	 * @var string SPACE
@@ -32,6 +33,7 @@ class QueryBuilder implements QueryBuildableInterface
 	/**
 	 * @param string | null $sqlStatement SQL Statement to be processed by the build method
 	 * @throws {@todo Write exception class}
+	 * @access public
 	 */
 	public function __construct(\String $sqlStatement = null)
 	{
@@ -41,6 +43,7 @@ class QueryBuilder implements QueryBuildableInterface
 	/**
 	 * Returns the string value of the global sqlStatement variable
 	 *
+	 * @access private
 	 * @return string
 	 */
 	private function getSqlStatement()
@@ -52,6 +55,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * Sets/Modifies the value of the global sqlStatement variable
 	 *
 	 * @param string $sqlStatement to set/replace global equivalent to.
+	 * @access private
 	 * @return null;
 	 */
 	private function setSqlStatement(\String $sqlStatement) : null
@@ -67,6 +71,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 *
 	 * @param string | null $sqlStringToAppend
 	 * @throws {@todo Create exceptions}
+	 * @access public
 	 * @return QueryBuilder new instance of the QueryBuilder object.
 	 */
 	public function build(\String $sqlStringToAppend) : QueryBuilder
@@ -80,6 +85,7 @@ class QueryBuilder implements QueryBuildableInterface
 	/**
 	 * returns a `built sql` when the QueryBuilder object is casted to a string.
 	 *
+	 * @access public
 	 * @return string
 	 */
 	public function __toString()
