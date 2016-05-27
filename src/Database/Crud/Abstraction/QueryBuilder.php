@@ -58,7 +58,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * @access private
 	 * @return null;
 	 */
-	private function setSqlStatement(string $sqlStatement = null) : null
+	private function setSqlStatement(string $sqlStatement = null)
 	{
 		$this->sqlStatement = $sqlStatement;
 
@@ -74,7 +74,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * @access public
 	 * @return QueryBuilder new instance of the QueryBuilder object.
 	 */
-	public function build(string $sqlStringToAppend) : QueryBuilder
+	public function build(string $sqlStringToAppend)
 	{
 		$newSqlString = self::getSqlStatement().SPACE.$sqlStringToAppend;
 		self::setSqlStatement($newSqlString);

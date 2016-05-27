@@ -8,5 +8,11 @@
             "email": "samueladeshina73@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "EmmetBlue\\":"./src",
+            "EmmetBlue\\Test":"./tests"
+        }
+    }
 }

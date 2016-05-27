@@ -15,11 +15,11 @@
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
  * @since v0.0.1 27/05/2016 14:27
  */
- class QueryBuilderTest extends PHP_Framework_TestCase
+ class QueryBuilderTest extends \PHP_Framework_TestCase
  {
  	public function testBuildActuallyBuilding()
  	{
- 		$queryBuilder = new QueryBuilder("INSERT INTO tbl_name");
+ 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\QueryBuilder("INSERT INTO tbl_name");
  		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
 
  		$builtQuery = (string)$queryBuilder;
