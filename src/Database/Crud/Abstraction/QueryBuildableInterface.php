@@ -2,19 +2,23 @@
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
+ *
+ * This file is part of the EmmetBlue project, please read the license document
+ * available in the root level of the project
  */
 
-Namespace EmmetBlue\Database\Crud\Abstraction;
+namespace EmmetBlue\Database\Crud\Abstraction;
 
 /**
  * QueryBuildableInterface contract
- * All classes responsible for QueryBuild{ing} must
+ * All classes responsible for query building must
  * implement this interface and every method within it
  *
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
- * @since v0.0.1 <27/05/2016 13:14>
+ * @since v0.0.1 27/05/2016 13:14
  */
-interface QueryBuildableInterface {
+interface QueryBuildableInterface
+{
 
     /**
      * Builds a query object.

@@ -1,7 +1,10 @@
 <?php
 /**
  * @license MIT
- * @author Samuel Adeshina <samueladeshia73@gmail.com>, Chukwuma Nwali <chukznwali@gmail.com>
+ * @author Samuel Adeshina <samueladeshina73@gmail.com>
+ *
+ * This file is part of the EmmetBlue project, please read the license document
+ * available in the root level of the project
  */
 
 namespace EmmetBlue\Database\Crud;
