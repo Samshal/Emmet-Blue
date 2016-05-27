@@ -23,7 +23,7 @@
  		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
 
  		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')";
+ 		$expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')popper";
 
  		$this->assertEquals($expectedQuery, $builtQuery);
  	}
