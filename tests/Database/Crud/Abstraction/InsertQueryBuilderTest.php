@@ -17,9 +17,19 @@
  */
  class InsertQueryBuilderTest extends \PHPUnit_Framework_TestCase
  {
- 	public function testInsertBuilderActuallyBuilding()
+ 	public function testInsertBuilderWithOnlyConstructorParameter()
  	{
  		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder("tbl_name");
+
+ 		$builtQuery = (string)$queryBuilder;
+ 		$expectedQuery = "INSERT INTO tbl_name";
+
+ 		$this->assertEquals($expectedQuery, $builtQuery);
+ 	}
+
+ 	public function testInsertBuilderWithIntoMethod(){
+ 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder();
+ 		$queryBuilder = $queryBuilder->into("tbl_name");
 
  		$builtQuery = (string)$queryBuilder;
  		$expectedQuery = "INSERT INTO tbl_name";
