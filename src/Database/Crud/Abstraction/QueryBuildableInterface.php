@@ -28,5 +28,5 @@ interface QueryBuildableInterface
      * @throws {@todo Come up with exceptions thrown by this method}
      * @return string;
      */
-    public function build();
+    public function build(string $sqlStringToAppend);
 }
