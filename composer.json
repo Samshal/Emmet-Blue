@@ -12,7 +12,7 @@
     "autoload":{
         "psr-4":{
             "EmmetBlue\\":"./src",
-            "EmmetBlue\\Test":"./tests"
+            "EmmetBlue\\Test\\":"./tests"
         }
     }
 }
