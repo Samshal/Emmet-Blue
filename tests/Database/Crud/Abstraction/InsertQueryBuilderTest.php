@@ -15,7 +15,7 @@
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
  * @since v0.0.1 27/05/2016 14:27
  */
- class QueryBuilderTest extends \PHPUnit_Framework_TestCase
+ class InsertQueryBuilderTest extends \PHPUnit_Framework_TestCase
  {
  	public function testInsertBuilderActuallyBuilding()
  	{
