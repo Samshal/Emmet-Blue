@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -35,7 +35,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * @throws {@todo Write exception class}
 	 * @access public
 	 */
-	public function __construct(\string $sqlStatement = null)
+	public function __construct(string $sqlStatement = null)
 	{
 		self::setSqlStatement($sqlStatement);
 	}
@@ -58,7 +58,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * @access private
 	 * @return null;
 	 */
-	private function setSqlStatement(\string $sqlStatement = null) : null
+	private function setSqlStatement(string $sqlStatement = null) : null
 	{
 		$this->sqlStatement = $sqlStatement;
 
@@ -74,7 +74,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 * @access public
 	 * @return QueryBuilder new instance of the QueryBuilder object.
 	 */
-	public function build(\string $sqlStringToAppend) : QueryBuilder
+	public function build(string $sqlStringToAppend) : QueryBuilder
 	{
 		$newSqlString = self::getSqlStatement().SPACE.$sqlStringToAppend;
 		self::setSqlStatement($newSqlString);
