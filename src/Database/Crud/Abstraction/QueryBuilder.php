@@ -90,6 +90,6 @@ class QueryBuilder implements QueryBuildableInterface
 	 */
 	public function __toString()
 	{
-		return new getSqlStatement();
+		return new self::getSqlStatement();
 	}
 }
