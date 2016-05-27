@@ -4,7 +4,7 @@
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
  */
 
-namespace EmmetBlue\Database\Crud\Abstraction;
+Namespace EmmetBlue\Database\Crud\Abstraction;
 
 /**
  * QueryBuildableInterface contract
@@ -14,8 +14,7 @@ namespace EmmetBlue\Database\Crud\Abstraction;
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
  * @since v0.0.1 <27/05/2016 13:14>
  */
-interface QueryBuildableInterface
-{
+interface QueryBuildableInterface {
 
     /**
      * Builds a query object.
