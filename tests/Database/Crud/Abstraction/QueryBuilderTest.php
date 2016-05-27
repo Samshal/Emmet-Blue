@@ -17,7 +17,7 @@
  */
  class QueryBuilderTest extends PHP_Framework_TestCase
  {
- 	public testBuildActuallyBuilding()
+ 	public function testBuildActuallyBuilding()
  	{
  		$queryBuilder = new QueryBuilder("INSERT INTO tbl_name");
  		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
