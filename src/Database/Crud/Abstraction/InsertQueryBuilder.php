@@ -6,70 +6,23 @@
 
 namespace EmmetBlue\Database\Crud\Abstraction;
 
-   /**
-   *This InsertQueryBuilder class that
-   */
-
-class InsertQueryBuilder {
-
-/** 
-* @param Sets the table name to be inserted into.
-*/  
-
- private $tableName;
- 
- /**
- * The Into method accepts the table name to be inserted  into.
- */
-
-public function into($tableName){
-	
-    $this->tableName = $tableName;
-
-   return $tableName;
-      
-}
-
 /**
-  * The contructor method takes in the table name
-  ** that is to be inserted into table  
-  * class is instantiated.
-  */
-public function __contructor( $tableName = null){
-    
-    	self::into($tableName);
-     
-     }
-          
-	
-
- /**
- * The columns method accepts the number of columns 
- * and returns it as an array.
+ * This InsertQueryBuilder class that
  */
-public function Columns(...$tableColumns){
+class InsertQueryBuilder extends QueryBuilder
+{
+    private $queryBuilder;
+    public function __construct(string $tableName = null)
+    {
+        $insertKeyword = (!is_null($tableName)) ? "INSERT" : "INSERT INTO ".$tableName;
+        $this->queryBuilder = parent::build($insertKeyword);
+    }
 
-     $this->$tableColumns = $tableColumns;
+    public function into(string $tableName)
+    {
+        $intoKeyword = "INTO ".$tableName;
+        $this->queryBuilder->build($intoKeyword);
 
-     return $tableColumns; 
-
+        return new self;
+    }
 }
-/**
-* The values method accepts the values to
-* inserted into the table and returns 
-* the values in arrary form.
-*/
-
-public function values(...$tableValues){
-
- 	$this->$tableValues = $tableValues;
-
- 	return $tableValues;
-}
-
-
-
-
-}
-
-

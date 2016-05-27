@@ -17,13 +17,12 @@
  */
  class QueryBuilderTest extends \PHPUnit_Framework_TestCase
  {
- 	public function testBuilderActuallyBuilding()
+ 	public function testInsertBuilderActuallyBuilding()
  	{
- 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\QueryBuilder("INSERT INTO tbl_name");
- 		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
+ 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder("tbl_name");
 
  		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')";
+ 		$expectedQuery = "INSERT INTO tbl_name";
 
  		$this->assertEquals($expectedQuery, $builtQuery);
  	}
