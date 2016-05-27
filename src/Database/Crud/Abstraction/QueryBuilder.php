@@ -28,7 +28,7 @@ class QueryBuilder implements QueryBuildableInterface
 	/**
 	 * @var string SPACE
 	 */
-	const SPACE = " ";
+	const SPACE = ' ';
 
 	/**
 	 * @param string | null $sqlStatement SQL Statement to be processed by the build method
@@ -76,7 +76,7 @@ class QueryBuilder implements QueryBuildableInterface
 	 */
 	public function build(string $sqlStringToAppend)
 	{
-		$newSqlString = self::getSqlStatement().SPACE.$sqlStringToAppend;
+		$newSqlString = self::getSqlStatement().self::SPACE.$sqlStringToAppend;
 		self::setSqlStatement($newSqlString);
 
 		return new QueryBuilder(self::getSqlStatement());
