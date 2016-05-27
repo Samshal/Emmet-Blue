@@ -15,12 +15,14 @@ class InsertQueryBuilder extends QueryBuilder
     public function __construct(string $tableName = null)
     {
         $insertKeyword = (is_null($tableName)) ? "INSERT" : "INSERT INTO ".$tableName;
-        $this->queryBuilder = parent::build($insertKeyword);
+        $this->queryBuilder = rtrim(parent::build($insertKeyword), parent::SPACE);
     }
 
     public function into(string $tableName)
     {
         $intoKeyword = "INTO ".$tableName;
+
+        echo (string)$this->queryBuilder();
         $this->queryBuilder->build($intoKeyword);
 
         return new self;

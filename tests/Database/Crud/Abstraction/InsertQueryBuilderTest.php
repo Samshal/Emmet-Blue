@@ -29,7 +29,7 @@
 
  	public function testInsertBuilderWithIntoMethod(){
  		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder();
- 		$queryBuilder = $queryBuilder->into("tbl_name");
+ 		$queryBuilder = $queryBuilder->into("tbl_name")
 
  		$builtQuery = (string)$queryBuilder;
  		$expectedQuery = "INSERT INTO tbl_name";
