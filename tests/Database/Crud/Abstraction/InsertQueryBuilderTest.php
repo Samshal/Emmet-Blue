@@ -56,7 +56,7 @@
  		$queryBuilder = new InsertQueryBuilder("tbl_name");
  		$queryBuilder = $queryBuilder->values(["tbl_col_val1", "tbl_col_val2"]);
 
- 		$expectedQuery = "INSERT INTO tbl_name VALUES(tbl_col_val1, tbl_col_val2)";
+ 		$expectedQuery = "INSERT INTO tbl_name VALUES (tbl_col_val1, tbl_col_val2)";
  		$builtQuery = (string)$queryBuilder;
 
  		$this->assertEquals($expectedQuery, $builtQuery);
