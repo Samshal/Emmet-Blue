@@ -18,7 +18,7 @@ namespace EmmetBlue\Core\Database\Abstraction;
 class InsertQueryBuilder extends QueryBuilder
 {
     /**
-     * @var \EmmetBlue\Database\Abstraction\QueryBuilder $queryBuilder
+     * @var \EmmetBlue\Core\Database\Abstraction\QueryBuilder $queryBuilder
      * @access private
      */
     private $queryBuilder;
@@ -39,7 +39,7 @@ class InsertQueryBuilder extends QueryBuilder
      * @param array $tableColumns Optional, provide this to specify the 
      * columns that should be acted on
      * @access public
-     * @return \EmmetBlue\Database\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
      */
     public function into(string $tableName, array $tableColumns = [])
     {
@@ -60,7 +60,7 @@ class InsertQueryBuilder extends QueryBuilder
      *
      * @param array $inputValues
      * @access public
-     * @return \EmmetBlue\Database\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
      */
     public function values(array $inputValues)
     {
