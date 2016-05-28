@@ -47,7 +47,7 @@ class InsertQueryBuilder extends QueryBuilder
 
         if (!empty($tableColumns))
         {
-            $intoKeyword = $this->wrapString(self::getImplodedString($tableColumns), '(', ')');
+            $intoKeyword .= $this->wrapString(self::getImplodedString($tableColumns), '(', ')');
         }
 
         $this->queryBuilder = $this->queryBuilder->build($intoKeyword);
