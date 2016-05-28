@@ -7,38 +7,42 @@
 * @license MIT
 *
 **/
+namespace EmmetBlue\Database\Crud\Abstraction;
 
-class deleteQueryBuilder
+class DeleteQueryBuilder extends QueryBuilder
 {
 	/**
 	*@var $selectOptions
 	**/
+	private $queryBuilder;
 	private $row;
 
 	/**
 	*  constructor
 	* @since V 0.0.1 26.05.2016 04:56pm
-	* @author Ahead!! <flashup4all@gmail.com>
+	* @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	* @license MIT
 	*
 	**/
-		publiic function __construct()
+		publiic function __construct(string $tableName = null)
 		{
-		
+			$deleteKeyword = (is_null($tableName)) ? "DELETE" : "DELETE FROM".$tableName;
+			$this->queryBuilder = parent::build($deleteKeyword);
 		}
-	/**
-	* delete() for handling row to be deleted
-	**/
-	public function delete($row)
-	{
-		$this->row = $row;
-	}
+	
 	/**
 	* from() for handling the table where data should be deleted
 	**/
 	public function from($tableName)
 	{
-		$this->tableName = $tableName;
+		return $this->tableName = $tableName;
+	}
+	/**
+	* delete() for handling row to be deleted
+	**/
+	public function delete($row)
+	{
+		return $this->row = $row;
 	}
 
 	/**
