@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -6,10 +7,9 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
+ namespace EmmetBlue\Test\Database\Abstraction;
 
- namespace EmmetBlue\Test\Database\Crud\Abstraction;
-
- use \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder;
+ use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
 
 /**
  * class QueryBuilderTest.

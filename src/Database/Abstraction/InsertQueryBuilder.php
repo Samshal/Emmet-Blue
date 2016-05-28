@@ -4,7 +4,7 @@
  * @author Chukwuma Nwali <chukznwali@gmail.com>
  */
 
-namespace EmmetBlue\Database\Crud\Abstraction;
+namespace EmmetBlue\Database\Abstraction;
 
 /**
  * class InsertQueryBuilder. 
@@ -18,7 +18,7 @@ namespace EmmetBlue\Database\Crud\Abstraction;
 class InsertQueryBuilder extends QueryBuilder
 {
     /**
-     * @var \EmmetBlue\Database\Crud\Abstraction\QueryBuilder $queryBuilder
+     * @var \EmmetBlue\Database\Abstraction\QueryBuilder $queryBuilder
      * @access private
      */
     private $queryBuilder;
@@ -39,7 +39,7 @@ class InsertQueryBuilder extends QueryBuilder
      * @param array $tableColumns Optional, provide this to specify the 
      * columns that should be acted on
      * @access public
-     * @return \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Database\Abstraction\InsertQueryBuilder
      */
     public function into(string $tableName, array $tableColumns = [])
     {
@@ -54,13 +54,13 @@ class InsertQueryBuilder extends QueryBuilder
 
         return $this;
     }
-
+    
     /**
      * {@inheritdoc}
      *
      * @param array $inputValues
      * @access public
-     * @return \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Database\Abstraction\InsertQueryBuilder
      */
     public function values(array $inputValues)
     {

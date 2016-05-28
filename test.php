@@ -1,7 +1,7 @@
 <?php
 require __DIR__."/vendor/autoload.php";
 
-use \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder;
+use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
 
 $qb = new InsertQueryBuilder();
 
@@ -12,4 +12,3 @@ $sqlQuery = $qb
 				[InsertQueryBuilder::wrapString("chukz", "'")],
 				[InsertQueryBuilder::wrapString("lucky", "'")]
 			]);
-echo $sqlQuery;

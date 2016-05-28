@@ -7,9 +7,9 @@
  * available in the root level of the project
  */
 
- namespace EmmetBlue\Test\Database\Crud\Abstraction;
+ namespace EmmetBlue\Test\Database\Abstraction;
 
- use \EmmetBlue\Database\Crud\Abstraction\QueryBuilder;
+ use \EmmetBlue\Database\Abstraction\QueryBuilder;
 
 /**
  * class QueryBuilderTest.

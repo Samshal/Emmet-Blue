@@ -7,7 +7,7 @@
  * available in the root level of the project
  */
 
-namespace EmmetBlue\Database\Crud\Abstraction;
+namespace EmmetBlue\Database\Abstraction;
 
 /**
  * QueryBuildableInterface contract
