@@ -4,7 +4,7 @@
  * @author Chukwuma Nwali <chukznwali@gmail.com>
  */
 
-namespace EmmetBlue\Database\Abstraction;
+namespace EmmetBlue\Core\Database\Abstraction;
 
 /**
  * class InsertQueryBuilder. 

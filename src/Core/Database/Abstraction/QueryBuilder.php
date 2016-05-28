@@ -7,7 +7,7 @@
  * available in the root level of the project
  */
 
-namespace EmmetBlue\Database\Abstraction;
+namespace EmmetBlue\Core\Database\Abstraction;
 
 /**
  * class QueryBuilder.

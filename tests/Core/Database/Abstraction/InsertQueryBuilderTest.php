@@ -7,7 +7,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
- namespace EmmetBlue\Test\Database\Abstraction;
+ namespace EmmetBlue\Test\Core\Database\Abstraction;
 
  use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
 

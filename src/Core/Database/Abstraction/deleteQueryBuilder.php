@@ -7,7 +7,7 @@
 * @license MIT
 *
 **/
-namespace EmmetBlue\Database\Crud\Abstraction;
+namespace EmmetBlue\Core\Database\Crud\Abstraction;
 
 class DeleteQueryBuilder extends QueryBuilder
 {
