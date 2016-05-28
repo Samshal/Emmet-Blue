@@ -36,4 +36,14 @@
 
  		$this->assertEquals($expectedQuery, $builtQuery);
  	}
+
+ 	public function testInsertBuilderWithIntoAndTableColumnsMethod(){
+ 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder();
+ 		$queryBuilder = $queryBuilder->into("tbl_name", "tbl_col1", "tbl_col2");
+
+ 		$builtQuery = (string)$queryBuilder;
+ 		$expectedQuery = "INSERT INTO tbl_name(tbl_col2, tbl_col2)";
+
+ 		$this->assertEquals($expectedQuery, $builtQuery);
+ 	}
  }

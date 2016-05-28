@@ -80,7 +80,7 @@ class QueryBuilder implements QueryBuildableInterface
         $newSqlString = self::getSqlStatement().$separator.$sqlStringToAppend;
         self::setSqlStatement($newSqlString);
 
-        return new QueryBuilder(self::getSqlStatement());
+        return $this;
     }
 
     /**
