@@ -9,6 +9,8 @@
 
  namespace EmmetBlue\Test\Database\Crud\Abstraction;
 
+ use \EmmetBlue\Database\Crud\Abstraction\QueryBuilder;
+
 /**
  * class QueryBuilderTest.
  *
@@ -19,12 +21,18 @@
  {
  	public function testBuilderActuallyBuilding()
  	{
- 		$queryBuilder = new \EmmetBlue\Database\Crud\Abstraction\QueryBuilder("INSERT INTO tbl_name");
+ 		$queryBuilder = new QueryBuilder("INSERT INTO tbl_name");
  		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
 
  		$builtQuery = (string)$queryBuilder;
  		$expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')";
 
  		$this->assertEquals($expectedQuery, $builtQuery);
+ 	}
+
+ 	public function testWrapStringFunctionBehavesStatically()
+ 	{
+ 		$built = QueryBuilder::wrapString("Name", "'");
+
  	}
  }

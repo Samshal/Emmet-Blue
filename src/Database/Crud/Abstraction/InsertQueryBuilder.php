@@ -47,7 +47,7 @@ class InsertQueryBuilder extends QueryBuilder
 
         if (!empty($tableColumns))
         {
-            $intoKeyword .= '('.self::getImplodedString($tableColumns).')';
+            $intoKeyword = $this->wrapString(self::getImplodedString($tableColumns), '(', ')');
         }
 
         $this->queryBuilder = $this->queryBuilder->build($intoKeyword);
@@ -69,14 +69,14 @@ class InsertQueryBuilder extends QueryBuilder
 
        if (!$isMultidimentional)
        {
-          $valuesKeyword .= '('.self::getImplodedString($inputValues).')';
+          $valuesKeyword .= $this->wrapString(self::getImplodedString($inputValues), '(', ')');
        }
        else
        {
           $tempValuesKeywords = [];
           foreach ($inputValues as $inputValue)
           {
-              $tempValuesKeywords[] = '('.self::getImplodedString($inputValue).')';
+              $tempValuesKeywords[] = $this->wrapString(self::getImplodedString($inputValue), '(', ')');
           }
 
           $valuesKeyword .= self::getImplodedString($tempValuesKeywords);
@@ -86,18 +86,5 @@ class InsertQueryBuilder extends QueryBuilder
        $this->queryBuilder = $this->queryBuilder->build($valuesKeyword);
 
        return $this;
-    }
-
-    /**
-     * Implodes an array into a string
-     *
-     * @param array $arrayToImplode
-     * @param string $delimiter Optional.
-     * @access private
-     * @return string
-     */
-    private function getImplodedString(array $arrayToImplode, string $delimiter = ",")
-    {
-        return implode($delimiter, $arrayToImplode);
     }
 }

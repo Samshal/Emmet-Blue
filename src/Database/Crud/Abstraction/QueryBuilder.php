@@ -93,4 +93,31 @@ class QueryBuilder implements QueryBuildableInterface
     {
         return self::getSqlStatement();
     }
+
+    /**
+     * Implodes an array into a string
+     *
+     * @param array $arrayToImplode
+     * @param string $delimiter Optional.
+     * @access protected
+     * @return string
+     */
+    protected function getImplodedString(array $arrayToImplode, string $delimiter = ",")
+    {
+        return implode($delimiter, $arrayToImplode);
+    }
+
+    /**
+     * Wraps a string with specified characters
+     *
+     * @param string $strBefore
+     * @param string|null $strAfter
+     * @param string $strToWrap
+     * @access public
+     * @return string
+     */
+    public static function wrapString(string $strToWrap, string $strBefore, string $strAfter = null)
+    {
+        return $strBefore.$strToWrap.(is_null($strAfter) ? $strBefore : $strAfter);
+    }
 }

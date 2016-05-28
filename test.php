@@ -1,9 +1,8 @@
 <?php
 require __DIR__."/vendor/autoload.php";
 
-$qb = new \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder();
+use \EmmetBlue\Database\Crud\Abstraction\InsertQueryBuilder;
+$qb = new InsertQueryBuilder();
 
-$qb = $qb->into("students");
-
-$qb = $qb->values([["Samuel", "Adeshina"], ["John", "Doe"], ["Amos", 12]]);
-echo (string)$qb;
+$qb = $qb->into("students")->values([[InsertQueryBuilder::wrapString("Samuel", "'"), "Adeshina"], ["John", "Doe"], ["Amos", 12]]);
+echo $qb;
