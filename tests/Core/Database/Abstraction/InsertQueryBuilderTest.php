@@ -9,7 +9,7 @@
  */
  namespace EmmetBlue\Test\Core\Database\Abstraction;
 
-use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
+use \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder;
 
  /**
  * class QueryBuilderTest.
