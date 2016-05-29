@@ -1,4 +1,4 @@
-<?php declare (strict_types=1);
+<?php declare (strict_types = 1);
 /**
  * @license MIT
  * @author Chukwuma Nwali <chukznwali@gmail.com>
@@ -36,7 +36,7 @@ class InsertQueryBuilder extends QueryBuilder
      * {@inheritdoc}
      * 
      * @param string $tableName
-     * @param array $tableColumns Optional, provide this to specify the 
+     * @param string[] $tableColumns Optional, provide this to specify the 
      * columns that should be acted on
      * @access public
      * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
@@ -57,7 +57,7 @@ class InsertQueryBuilder extends QueryBuilder
     /**
      * {@inheritdoc}
      *
-     * @param array $inputValues
+     * @param string[] $inputValues
      * @access public
      * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
      */
