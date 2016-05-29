@@ -26,7 +26,7 @@ interface QueryBuildableInterface
      * must also obey {@see DatabaseQueryableInterface} contract.
      *
      * @throws {@todo Come up with exceptions thrown by this method}
-     * @return QueryBuilder;
+     * @return QueryBuilder
      */
     public function build(string $sqlStringToAppend);
 }
