@@ -9,9 +9,9 @@
 
  namespace EmmetBlue\Test\Core\Database\Abstraction;
 
- use \EmmetBlue\Database\Abstraction\QueryBuilder;
+use \EmmetBlue\Database\Abstraction\QueryBuilder;
 
-/**
+ /**
  * class QueryBuilderTest.
  *
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -19,20 +19,19 @@
  */
  class QueryBuilderTest extends \PHPUnit_Framework_TestCase
  {
- 	public function testBuilderActuallyBuilding()
- 	{
- 		$queryBuilder = new QueryBuilder("INSERT INTO tbl_name");
- 		$queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
+     public function testBuilderActuallyBuilding()
+     {
+         $queryBuilder = new QueryBuilder("INSERT INTO tbl_name");
+         $queryBuilder = $queryBuilder->build("VALUES ('tbl_col1', 'tbl_col2')");
 
- 		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')";
+         $builtQuery = (string)$queryBuilder;
+         $expectedQuery = "INSERT INTO tbl_name VALUES ('tbl_col1', 'tbl_col2')";
 
- 		$this->assertEquals($expectedQuery, $builtQuery);
- 	}
+         $this->assertEquals($expectedQuery, $builtQuery);
+     }
 
- 	public function testWrapStringFunctionBehavesStatically()
- 	{
- 		$built = QueryBuilder::wrapString("Name", "'");
-
- 	}
+     public function testWrapStringFunctionBehavesStatically()
+     {
+         $built = QueryBuilder::wrapString("Name", "'");
+     }
  }

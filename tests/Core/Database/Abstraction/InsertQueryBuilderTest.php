@@ -9,9 +9,9 @@
  */
  namespace EmmetBlue\Test\Core\Database\Abstraction;
 
- use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
+use \EmmetBlue\Database\Abstraction\InsertQueryBuilder;
 
-/**
+ /**
  * class QueryBuilderTest.
  *
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -19,46 +19,46 @@
  */
  class InsertQueryBuilderTest extends \PHPUnit_Framework_TestCase
  {
- 	public function testInsertBuilderWithOnlyConstructorParameter()
- 	{
- 		$queryBuilder = new InsertQueryBuilder("tbl_name");
+     public function testInsertBuilderWithOnlyConstructorParameter()
+     {
+         $queryBuilder = new InsertQueryBuilder("tbl_name");
 
- 		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name";
+         $builtQuery = (string)$queryBuilder;
+         $expectedQuery = "INSERT INTO tbl_name";
 
- 		$this->assertEquals($expectedQuery, $builtQuery);
- 	}
+         $this->assertEquals($expectedQuery, $builtQuery);
+     }
 
- 	public function testInsertBuilderWithIntoMethod()
- 	{
- 		$queryBuilder = new InsertQueryBuilder();
- 		$queryBuilder = $queryBuilder->into("tbl_name");
+     public function testInsertBuilderWithIntoMethod()
+     {
+         $queryBuilder = new InsertQueryBuilder();
+         $queryBuilder = $queryBuilder->into("tbl_name");
 
- 		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name";
+         $builtQuery = (string)$queryBuilder;
+         $expectedQuery = "INSERT INTO tbl_name";
 
- 		$this->assertEquals($expectedQuery, $builtQuery);
- 	}
+         $this->assertEquals($expectedQuery, $builtQuery);
+     }
 
- 	public function testInsertBuilderWithIntoAndTableColumnsMethod()
- 	{
- 		$queryBuilder = new InsertQueryBuilder();
- 		$queryBuilder = $queryBuilder->into("tbl_name", ["tbl_col1", "tbl_col2"]);
+     public function testInsertBuilderWithIntoAndTableColumnsMethod()
+     {
+         $queryBuilder = new InsertQueryBuilder();
+         $queryBuilder = $queryBuilder->into("tbl_name", ["tbl_col1", "tbl_col2"]);
 
- 		$builtQuery = (string)$queryBuilder;
- 		$expectedQuery = "INSERT INTO tbl_name(tbl_col1,tbl_col2)";
+         $builtQuery = (string)$queryBuilder;
+         $expectedQuery = "INSERT INTO tbl_name(tbl_col1,tbl_col2)";
 
- 		$this->assertEquals($expectedQuery, $builtQuery);
- 	}
+         $this->assertEquals($expectedQuery, $builtQuery);
+     }
 
- 	public function testInsertBuilderWithConstructorParameterAndValuesKeyword()
- 	{
- 		$queryBuilder = new InsertQueryBuilder("tbl_name");
- 		$queryBuilder = $queryBuilder->values(["tbl_col_val1", "tbl_col_val2"]);
+     public function testInsertBuilderWithConstructorParameterAndValuesKeyword()
+     {
+         $queryBuilder = new InsertQueryBuilder("tbl_name");
+         $queryBuilder = $queryBuilder->values(["tbl_col_val1", "tbl_col_val2"]);
 
- 		$expectedQuery = "INSERT INTO tbl_name VALUES (tbl_col_val1,tbl_col_val2)";
- 		$builtQuery = (string)$queryBuilder;
+         $expectedQuery = "INSERT INTO tbl_name VALUES (tbl_col_val1,tbl_col_val2)";
+         $builtQuery = (string)$queryBuilder;
 
- 		$this->assertEquals($expectedQuery, $builtQuery);
- 	}
+         $this->assertEquals($expectedQuery, $builtQuery);
+     }
  }

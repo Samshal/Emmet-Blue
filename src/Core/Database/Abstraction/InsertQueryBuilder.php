@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Chukwuma Nwali <chukznwali@gmail.com>
@@ -45,8 +45,7 @@ class InsertQueryBuilder extends QueryBuilder
     {
         $intoKeyword = "INTO ".$tableName;
 
-        if (!empty($tableColumns))
-        {
+        if (!empty($tableColumns)) {
             $intoKeyword .= $this->wrapString(self::getImplodedString($tableColumns), '(', ')');
         }
 
@@ -64,27 +63,23 @@ class InsertQueryBuilder extends QueryBuilder
      */
     public function values(array $inputValues)
     {
-       $valuesKeyword = "VALUES ";
-       $isMultidimentional = is_array($inputValues[0]);
+        $valuesKeyword = "VALUES ";
+        $isMultidimentional = is_array($inputValues[0]);
 
-       if (!$isMultidimentional)
-       {
-          $valuesKeyword .= $this->wrapString(self::getImplodedString($inputValues), '(', ')');
-       }
-       else
-       {
-          $tempValuesKeywords = [];
-          foreach ($inputValues as $inputValue)
-          {
-              $tempValuesKeywords[] = $this->wrapString(self::getImplodedString($inputValue), '(', ')');
-          }
+        if (!$isMultidimentional) {
+            $valuesKeyword .= $this->wrapString(self::getImplodedString($inputValues), '(', ')');
+        } else {
+            $tempValuesKeywords = [];
+            foreach ($inputValues as $inputValue) {
+                $tempValuesKeywords[] = $this->wrapString(self::getImplodedString($inputValue), '(', ')');
+            }
 
-          $valuesKeyword .= self::getImplodedString($tempValuesKeywords);
-          unset($tempValuesKeywords);
-       }
+            $valuesKeyword .= self::getImplodedString($tempValuesKeywords);
+            unset($tempValuesKeywords);
+        }
 
-       $this->queryBuilder = $this->queryBuilder->build($valuesKeyword);
+        $this->queryBuilder = $this->queryBuilder->build($valuesKeyword);
 
-       return $this;
+        return $this;
     }
 }
