@@ -29,7 +29,7 @@ class InsertQueryBuilder extends QueryBuilder
     public function __construct(string $tableName = null)
     {
         $insertKeyword = (is_null($tableName)) ? "INSERT" : "INSERT INTO ".$tableName;
-        $this->queryBuilder = parent::build($insertKeyword);
+        $this->queryBuilder = $this->build($insertKeyword);
     }
 
     /**
