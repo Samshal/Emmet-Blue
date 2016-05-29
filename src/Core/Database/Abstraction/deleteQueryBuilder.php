@@ -39,14 +39,6 @@ class DeleteQueryBuilder extends QueryBuilder
 		return $this->tableName = $tableName;
 	}
 	/**
-	* delete() for handling row to be deleted
-	**/
-	/*public function delete($row)
-	{
-		return $this->row = $row;
-	}*/
-
-	/**
 	*where() for conditions to follow before deleting
 	**/
 	public function where(string $expression)
