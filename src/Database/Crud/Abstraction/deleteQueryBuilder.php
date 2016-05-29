@@ -35,43 +35,42 @@ class DeleteQueryBuilder extends QueryBuilder
 	**/
 	public function from($tableName)
 	{
+		$fromKeyword = "FROM".$tableName;
 		return $this->tableName = $tableName;
 	}
 	/**
 	* delete() for handling row to be deleted
 	**/
-	public function delete($row)
+	/*public function delete($row)
 	{
 		return $this->row = $row;
-	}
+	}*/
 
 	/**
 	*where() for conditions to follow before deleting
 	**/
-	public function where($columnName, $whereOption)
+	public function where(string $expression)
 	{
-		$this->columnName = $columnName;
-		$this->whereOption = $whereOption;
-		return $columnName."=".$whereOption;
+		$whereKeyword = "WHERE ". $expression;
+		return $whereKeyword;
 	}
 
 	/**
 	* andWhere() function for deleting with conditions
 	**/
-	public function andWhere($columnName,$whereOption)
+	public function andWhere(string $expression)
 	{
-		$this->columnName = $columnName;
-		$this->whereOption = $whereOption;
-		return $columnName.",".$whereOption;
+		$andWhereKeyword = "AND ".self::where($expression);
+		return $andWhereKeyword;
 	}
 	/**
 	*orWhere() function for handling OR conditions before deleting;
 	**/
 	public function orWhere($columnName,$whereOption)
 	{
-		$this->columnName = $columnName;
-		$this->whereOption = $whereOption;
-		return $columnName.",".$whereOption;
+		$orWhereKeyword = "OR ".self::where($expression);
+		
+		return $orWhereKeyword;
 	}
 
 }
