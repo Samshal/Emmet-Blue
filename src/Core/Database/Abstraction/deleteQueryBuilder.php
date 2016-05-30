@@ -58,7 +58,7 @@ class DeleteQueryBuilder extends QueryBuilder
 	/**
 	*orWhere() function for handling OR conditions before deleting;
 	**/
-	public function orWhere($columnName,$whereOption)
+	public function orWhere(string $expression)
 	{
 		$orWhereKeyword = "OR ".self::where($expression);
 		
