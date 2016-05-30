@@ -4,12 +4,11 @@
  * @author Chukwuma Nwali <chukznwali@gmail.com>
  */
 
-namespace EmmetBlue\Database\Crud\Abstraction;
+namespace EmmetBlue\Core\Database\Abstraction;
 
    /**
    *This UpdateQueryBuilder class that
    */
-
 class UpdatetQueryBuilder extends QueryBuilder {
 
 /** 
@@ -17,14 +16,13 @@ class UpdatetQueryBuilder extends QueryBuilder {
 */  
  private $tableName;
  /**
- * The Into method sets the table name to be updated  into.
+ * The setTableName method sets the table name
+ * to be updated.
  */
 public function setTableName($tableName){
-	
-    $this->tableName = $tableName;
+	    $this->tableName = $tableName;
    return $tableName;  
 }
-
 /**
   * The contructor method takes in the table name
   ** that is to be updated into table  when the
@@ -32,7 +30,6 @@ public function setTableName($tableName){
   * 
  */
 public function __construct( $tableName = null){
-
   if((!is_null($tableName))){
   return $updateKeyword = "UPDATE".$tableName." SET";
       }  
