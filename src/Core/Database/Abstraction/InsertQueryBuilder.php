@@ -1,25 +1,26 @@
-<?php declare (strict_types = 1);
+<?php
+
+declare(strict_types=1);
 /**
  * @license MIT
  * @author Chukwuma Nwali <chukznwali@gmail.com>
  */
-
 namespace EmmetBlue\Core\Database\Abstraction;
 
 /**
- * class InsertQueryBuilder. 
+ * class InsertQueryBuilder.
  * Builds an insert query.
  *
  * {@see QueryBuilder}
  *
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
+ *
  * @since 28/05/2016
  */
 class InsertQueryBuilder extends QueryBuilder
 {
     /**
-     * @var \EmmetBlue\Core\Database\Abstraction\QueryBuilder $queryBuilder
-     * @access private
+     * @var \EmmetBlue\Core\Database\Abstraction\QueryBuilder
      */
     private $queryBuilder;
 
@@ -28,22 +29,22 @@ class InsertQueryBuilder extends QueryBuilder
      */
     public function __construct(string $tableName = null)
     {
-        $insertKeyword = (is_null($tableName)) ? "INSERT" : "INSERT INTO ".$tableName;
+        $insertKeyword = (is_null($tableName)) ? 'INSERT' : 'INSERT INTO '.$tableName;
         $this->queryBuilder = $this->build($insertKeyword);
     }
 
     /**
      * {@inheritdoc}
-     * 
-     * @param string $tableName
-     * @param string[] $tableColumns Optional, provide this to specify the 
-     * columns that should be acted on
-     * @access public
+     *
+     * @param string   $tableName
+     * @param string[] $tableColumns Optional, provide this to specify the
+     *                               columns that should be acted on
+     *
      * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
      */
     public function into(string $tableName, array $tableColumns = [])
     {
-        $intoKeyword = "INTO ".$tableName;
+        $intoKeyword = 'INTO '.$tableName;
 
         if (!empty($tableColumns)) {
             $intoKeyword .= $this->wrapString(self::getImplodedString($tableColumns), '(', ')');
@@ -53,17 +54,17 @@ class InsertQueryBuilder extends QueryBuilder
 
         return $this;
     }
-    
+
     /**
      * {@inheritdoc}
      *
      * @param string[] $inputValues
-     * @access public
+     *
      * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
      */
     public function values(array $inputValues)
     {
-        $valuesKeyword = "VALUES ";
+        $valuesKeyword = 'VALUES ';
         $isMultidimentional = is_array($inputValues[0]);
 
         if (!$isMultidimentional) {
