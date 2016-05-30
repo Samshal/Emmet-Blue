@@ -7,7 +7,8 @@
 namespace EmmetBlue\Core\Database\Abstraction;
 
    /**
-   *This UpdateQueryBuilder class that
+   * This UpdateQueryBuilder class contains
+   * methods associated with UPDATE object.
    */
 class UpdatetQueryBuilder extends QueryBuilder {
 
@@ -16,14 +17,6 @@ class UpdatetQueryBuilder extends QueryBuilder {
 */  
  private $tableName;
  /**
- * The setTableName method sets the table name
- * to be updated.
- */
-public function setTableName($tableName){
-	    $this->tableName = $tableName;
-   return $tableName;  
-}
-/**
   * The contructor method takes in the table name
   ** that is to be updated into table  when the
   * UpdateQueryBuider class is instantiiated.
@@ -43,7 +36,6 @@ public function tableName($tableName){
     $updateKeyword = "UPDATE ".$tableName." SET";
    return $updateKeyword;
 }
-
 /**
   * The method setValues accepts the values to be
    * updated against the setColumnsmethod
