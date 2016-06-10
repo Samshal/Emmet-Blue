@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -72,7 +70,7 @@ class QueryBuilder implements QueryBuildableInterface
      *
      * @return QueryBuilder new instance of the QueryBuilder object.
      */
-    public function build(string $sqlStringToAppend)
+    public function build(string $sqlStringToAppend) : QueryBuildableInterface
     {
         $separator = (empty(self::getSqlStatement())) ? '' : self::SPACE;
         $newSqlString = self::getSqlStatement().$separator.$sqlStringToAppend;
@@ -99,7 +97,7 @@ class QueryBuilder implements QueryBuildableInterface
      *
      * @return string
      */
-    protected function getImplodedString(array $arrayToImplode, string $delimiter = ',')
+    protected function getImplodedString(array $arrayToImplode, string $delimiter = ',') : string
     {
         return implode($delimiter, $arrayToImplode);
     }
@@ -113,7 +111,7 @@ class QueryBuilder implements QueryBuildableInterface
      *
      * @return string
      */
-    public static function wrapString(string $strToWrap, string $strBefore, string $strAfter = null)
+    public static function wrapString(string $strToWrap, string $strBefore, string $strAfter = null) : string
     {
         return $strBefore.$strToWrap.(is_null($strAfter) ? $strBefore : $strAfter);
     }
