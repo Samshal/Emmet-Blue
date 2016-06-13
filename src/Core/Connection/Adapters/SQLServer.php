@@ -6,9 +6,9 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Core\Database\Connection\Adapters;
+namespace EmmetBlue\Core\Connection\Adapters;
 
-use EmmetBlue\Core\Database\Connection\ConnectableInterface;
+use EmmetBlue\Core\Connection\ConnectableInterface;
 use EmmetBlue\Core\Exception\SQLException;
 
 /**
@@ -82,7 +82,10 @@ class SQlServer implements ConnectableInterface
         
         foreach ($dsn as $attribute)
         {
-            $this->connectionObject->setAttribute($attribute);
+            foreach ($attribute as $key=>$value)
+            {
+                $this->connectionObject->setAttribute($key, $value);
+            }
         }
     }
 
@@ -112,5 +115,16 @@ class SQlServer implements ConnectableInterface
     public function disableConnection()
     {
         $this->connectionObject = null;
+    }
+
+    /**
+     * Sets attributes for the PDO object
+     *
+     * @param \PDO $attribute
+     * @param \PDO $value
+     */
+    public function setAttribute(\PDO $attribute, \PDO $value)
+    {
+         $this->connectionObject->setAttribute($attribute, $value);
     }
 }

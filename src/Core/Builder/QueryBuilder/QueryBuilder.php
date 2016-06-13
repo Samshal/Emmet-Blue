@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -6,8 +7,9 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Core\Database\Abstraction;
+namespace EmmetBlue\Core\Builder\QueryBuilder;
 
+use EmmetBlue\Core\Builder\BuildableInterface;
 /**
  * class QueryBuilder.
  * Implements the QueryBuildableInterface contract {@see QueryBuildableInterface}.
@@ -16,7 +18,7 @@ namespace EmmetBlue\Core\Database\Abstraction;
  *
  * @since v0.0.1 27/05/2016 13:35
  */
-class QueryBuilder implements QueryBuildableInterface
+class QueryBuilder implements BuildableInterface
 {
     /**
      * @var string Global Sql Statement
@@ -70,7 +72,7 @@ class QueryBuilder implements QueryBuildableInterface
      *
      * @return QueryBuilder new instance of the QueryBuilder object.
      */
-    public function build(string $sqlStringToAppend) : QueryBuildableInterface
+    public function build(string $sqlStringToAppend) : BuildableInterface
     {
         $separator = (empty(self::getSqlStatement())) ? '' : self::SPACE;
         $newSqlString = self::getSqlStatement().$separator.$sqlStringToAppend;
@@ -103,6 +105,26 @@ class QueryBuilder implements QueryBuildableInterface
     }
 
     /**
+     * Implodes an array into a string while keeping track of the keys.
+     *
+     * @param array  $arrayToImplode
+     * @param string $delimiter Optional.
+     *
+     * @return string
+     */
+    protected function getImplodedStringWithKeys(array $arrayToImplode, string $keyDelimiter='=', string $delimiter = ',') : string
+    {
+        $implodedStrings = []; 
+
+        foreach ($arrayToImplode as $key=>$value)
+        {
+            $implodedStrings[] = $key.$keyDelimiter.$value;
+        }
+
+        return implode($delimiter, $implodedStrings);
+    }
+
+    /**
      * Wraps a string with specified characters.
      *
      * @param string      $strBefore
@@ -114,5 +136,53 @@ class QueryBuilder implements QueryBuildableInterface
     public static function wrapString(string $strToWrap, string $strBefore, string $strAfter = null) : string
     {
         return $strBefore.$strToWrap.(is_null($strAfter) ? $strBefore : $strAfter);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $condition
+     *
+     * @return \EmmetBlue\Core\Builder\BuildableInterface
+     */
+    public function where(string $condition)
+    {
+        $whereString = "WHERE $condition";
+
+        $this->queryBuilder = $this->queryBuilder->build($whereString);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $condition
+     *
+     * @return \EmmetBlue\Core\Builder\BuildableInterface
+     */
+    public function andWhere(string $condition)
+    {
+         $whereString = "AND WHERE $condition";
+
+        $this->queryBuilder = $this->queryBuilder->build($whereString);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $condition
+     *
+     * @return \EmmetBlue\Core\Builder\BuildableInterface
+     */
+    public function orWhere(string $condition)
+    {
+         $whereString = "OR WHERE $condition";
+
+        $this->queryBuilder = $this->queryBuilder->build($whereString);
+
+        return $this;
     }
 }

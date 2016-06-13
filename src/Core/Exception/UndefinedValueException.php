@@ -11,19 +11,19 @@ namespace EmmetBlue\Core\Exception;
 use EmmetBlue\Core\Constant;
 
 /**
- * class SQLException.
- * Instantiates a new instance of SQLException
+ * class UndefinedValueException.
+ * Instantiates a new instance of UndefinedValueException
  *
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
  *
  * @since v0.0.1 08/06/2016 14:20
  */
-class SQLException extends Exception
+class UndefinedValueException extends Exception
 {
 	public function __construct(string $message, int $databaseUser)
 	{
 		parent::__construct($message, 0, null);
 		
-		$this->log($databaseUser, Constant::ERROR_401, Constant::ERROR_NORMAL); 
+		$this->log($databaseUser, Constant::ERROR_404, Constant::ERROR_NORMAL); 
 	}
 }

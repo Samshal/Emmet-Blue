@@ -1,11 +1,9 @@
-<?php
-
-declare (strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
- * @author Chukwuma Nwali <chukznwali@gmail.com>
+ * @author Samuel Adeshina <samueladeshina73@gmail.com>
  */
-namespace EmmetBlue\Core\Database\Abstraction;
+namespace EmmetBlue\Core\Builder\QueryBuilder;
 
 /**
  * class InsertQueryBuilder.
@@ -20,9 +18,9 @@ namespace EmmetBlue\Core\Database\Abstraction;
 class InsertQueryBuilder extends QueryBuilder
 {
     /**
-     * @var \EmmetBlue\Core\Database\Abstraction\QueryBuilder
+     * @var \EmmetBlue\Core\Abstraction\QueryBuilder
      */
-    private $queryBuilder;
+    protected $queryBuilder;
 
     /**
      * @param string|null $tableName
@@ -40,7 +38,7 @@ class InsertQueryBuilder extends QueryBuilder
      * @param string[] $tableColumns Optional, provide this to specify the
      *                               columns that should be acted on
      *
-     * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Core\Abstraction\InsertQueryBuilder
      */
     public function into(string $tableName, array $tableColumns = [])
     {
@@ -60,7 +58,7 @@ class InsertQueryBuilder extends QueryBuilder
      *
      * @param string[] $inputValues
      *
-     * @return \EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder
+     * @return \EmmetBlue\Core\Abstraction\InsertQueryBuilder
      */
     public function values(array $inputValues)
     {

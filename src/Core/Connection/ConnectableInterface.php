@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Core\Database\Connection;
+namespace EmmetBlue\Core\Connection;
 
 /**
  * Interface ConnectableInterface.
