@@ -78,34 +78,7 @@ use EmmetBlue\plugins\User\Account;
  	*/
 	public static function viewPatientMedicationHistory($patientId)
 	{
-		$selectBuilder = (new Builder('QueryBuilder', 'Select *'))->getBuilder();
-		try
-		{
-			$selectBuilder
-			->from('Patient.Medicationhistory')
-			->where("Medicationhistory.Patientid = ".QB::wrapString($patientId,"'")
-				);
-			$result = (
-					DBConnectionFactory::getConnection()
-					->query((string)$selectBuilder)
-					)->fetchAll(\PDO::FETCH_ASSOC);
-			DatabaseLog::log(Session::get('USER_ID'), Constant::_EVENT_SELECT, 'Patient','Medicationhistory',(string)$selectBuilder);
-			if($result)
-			{
-				return $result;
-			}
-			throw new UndefinedValueException(
-				sprintf("could not return medication history for this patient",$result),
-					(int)Session::get('USER_ID')
-					);			
-		}
-		catch(\PDOException $e)
-		{
-			throw new SQLException(
-				sprintf("Error Processing Request"
-					), Constant::UNDEFINED);
-			
-		}
+		return (new Medication::retrieve($patient));
 	}
 	/**
 	* view the nurse details who attended to a patient.
@@ -197,6 +170,17 @@ use EmmetBlue\plugins\User\Account;
 	{
 
 	}
+	/* patient Diagnostic report*/
+	public static function addDiagnosticReport()
+	{
+
+	}
+
+	public static function viewDiagnosticReport($id)
+	{
+
+	}
+
 
 
 
