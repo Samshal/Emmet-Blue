@@ -44,7 +44,16 @@ class SelectQueryBuilder extends QueryBuilder
 
         return $this;
     }
-
+    /**
+    * This method handles situations that requires to
+    * select all from the table.
+    * @param *
+    */
+    public function all()
+    {
+     $this->queryBuilder = $this->queryBuilder->build("*");
+     return $this;  
+    }
     /**
      * {@inheritdoc}
      *
