@@ -1,7 +1,7 @@
 <?phpdeclare(strict_types=1);
 /**
  * @license MIT
- * @author 
+ * @author chukwuma Nwali <chukznwali@gmail.com>
  *
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
@@ -75,7 +75,7 @@ $deletetBuilder =(new Builder("QueryBuilder", "delete"))->getBuilder();
 	try{
 		$deleteBuilder
 		->from("Staffs.Department")
-		->where(id = $id);
+		->where("id =". $id);
 		$result = (DBConnectionFactory::getConnection()
         	 	->query((string)$deleteBuilder)); 
 
@@ -101,17 +101,51 @@ $selectBuilder =(new Builder("QueryBuilder", "select"))->getBuilder();
 		->all()
 		->from("Staffs.department");
 		$result = (DBConnectionFactory::getConnection()
-        	 	->query((string)$selectBuilder));
-		
-DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT, 'Staffs', 'Staff', (string)$selectBuilder); 
+        	 	->query((string)$selectBuilder)
+        	 	)->fetchAll(\PDO::FETCH_ASSOC);
+
+DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT, 'Staffs', 'Staff', (string)$selectBuilder);
+	if(count($result >= 1)) {
+	return $result;
 	}
-
-
-
+	else{
+		echo "No corpse found";
+	}
 }
+ catch (\PDOException $e)
+        {
+            throw new SQLException(sprintf(
+                "A database related error has occurred"
+            ), Constant::UNDEFINED);
+        }
+}
+
 public static function viewSingleBody($id){
+$selectBuilder =(new Builder("QueryBuilder", "select"))->getBuilder();
+	try{
+		$selectBuilder
+		->all()
+		->from("Staffs.department")
+		->where("id =". $id);
+		$result = (DBConnectionFactory::getConnection()
+        	 	->query((string)$selectBuilder)
+        	 	)->fetchAll(\PDO::FETCH_ASSOC);
 
-
+DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT, 'Staffs', 'Staff', (string)$selectBuilder);
+	if(count($result === 1)) {
+	return $result;
+	}
+	else{
+		echo "";
+	}
+}
+ catch (\PDOException $e)
+        {
+            throw new SQLException(sprintf(
+                "A database related error has occurred"
+            ), Constant::UNDEFINED);
+        }
+	}
 }
 
  	 }
