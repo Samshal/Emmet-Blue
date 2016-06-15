@@ -34,10 +34,6 @@ class ViewBody
 { 
 public static function default(int $BodyId)
 {
-<<<<<<< HEAD
-
-=======
->>>>>>> c23353b4a9ac7b79c77f7bbe8b507dff2c10bc9f
 $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 	$selectBuilder
 	->columns('*')
@@ -65,10 +61,6 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 		"Error Processing Request"
 		),
 		Constant::UNDEFINED
-<<<<<<< HEAD
-		);
-=======
->>>>>>> c23353b4a9ac7b79c77f7bbe8b507dff2c10bc9f
 
 	public static function default(array $data)
 	{
