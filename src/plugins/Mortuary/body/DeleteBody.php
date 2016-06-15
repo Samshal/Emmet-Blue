@@ -31,28 +31,44 @@ use EmmetBlue\Core\Constant;
 class DeleteBody
 {
 	/**
-	*method delete()
-	*@param $bodyId
-	*/
-	public static function delete($bodyId)
+	 * delete method
+	 *
+	 * @param int $bodyId
+	 */
+	public static function delete(int $bodyId)
 	{
+		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
-		$deleteOperation = DeleteQueryBuilder::from('Mortuary.Body')
-		->where("Body.BodyID = ".$BodyId);
-		DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Body', 'BodyID', $deleteOperation);
-		if($deleteOperation)
+		$deleteBuilder
+			->from('Mortuary.Body')
+			->where('Body.BodyID = '.$bodyId);
+
+		try
 		{
-			return true;
+			$deleteOperation = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
+
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Mortuary', 'Body', (string)$deleteOperation);
+
+			if($deleteOperation)
+			{
+				return true;
+			}
+
+			throw new UndefinedValueException(
+				sprintf(
+					"A Database error has occurred."
+				),
+				(int)Session::get('USER_ID')
+			);
 		}
-		throw new UndefinedValueException(
-				sprintf("could not delete Body",$deleteOperation),
-					(int)Session::get('USER_ID')
-					);
 		catch(\PDOException $e)
 		{
 			throw new SQLException(
-				sprintf("Error Processing Request"
-					), Constant::UNDEFINED);
+				sprintf(
+					"Error Processing Request"
+				),
+				Constant::UNDEFINED
+			);
 			
 		}
 	}
