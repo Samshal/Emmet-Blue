@@ -86,10 +86,17 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 		{
 			$viewBodyOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
 
-			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'BodyInformation', (string)$deleteOperation);
-			if($viewBodyinfo)
+			DatabaseLog::log(
+				Session::get('USER_ID'),
+				Constant::EVENT_SELECT,
+				'Mortuary',
+				'BodyInformation',
+				(string)$deleteOperation
+			);
+
+			if($viewBodyOperation)
 			{
-				return $viewBodyinfo;
+				return $viewBodyOperation->fetchAll();
 			}
 			throw new UndefinedValueException(
 				sprintf(
