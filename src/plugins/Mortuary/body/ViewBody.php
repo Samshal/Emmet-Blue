@@ -24,62 +24,43 @@ use EmmetBlue\Core\Constant;
  *
  * ViewBody Controller
  *
- * @author Samuel Adeshina <samueladeshina73@gmail.com>
- * @since v0.0.1 08/06/2016 14:20
+ * @author Chukwuma Nwali <chukznwali@gmail.com>
+ * @since v0.0.1 08/06/2016 14:2016
+ *
+ * @param int $BodyId
+ * accepts a $BodyId parameter to use for querying the table
  */
 class ViewBody
+{ 
+public static function default(int $BodyId)
 {
-	public static function default(array $data)
-	{
-		$tag = $data['tag'] ?? 'NULL';
-		$dateOfDeath = $data['dateOfDeath'] ?? 'NULL';
-		$timeOfDeath = $data['timeOfDeath'] ?? 'NULL';
-		$placeOfDeath = $data['placeOfDeath'] ?? 'NULL';
-		$burialPlace = $data['burialPlace'] ?? 'NULL';
-		$physicianName = $data['physicianName'] ?? 'NULL';
-		$physicianId = $data['physicianId'] ?? 'NULL';
+$selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
+	$selectBuilder
+	->columns('*')
+	->from('Mortuary.Body')
+	->where('BodyId ='.$BodyId);
+	
+	try {
+	$viewBodyquery=(new DbconnectionFactory::getConnection())->query((string)$selectBuilder);
+	DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'Body', (string)$viewBodyquery);
 
-		$packed = [
-			'BodyTag'=>($tag !== 'NULL') ? QB::wrapString($tag, "'") : $tag,
-			'DateOfDeath'=>($dateOfDeath !== 'NULL') ? QB::wrapString($dateOfDeath, "'") : $dateOfDeath,
-			'TimeOfDeath'=>($timeOfDeath !== 'NULL') ? QB::wrapString($timeOfDeath, "'") : $timeOfDeath,
-			'PlaceOfDeath'=>($placeOfDeath !== 'NULL') ? QB::wrapString($placeOfDeath, "'") : $placeOfDeath,
-			'BurialPlace'=>($burialPlace !== 'NULL') ? QB::wrapString($burialPlace, "'") : $burialPlace,
-			'DeathPhysicianName'=>($physicianName !== 'NULL') ? QB::wrapString($physicianName, "'") : $physicianName,
-			'DeathPhysicianID'=>$physicianId
-		];
+	if($viewBodyquery){
+	return $viewBodyQuery;
+	} 
+	throw new UndefinedValueException(
+	sprintf(
+	"A Database error occurred."
+	),
+	(int)Session::get('USER_ID')
+	);
 
-		$result = DatabaseQueryFactory::insert('Mortuary.Body', $packed);
+} catch(\PDOException $e)
+		{
+		throw new SQLException(
+		sprintf(
+		"Error Processing Request"
+		),
+		Constant::UNDEFINED
+		);
 	}
-
-	public static function info(array $data)
-	{
-		$bodyId = $data['bodyId'] ?? 'NULL';
-		$bodyFirstName = $data['bodyFirstName'] ?? 'NULL';
-		$bodyLastName = $data['bodyLastName'] ?? 'NULL';
-		$bodyMiddleName = $data['bodyMiddleName'] ?? 'NULL';
-		$bodyDateOfBirth = $data['bodyDateOfBirth'] ?? 'NULL';
-		$bodyGender = $data['bodyGender'] ?? 'NULL';
-		$bodyPlaceOfBirth = $data['bodyPlaceOfBirth'] ?? 'NULL';
-		$familyMemberRelationshipType = $data['familyMemberRelationshipType'] ?? 'NULL';
-		$familyMemberName = $data['familyMemberName'] ?? 'NULL';
-		$familyMemberGender = $data['familyMemberGender'] ?? 'NULL';
-		$familyMemberPhoneNumber = $data['familyMemberPhoneNumber'] ?? 'NULL';
-
-		$packed = [
-			'BodyID'=>$bodyId,
-			'BodyFirstName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyFirstName, "'") : $bodyFirstName,
-			'BodyLastName'=>($bodyLastName !== 'NULL') ? QB::wrapString($bodyLastName, "'") : $bodyLastName,
-			'BodyMiddleName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyMiddleName, "'") : $bodyMiddleName,
-			'BodyDateOfBirth'=>$bodyDateOfBirth,
-			'BodyGender'=>($bodyGender !== 'NULL') ? QB::wrapString($bodyGender, "'") : $bodyGender,
-			'BodyPlaceOfBirth'=>($bodyPlaceOfBirth !== 'NULL') ? QB::wrapString($bodyPlaceOfBirth, "'") : $bodyPlaceOfBirth,
-			'FamilyMemberRelationshipType'=>($familyMemberRelationshipType !== 'NULL') ? QB::wrapString($familyMemberRelationshipType, "'") : $familyMemberRelationshipType,
-			'FamilyMemberName'=>($familyMemberName !== 'NULL') ? QB::wrapString($familyMemberName, "'") : $familyMemberName,
-			'FamilyMemberGender'=>($familyMemberGender !== 'NULL') ? QB::wrapString($familyMemberGender, "'") : $familyMemberGender,
-			'FamilyMemberPhoneNumber'=>($familyMemberPhoneNumber !== 'NULL') ? QB::wrapString($familyMemberPhoneNumber, "'") : $familyMemberPhoneNumber
-		];
-
-		$result = DatabaseQueryFactory::insert('Mortuary.BodyInformation', $packed);
-	}
-}
+} }
