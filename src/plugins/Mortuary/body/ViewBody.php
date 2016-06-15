@@ -34,6 +34,7 @@ class ViewBody
 { 
 public static function default(int $BodyId)
 {
+<<<<<<< HEAD
 $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 	$selectBuilder
 	->columns('*')
@@ -62,5 +63,52 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 		),
 		Constant::UNDEFINED
 		);
+=======
+	public static function default(array $data)
+	{
+		
+	}
+
+	/**
+	 * viewBodyinfo method
+	 *
+	 * @param int $bodyId
+	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+	 */
+	public static function viewBodyInfo(int $bodyId)
+	{
+		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
+		$selectBuilder
+			->columns('*')
+			->from('Mortuary.BodyInformation')
+			->where('BodyID ='.$bodyId);
+		try
+		{
+			$viewBodyOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
+
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'BodyInformation', (string)$deleteOperation);
+			if($viewBodyinfo)
+			{
+				return $viewBodyinfo;
+			}
+			throw new UndefinedValueException(
+				sprintf(
+					'Database error has occured'
+				),
+				(int)Session::get('USER_ID')
+			);
+			
+		} 
+		catch (\PDOException $e) 
+		{
+			throw new SQLException(
+				sprintf(
+					"Error procesing request"
+				),
+				Constant::UNDEFINED
+			);
+			
+		}
+>>>>>>> 9128ee995a71b4d4f2cba78be3032667e1925d5f
 	}
 } }

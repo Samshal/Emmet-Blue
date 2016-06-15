@@ -56,7 +56,7 @@ use EmmetBlue\plugins\User\Account;
 		$result = DatabaseQueryFactory::insert('Patient.Medication', $data);
  	}
 
- 	public static function retrieve($patientID)
+ 	public static function retrieveMedication($patientID)
  	{
  		$selectBuilder = (new Builder('QueryBuilder', 'Select *'))->getBuilder();
 		try

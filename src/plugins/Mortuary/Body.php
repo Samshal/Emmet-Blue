@@ -45,6 +45,11 @@ class Body
 
 	public static function viewBodyInfo(int $body)
 	{
-		
+		return Body\ViewBody::viewBodyInfo($body);
+	}
+
+	public static function deleteBody(int $body)
+	{
+		return Body\DeleteBody::delete($body);
 	}
 }
