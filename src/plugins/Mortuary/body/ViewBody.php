@@ -34,7 +34,7 @@ class ViewBody
 { 
 public static function default(int $BodyId)
 {
-<<<<<<< HEAD
+
 $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 	$selectBuilder
 	->columns('*')
@@ -46,7 +46,7 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 	DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'Body', (string)$viewBodyquery);
 
 	if($viewBodyquery){
-	return $viewBodyQuery;
+	return $viewBodyQuery->fetchAll();
 	} 
 	throw new UndefinedValueException(
 	sprintf(
@@ -63,7 +63,7 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 		),
 		Constant::UNDEFINED
 		);
-=======
+
 	public static function default(array $data)
 	{
 		
@@ -116,6 +116,5 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 			);
 			
 		}
->>>>>>> 9128ee995a71b4d4f2cba78be3032667e1925d5f
 	}
 } }
