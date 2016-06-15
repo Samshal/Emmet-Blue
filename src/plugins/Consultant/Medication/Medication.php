@@ -32,14 +32,28 @@ use EmmetBlue\plugins\User\Account;
  	{
  		
  	}
-	public static function create(array $array)
+ 	/**
+	* this method creates new medication
+	*@param $data which is an array
+ 	*/
+	public static function newMedication(array $data)
  	{
+ 		$consultantId = $data['consultantId'] ?? 'NULL';
+		$patientId = $data['patientId'] ?? 'NULL';
+		$caseHistroy = $data['caseHistory'] ?? 'NULL';
+		$medication = $data['medication'] ?? 'NULL';
+		$consultantNote = $data['consultantNote'] ?? 'NULL';
 
- 	}
+		$data = [
+			'ConsultantId'=>$consultantId,
+			'PatientId'=>$consultantId,
+			'CaseHistory'=>($caseHistory !== 'NULL') ? QB::wrapString($caseHistory, "'") : $caseHistory,
+			'Medication'=>($medication !== 'NULL') ? QB::wrapString($medication, "'") : $medication,
+			'ConsultantNote'=>($consultantNote !== 'NULL') ? QB::wrapString($consultantNote, "'") : $consultantNote,
+			'currentDate'=>$currentDate,
+		];
 
- 	public static function store()
- 	{
-
+		$result = DatabaseQueryFactory::insert('Patient.Medication', $data);
  	}
 
  	public static function retrieve($patientID)

@@ -23,6 +23,7 @@ class Constant
     const EVENT_INSERT = 'EVENT: INSERT DML EVENT';
     const EVENT_SELECT = 'EVENT: SELECT DML EVENT';
     const EVENT_UPDATE = 'EVENT: UPDATE DML EVENT';
+    const EVENT_DELETE = 'EVENT: DELETE DML EVENT';
 
     /**
      * Error Numbers
