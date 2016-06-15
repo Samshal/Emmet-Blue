@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 /**
  * @license MIT
- * @author Samuel Adeshina <samueladeshina73@gmail.calculhmac(clent, data)om>
+ * @author Bardeson Lucky <flashup4all@gmail.com> <Ahead!!>
  *
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
@@ -21,15 +21,19 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class ViewBody.
+ * class DeleteBody.
  *
- * ViewBody Controller
+ * DeleteBody Controller
  *
- * @author Samuel Adeshina <samueladeshina73@gmail.com>
- * @since v0.0.1 08/06/2016 14:20
+ * @author Bardeson Lucky <flashup4all@gmail.com>
+ * @since v0.0.1 15/06/2016 14:20
  */
 class DeleteBody
 {
+	/**
+	*method delete()
+	*@param $bodyId
+	*/
 	public static function delete($bodyId)
 	{
 
