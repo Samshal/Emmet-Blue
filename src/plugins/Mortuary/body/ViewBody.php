@@ -26,47 +26,9 @@ use EmmetBlue\Core\Constant;
  *
  * @author Chukwuma Nwali <chukznwali@gmail.com>
  * @since v0.0.1 08/06/2016 14:2016
- *
- * @param int $BodyId
- * accepts a $BodyId parameter to use for querying the table
  */
 class ViewBody
 { 
-public static function default(int $BodyId)
-{
-$selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
-	$selectBuilder
-	->columns('*')
-	->from('Mortuary.Body')
-	->where('BodyId ='.$BodyId);
-	
-	try {
-	$viewBodyquery=(new DbconnectionFactory::getConnection())->query((string)$selectBuilder);
-	DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'Body', (string)$viewBodyquery);
-
-	if($viewBodyquery){
-	return $viewBodyQuery->fetchAll();
-	} 
-	throw new UndefinedValueException(
-	sprintf(
-	"A Database error occurred."
-	),
-	(int)Session::get('USER_ID')
-	);
-
-} catch(\PDOException $e)
-		{
-		throw new SQLException(
-		sprintf(
-		"Error Processing Request"
-		),
-		Constant::UNDEFINED
-
-	public static function default(array $data)
-	{
-		
-	}
-
 	/**
 	 * viewBodyinfo method
 	 *
@@ -115,4 +77,4 @@ $selectBuilder = (new Builder("QueryBuilder", "Select"))->getBuilder();
 			
 		}
 	}
-} }
+}

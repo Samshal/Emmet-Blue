@@ -51,8 +51,8 @@ class SelectQueryBuilder extends QueryBuilder
     */
     public function all()
     {
-     $this->queryBuilder = $this->queryBuilder->build("*");
-     return $this;  
+        $this->queryBuilder = $this->queryBuilder->build("*");
+        return $this;
     }
     /**
      * {@inheritdoc}
@@ -97,5 +97,4 @@ class SelectQueryBuilder extends QueryBuilder
 
         return $this;
     }
-
 }

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -7,7 +7,6 @@
  * available in the root level of the project
  */
 namespace EmmetBlue\Core\Validator;
-
 
 /**
  * Interface ValidatorInterface
@@ -18,5 +17,4 @@ namespace EmmetBlue\Core\Validator;
  */
 interface ValidatorInterface
 {
-
 }

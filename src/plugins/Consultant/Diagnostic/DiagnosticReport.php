@@ -18,47 +18,42 @@ use EmmetBlue\Core\Logger\DatabaseLog;
 use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 use EmmetBlue\plugins\User\Account;
+
 /**
  * Class Diagnostic Report
  *this class manages all diagnostic report of a patient
  */
- class DiagnosticReport{
- 	/**
-	*the constructor instantiates once any request is made to this class
-	*@param 
-	*@return 
- 	*/
- 	public function __construct()
- 	{
- 		
- 	}
- 	public static function create(array $array)
- 	{
+ class DiagnosticReport
+ {
+     /**
+    *the constructor instantiates once any request is made to this class
+    *@param 
+    *@return 
+    */
+    public function __construct()
+    {
+    }
+     public static function create(array $array)
+     {
+     }
 
- 	}
+     public static function store()
+     {
+     }
 
- 	public static function store()
- 	{
+     public static function retrieve($patientID)
+     {
+     }
 
- 	}
+     public static function edit($id)
+     {
+     }
 
- 	public static function retrieve($patientID)
- 	{
- 		
- 	}
+     public static function update()
+     {
+     }
 
- 	public static function edit($id)
- 	{
-
- 	}
-
- 	public static function update()
- 	{
-
- 	}
-
- 	public static function delete()
- 	{
- 		
- 	}
-}
+     public static function delete()
+     {
+     }
+ }

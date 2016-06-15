@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 
 /**
  * @license MIT
@@ -21,18 +21,18 @@ use EmmetBlue\Core\Builder\BuilderFactory as Builder;
  */
 class UserIDValidator implements ValidatorInterface
 {
-	public function isValidUserId(string $userId)
-	{
-		$selectQuery = (new Builder('QueryBuilder', 'Select'))->getBuilder();
+    public function isValidUserId(string $userId)
+    {
+        $selectQuery = (new Builder('QueryBuilder', 'Select'))->getBuilder();
 
-		$selectQuery
-			->top(1)
-			->columns('StaffID')
-			->from('[Staffs].[Staff]')
-			->where(
-				'StaffID',
-				'='.
-				$userId
-			);
-	}
+        $selectQuery
+            ->top(1)
+            ->columns('StaffID')
+            ->from('[Staffs].[Staff]')
+            ->where(
+                'StaffID',
+                '='.
+                $userId
+            );
+    }
 }

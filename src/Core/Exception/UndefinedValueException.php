@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -20,10 +20,10 @@ use EmmetBlue\Core\Constant;
  */
 class UndefinedValueException extends Exception
 {
-	public function __construct(string $message, int $databaseUser)
-	{
-		parent::__construct($message, 0, null);
-		
-		$this->log($databaseUser, Constant::ERROR_404, Constant::ERROR_NORMAL); 
-	}
+    public function __construct(string $message, int $databaseUser)
+    {
+        parent::__construct($message, 0, null);
+        
+        $this->log($databaseUser, Constant::ERROR_404, Constant::ERROR_NORMAL);
+    }
 }

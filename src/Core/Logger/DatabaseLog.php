@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -12,6 +12,7 @@ use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
 use EmmetBlue\Core\Builder\QueryBuilder\QueryBuilder as QB;
 use EmmetBlue\Core\Exception\SQLException;
+
 /**
  * Class DatabaseLog
  *
@@ -23,9 +24,8 @@ class DatabaseLog implements LogInterface
 {
     public static function log(string $databaseUserId, string $event, string $objectSchema, string $object, string $tSql)
     {
-    	$insertBuilder = (new Builder("QueryBuilder","Insert"))->getBuilder();
-    	try
-        {
+        $insertBuilder = (new Builder("QueryBuilder", "Insert"))->getBuilder();
+        try {
             $insertBuilder
                 ->into('
                     [Logs].[DatabaseLog]
@@ -48,9 +48,7 @@ class DatabaseLog implements LogInterface
                 ]);
 
             DBConnectionFactory::getConnection()->query((string)$insertBuilder);
-        }
-        catch (\PDOException $e)
-        {
+        } catch (\PDOException $e) {
             echo $e->getMessage();
             throw new SQLException(sprintf(
                     "Unable to store database log"

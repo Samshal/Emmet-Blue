@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -17,5 +17,4 @@ namespace EmmetBlue\Core\Logger;
  */
 interface LogInterface
 {
-    
 }

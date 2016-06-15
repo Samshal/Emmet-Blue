@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -17,9 +17,9 @@ namespace EmmetBlue\Core;
  */
 class Constant
 {
-	/**
-	 * Events
-	 */
+    /**
+     * Events
+     */
     const EVENT_INSERT = 'EVENT: INSERT DML EVENT';
     const EVENT_SELECT = 'EVENT: SELECT DML EVENT';
     const EVENT_UPDATE = 'EVENT: UPDATE DML EVENT';

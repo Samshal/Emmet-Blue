@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -12,6 +12,7 @@ use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
 use EmmetBlue\Core\Builder\QueryBuilder\QueryBuilder as QB;
 use EmmetBlue\Core\Exception\SQLException;
+
 /**
  * Class ErrorLog
  *
@@ -21,7 +22,7 @@ use EmmetBlue\Core\Exception\SQLException;
  */
 class ErrorLog implements LogInterface
 {
-    public static function log(int $databaseUserId, string $errorNumber, string $errorSeverity, string $errorMessage, string $errorObject=NULL)
+    public static function log(int $databaseUserId, string $errorNumber, string $errorSeverity, string $errorMessage, string $errorObject=null)
     {
         /**
          * For now I am not doing anything with $errorObject yet.
@@ -32,7 +33,7 @@ class ErrorLog implements LogInterface
          * FUNNY: I'M GONNA INTENTIONALLY LEAVE THIS COMMIT FOR MY AMUSEMENT
          * $errorObject, wasn't the issue. My DB schema was.
          */
-    	$insertBuilder = (new Builder("QueryBuilder","Insert"))->getBuilder();
+        $insertBuilder = (new Builder("QueryBuilder", "Insert"))->getBuilder();
 
         $insertBuilder
             ->into('

@@ -45,10 +45,10 @@ class DeleteQueryBuilder extends QueryBuilder
         return $this;
     }
 
-    public function where(string $argument){
-     $wherekeyword = "WHERE";   
-    $this->queryBuilder = $this->queryBuilder->build($wherekeyword($argument));
-    return $this;
-
+    public function where(string $argument)
+    {
+        $wherekeyword = "WHERE";
+        $this->queryBuilder = $this->queryBuilder->build($wherekeyword($argument));
+        return $this;
     }
 }
