@@ -31,55 +31,48 @@ class ViewBody
 {
 	public static function default(array $data)
 	{
-		$tag = $data['tag'] ?? 'NULL';
-		$dateOfDeath = $data['dateOfDeath'] ?? 'NULL';
-		$timeOfDeath = $data['timeOfDeath'] ?? 'NULL';
-		$placeOfDeath = $data['placeOfDeath'] ?? 'NULL';
-		$burialPlace = $data['burialPlace'] ?? 'NULL';
-		$physicianName = $data['physicianName'] ?? 'NULL';
-		$physicianId = $data['physicianId'] ?? 'NULL';
-
-		$packed = [
-			'BodyTag'=>($tag !== 'NULL') ? QB::wrapString($tag, "'") : $tag,
-			'DateOfDeath'=>($dateOfDeath !== 'NULL') ? QB::wrapString($dateOfDeath, "'") : $dateOfDeath,
-			'TimeOfDeath'=>($timeOfDeath !== 'NULL') ? QB::wrapString($timeOfDeath, "'") : $timeOfDeath,
-			'PlaceOfDeath'=>($placeOfDeath !== 'NULL') ? QB::wrapString($placeOfDeath, "'") : $placeOfDeath,
-			'BurialPlace'=>($burialPlace !== 'NULL') ? QB::wrapString($burialPlace, "'") : $burialPlace,
-			'DeathPhysicianName'=>($physicianName !== 'NULL') ? QB::wrapString($physicianName, "'") : $physicianName,
-			'DeathPhysicianID'=>$physicianId
-		];
-
-		$result = DatabaseQueryFactory::insert('Mortuary.Body', $packed);
+		
 	}
 
-	public static function info(array $data)
+	/**
+	 * viewBodyinfo method
+	 *
+	 * @param int $bodyId
+	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+	 */
+	public static function viewBodyInfo(int $bodyId)
 	{
-		$bodyId = $data['bodyId'] ?? 'NULL';
-		$bodyFirstName = $data['bodyFirstName'] ?? 'NULL';
-		$bodyLastName = $data['bodyLastName'] ?? 'NULL';
-		$bodyMiddleName = $data['bodyMiddleName'] ?? 'NULL';
-		$bodyDateOfBirth = $data['bodyDateOfBirth'] ?? 'NULL';
-		$bodyGender = $data['bodyGender'] ?? 'NULL';
-		$bodyPlaceOfBirth = $data['bodyPlaceOfBirth'] ?? 'NULL';
-		$familyMemberRelationshipType = $data['familyMemberRelationshipType'] ?? 'NULL';
-		$familyMemberName = $data['familyMemberName'] ?? 'NULL';
-		$familyMemberGender = $data['familyMemberGender'] ?? 'NULL';
-		$familyMemberPhoneNumber = $data['familyMemberPhoneNumber'] ?? 'NULL';
+		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
+		$selectBuilder
+			->columns('*')
+			->from('Mortuary.BodyInformation')
+			->where('BodyID ='.$bodyId);
+		try
+		{
+			$viewBodyOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
 
-		$packed = [
-			'BodyID'=>$bodyId,
-			'BodyFirstName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyFirstName, "'") : $bodyFirstName,
-			'BodyLastName'=>($bodyLastName !== 'NULL') ? QB::wrapString($bodyLastName, "'") : $bodyLastName,
-			'BodyMiddleName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyMiddleName, "'") : $bodyMiddleName,
-			'BodyDateOfBirth'=>$bodyDateOfBirth,
-			'BodyGender'=>($bodyGender !== 'NULL') ? QB::wrapString($bodyGender, "'") : $bodyGender,
-			'BodyPlaceOfBirth'=>($bodyPlaceOfBirth !== 'NULL') ? QB::wrapString($bodyPlaceOfBirth, "'") : $bodyPlaceOfBirth,
-			'FamilyMemberRelationshipType'=>($familyMemberRelationshipType !== 'NULL') ? QB::wrapString($familyMemberRelationshipType, "'") : $familyMemberRelationshipType,
-			'FamilyMemberName'=>($familyMemberName !== 'NULL') ? QB::wrapString($familyMemberName, "'") : $familyMemberName,
-			'FamilyMemberGender'=>($familyMemberGender !== 'NULL') ? QB::wrapString($familyMemberGender, "'") : $familyMemberGender,
-			'FamilyMemberPhoneNumber'=>($familyMemberPhoneNumber !== 'NULL') ? QB::wrapString($familyMemberPhoneNumber, "'") : $familyMemberPhoneNumber
-		];
-
-		$result = DatabaseQueryFactory::insert('Mortuary.BodyInformation', $packed);
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_SELECT,'Mortuary', 'BodyInformation', (string)$deleteOperation);
+			if($viewBodyinfo)
+			{
+				return $viewBodyinfo;
+			}
+			throw new UndefinedValueException(
+				sprintf(
+					'Database error has occured'
+				),
+				(int)Session::get('USER_ID')
+			);
+			
+		} 
+		catch (\PDOException $e) 
+		{
+			throw new SQLException(
+				sprintf(
+					"Error procesing request"
+				),
+				Constant::UNDEFINED
+			);
+			
+		}
 	}
 }
