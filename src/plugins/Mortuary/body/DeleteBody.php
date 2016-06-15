@@ -34,8 +34,23 @@ class DeleteBody
 	{
 
 		$deleteOperation = DeleteQueryBuilder::from('Mortuary.Body')
-		->where("Body.BodyId = ".$BodyId);
-		DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,);
+		->where("Body.BodyID = ".$BodyId);
+		DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Body', 'BodyID', $deleteOperation);
+		if($deleteOperation)
+		{
+			return true;
+		}
+		throw new UndefinedValueException(
+				sprintf("could not delete Body",$deleteOperation),
+					(int)Session::get('USER_ID')
+					);
+		catch(\PDOException $e)
+		{
+			throw new SQLException(
+				sprintf("Error Processing Request"
+					), Constant::UNDEFINED);
+			
+		}
 	}
 
 }
