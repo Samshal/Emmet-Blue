@@ -46,7 +46,6 @@ class Account
         }
         else
         {
-            echo "user already logged in";
             Session::delete('USER_ID');
         }
     }
