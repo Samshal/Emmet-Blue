@@ -37,4 +37,14 @@ class Body
 	{
 		return Body\NewBody::info($data);
 	}
+
+	public static function viewBody(int $body)
+	{
+
+	}
+
+	public static function viewBodyInfo(int $body)
+	{
+		
+	}
 }
