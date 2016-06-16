@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 /**
  * @license MIT
- * @author Chukwuma Nwali
+ * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  *
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Records;
+namespace EmmetBlue\Plugins\Records\Records\PatientInformation;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -17,14 +17,3 @@ use EmmetBlue\Core\Session\Session;
 use EmmetBlue\Core\Logger\DatabaseLog;
 use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
-
-
-class Records{
-
-
-
-
-
-
-	
-}
