@@ -19,14 +19,14 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class Vitalsigns
+ * class ViewVitalsigns
  *
- * VitalSigns Controller
+ * ViewVitalSigns Controller
  *
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 16/06/2016 12:56am
  */
-class VitalSigns
+class ViewVitalSigns
 {
 	
 	public static function viewVitalsign(int $vitalSignId)

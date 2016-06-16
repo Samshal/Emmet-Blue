@@ -19,14 +19,14 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class Vitalsigns
+ * class NewVitalSigns
  *
- * VitalSigns Controller
+ * NewVitalSigns Controller
  *
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 16/06/2016 12:56am
  */
-class VitalSigns
+class NewVitalSigns
 {
 	#creates a new vital sign resource
 	public static function newVitalSign(array $data)
