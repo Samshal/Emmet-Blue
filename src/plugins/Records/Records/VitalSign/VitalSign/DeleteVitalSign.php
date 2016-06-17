@@ -34,7 +34,7 @@ class DeleteVitalSigns
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
-			->from('Patient.VitalSign')
+			->from('Records.VitalSign')
 			->where('VitalSignID = '.$vitalSIgnId);
 
 		try
@@ -44,7 +44,7 @@ class DeleteVitalSigns
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_DELETE,
-				'Patient', 'VitalSign',
+				'Records', 'VitalSign',
 				 (string)$deleteVitalOperation);
 
 			if($deleteVitalOperation)

@@ -46,7 +46,7 @@ class NewVitalSigns
 			'BloodPressure'=>($bloodPressure !== 'NULL') ? QB::wrapString($bloodPressure, "'") : $bloodPressure,
 			'Weight'=>($weight !== 'NULL') ? QB::wrapString($weight, "'") : $weight,
 		];
-		$result = DatabaseQueryFactory::insert('Patient.VitalSign', $packed);
+		$result = DatabaseQueryFactory::insert('Records.VitalSign', $vitals);
 	}
 
 }

@@ -1,7 +1,7 @@
-CREATE SCHEMA Patient;
+CREATE SCHEMA Records;
 GO
 
-CREATE TABLE Patient.VitalSign (
+CREATE TABLE Record.VitalSign (
 	VitalSignID INTEGER PRIMARY KEY IDENTITY,
 	PatientID INTEGER,
 	Temperature VARCHAR(20) NOT NULL,

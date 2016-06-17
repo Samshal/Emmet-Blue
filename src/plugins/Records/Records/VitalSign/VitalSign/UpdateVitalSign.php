@@ -33,7 +33,7 @@ class UpdateVitalSigns
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Update'))->getBuilder();
 		$selectBuilder
-			->table('Patient.VitalSign')
+			->table('Records.VitalSign')
 			->where('VitalSignID ='.$vitalSignId)
 			->set();
 		

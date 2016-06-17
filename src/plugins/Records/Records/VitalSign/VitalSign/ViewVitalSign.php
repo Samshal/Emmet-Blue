@@ -42,7 +42,7 @@ class ViewVitalSign
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Patient.VitalSign')
+			->from('Records.VitalSign')
 			->where('PatientID ='.$patientId);
 		try
 		{
@@ -51,7 +51,7 @@ class ViewVitalSign
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
-				'Patient',
+				'Records',
 				'VitalSign',
 				(string)$viewVitalOperation
 			);
