@@ -24,7 +24,7 @@ use EmmetBlue\Core\Constant;
  *
  * ViewBody Controller
  *
- * @author Chukwuma Nwali <chukznwali@gmail.com>
+ * @author 
  * @since v0.0.1 08/06/2016 14:2016
  */
 class ViewBody
