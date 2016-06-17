@@ -9,8 +9,6 @@ CREATE TABLE Patient.VitalSign (
 	RespirationRate VARCHAR(20),
 	Bloodpressure VARCHAR(20),,
 	weight VARCHAR(20),
-	RespirationRate VARCHAR(20),
-	Bloodpressure VARCHAR(20),,
 	CreatedDate DATE NOT NULL,
 	UpdatedDate DATE NOT NULL,
 	FOREIGN KEY (PatientID) REFERENCES Patient.VitalSign(PatientID) ON UPDATE CASCADE ON DELETE CASCADE

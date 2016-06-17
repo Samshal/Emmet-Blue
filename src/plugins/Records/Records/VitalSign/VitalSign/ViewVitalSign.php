@@ -1,16 +1,15 @@
 <?php declare(strict_types=1);
 /**
  * @license MIT
- * @author Samuel Adeshina <samueladeshina73@gmail.calculhmac(clent, data)om>
+ * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  *
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Mortuary\Body;
+namespace EmmetBlue\Plugins\Records\Records\VitalSign\VitalSign;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
-use EmmetBlue\Core\Factory\DatabaseQueryFactory as DatabaseQueryFactory;
 use EmmetBlue\Core\Builder\QueryBuilder\QueryBuilder as QB;
 use EmmetBlue\Core\Exception\SQLException;
 use EmmetBlue\Core\Exception\UndefinedValueException;
@@ -20,43 +19,46 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class ViewBody.
+ * class ViewVitalsigns
  *
- * ViewBody Controller
+ * ViewVitalSigns Controller
  *
- * @author Chukwuma Nwali <chukznwali@gmail.com>
- * @since v0.0.1 08/06/2016 14:2016
+ * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+ * @since v0.0.1 16/06/2016 12:56am
  */
-class ViewBody
-{ 
+class ViewVitalSign
+{
 	/**
-	 * viewBodyinfo method
+	 * method ViewVitalsign
 	 *
-	 * @param int $bodyId
-	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+	 * ViewVitalSign Controller
+	 *
+	 * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+	 * @since v0.0.1 17/06/2016 05:43am
 	 */
-	public static function viewBodyInfo(int $bodyId)
+	
+	public static function viewVitalsign(int $patientId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Mortuary.BodyInformation')
-			->where('BodyID ='.$bodyId);
+			->from('Patient.VitalSign')
+			->where('PatientID ='.$patientId);
 		try
 		{
-			$viewBodyOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
+			$viewVitalOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
 
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
-				'Mortuary',
-				'BodyInformation',
-				(string)$viewBodyOperation
+				'Patient',
+				'VitalSign',
+				(string)$viewVitalOperation
 			);
 
-			if($viewBodyOperation)
+			if($viewVitalOperation)
 			{
-				return $viewBodyOperation->fetchAll();
+				return $viewVitalOperation->fetchAll();
 			}
 			throw new UndefinedValueException(
 				sprintf(
@@ -77,4 +79,5 @@ class ViewBody
 			
 		}
 	}
+	
 }

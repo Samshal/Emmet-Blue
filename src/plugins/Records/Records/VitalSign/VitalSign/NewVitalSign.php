@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Records\Records\VitalSigns\Vitals;
+namespace EmmetBlue\Plugins\Records\Records\VitalSign\VitalSign;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -31,7 +31,22 @@ class NewVitalSigns
 	#creates a new vital sign resource
 	public static function newVitalSign(array $data)
 	{
-		
+		$patientId = $data['patientId'] ?? 'NULL';
+		$temperature = $data['temperature'] ?? 'NULL';
+		$pulseRate = $data['pulseRate'] ?? 'NULL';
+		$respirationRate = $data['respirationRate'] ?? 'NULL';
+		$bloodPressure = $data['bloodPressure'] ?? 'NULL';
+		$weight = $data['weight'] ?? 'NULL';
+
+		$vitals = [
+			'patietID'=>$patientId,
+			'temperature'=>($temperature !== 'NULL') ? QB::wrapString($temperature, "'") : $temperature,
+			'PulseRate'=>($pulseRate !== 'NULL') ? QB::wrapString($pulseRate, "'") : $pulseRate,
+			'RespirationRate'=>($respirationRate !== 'NULL') ? QB::wrapString($respirationRate, "'") : $respirationRate,
+			'BloodPressure'=>($bloodPressure !== 'NULL') ? QB::wrapString($bloodPressure, "'") : $bloodPressure,
+			'Weight'=>($weight !== 'NULL') ? QB::wrapString($weight, "'") : $weight,
+		];
+		$result = DatabaseQueryFactory::insert('Patient.VitalSign', $packed);
 	}
 
 }
