@@ -27,7 +27,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson	Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:20
  */
-class NewBody
+class NewPatient
 {
 	public static function default(array $data)
 	{
@@ -80,7 +80,7 @@ class NewBody
 
 		$result = DatabaseQueryFactory::insert('Records.PatientAddressInformation', $addressInfo);
 	}
-	public static function nextOfKinInfo(array $data)
+	public static function PatientNextOfKinInfo(array $data)
 	{
 		$patientId = $data['PatientID'] ?? 'NULL';
 		$nextOfKinFullName = $data['nextOfKinInfo'] ?? 'NULL';
