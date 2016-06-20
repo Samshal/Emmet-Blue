@@ -1,4 +1,4 @@
-Delete<?php declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * @license MIT
  * @author Bardeson Lucky <flashup4all@gmail.com>
