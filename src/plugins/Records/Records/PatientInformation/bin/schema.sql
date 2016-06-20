@@ -23,6 +23,7 @@ StateOfResidence VARCHAR(60) NOT NULL,
 Nationality VARCHAR(60) NOT NULL,
 StateOfOrigin VARCHAR(29) NULL,
 LGA VARCHAR(60) NOT NULL,
+FOREIGN KEY (PatientID) REFERENCES Records.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 CREATE TABLE Records.NextOfKinIformation(
@@ -32,6 +33,7 @@ NextOfKinFullname VARCHAR(60),
 NextOfKinAddress VARCHAR(60) NOT NULL,
 State VARCHAR(60) NOT NULL,
 Nationality VARCHAR(60) NOT NULL,
+FOREIGN KEY (PatientID) REFERENCES Records.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 CREATE TABLE Records.PatientFormerHealthProvider(
 

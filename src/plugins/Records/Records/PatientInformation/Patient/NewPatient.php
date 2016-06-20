@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 /**
  * @license MIT
- * @author Samuel Adeshina <samueladeshina73@gmail.calculhmac(clent, data)om>
+ * @author Bardeson Lucky <flashup4all@gmail.com>
  *
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
