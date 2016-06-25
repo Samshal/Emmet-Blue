@@ -31,7 +31,6 @@ class NewPatient
 {
 	public static function default(array $data)
 	{
-		//$tag = $data['tag'] ?? 'NULL';
 		$title = $data['title'] ?? 'NULL';
 		$firstName = $data['firstName'] ?? 'NULL';
 		$middleName = $data['middleName'] ?? 'NULL';
@@ -42,7 +41,6 @@ class NewPatient
 		$patientType = $data['patientType'] ?? 'NULL'; //NHIS,company Patient,staff etc
 
 		$defaultData = [
-			'Tag'=>($tag !== 'NULL') ? QB::wrapString($tag, "'") : $tag,
 			'Title' =>($title !== 'NULL') ? QB::wrapString($title, "'") : $title,
 			'FirstName'=>($firstName !== 'NULL') ? QB::wrapString($firstName, "'") : $firstName,
 			'MiddleName'=>($middleName !== 'NULL') ? QB::wrapString($middleName, "'") : $middleName,
