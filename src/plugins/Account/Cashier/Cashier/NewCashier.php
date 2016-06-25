@@ -37,6 +37,7 @@ class NewCashier
 		$lastName = $data['lastName'] ?? 'NULL';
 		$gender = $data['gender'] ?? 'NULL';
 		$DateOfBirth = $data['dateOfBirth'] ?? 'NULL';
+		$CashierType = $data['cashierType'] ?? 'NULL';	 // chiefCashier, cashier etc..
 
 		$cashierData = [
 			'Title' =>($title !== 'NULL') ? QB::wrapString($title, "'") : $title,
@@ -45,6 +46,7 @@ class NewCashier
 			'LastName'=>($lastName !== 'NULL') ? QB::wrapString($lastName, "'") : $lastName,
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
+			'CashierType' => ($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			];
 
 		$result = DatabaseQueryFactory::insert('Account.Cashier', $cashierData);
