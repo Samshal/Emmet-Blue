@@ -32,7 +32,7 @@ class DeleteBiller
 {
 	/**
 	 * delete method
-	 *
+	 * deleting a biller from the database
 	 * @param int $BillersId
 	 */
 	public static function delete(int $BillerId)

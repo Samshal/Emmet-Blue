@@ -9,3 +9,19 @@ LastName VARCHAR(60) NOT NULL,
 Gender VARCHAR(60) NOT NULL,
 CashierType VARCHAR(60) NOT NULL,
 )
+
+GO
+CREATE TABLE Account.PaymentStatus(
+PaymentID INT(10) PRIMARY KEY IDENTITY,
+PatientID INT(10) NOT NULL,
+InvoiceNumber(40) NOT NULL,
+CashierID INT(20) NOT NULL,
+ChargedAmount int(20) NOT NULL,
+AmountPaid VARCHAR (20) NOT NULL,
+PaymentStatus VARCHAR(60) NOT NULL,
+Balance VARCHAR(20) NULL,
+DateOfPayment VARCHAR(20) NOT NULL,
+TimeOfPayment VARCHAR(20) NOT NULL,
+UpdatedDate VARCHAR (20) NOT NULL,
+UpdatedTime VARCHAR (20) NOT NULL,
+)

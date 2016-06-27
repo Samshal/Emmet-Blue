@@ -37,6 +37,7 @@ class NewAccountant
 		$lastName = $data['lastName'] ?? 'NULL';
 		$gender = $data['gender'] ?? 'NULL';
 		$DateOfBirth = $data['dateOfBirth'] ?? 'NULL';
+		$accountantType = $data['accountantType'] ?? 'NULL'; //chief accountant, account officer etc
 
 		$AccountantData = [
 			'Title' =>($title !== 'NULL') ? QB::wrapString($title, "'") : $title,
@@ -45,6 +46,7 @@ class NewAccountant
 			'LastName'=>($lastName !== 'NULL') ? QB::wrapString($lastName, "'") : $lastName,
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
+			'AccountantType' => ($accountantType !== 'NULL') ? QB::wrapString($accountantType, "'") : $accountantType,
 			];
 
 		$result = DatabaseQueryFactory::insert('Account.Accountant', $AccountantData);

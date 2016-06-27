@@ -29,6 +29,12 @@ use EmmetBlue\Core\Constant;
  */
 class NewBiller
 {
+	/**
+	 * default method
+	 * adding a new biller to the database
+	 * @param int $data[]
+	 */
+
 	public static function default(array $data)
 	{
 		$title = $data['title'] ?? 'NULL';

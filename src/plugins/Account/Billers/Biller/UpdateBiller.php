@@ -30,10 +30,9 @@ use EmmetBlue\Core\Constant;
 class UpdateBillers
 { 
 	/**
-	 * viewBillersinfo method
-	 *
+	 * updateBiller method
+	 * updating a biller data/info
 	 * @param int $BillersId
-	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
 	public static function updateBiller(int $BillersId)
 	{

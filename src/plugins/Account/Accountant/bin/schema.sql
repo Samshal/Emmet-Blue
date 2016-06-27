@@ -7,4 +7,5 @@ FirstName VARCHAR(60) NOT NULL,
 MiddleName VARCHAR(29) NULL,
 LastName VARCHAR(60) NOT NULL,
 Gender VARCHAR(60) NOT NULL,
+AccountantType VARCHAR (60) NOT NULL,
 )

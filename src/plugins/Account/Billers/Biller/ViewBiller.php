@@ -30,8 +30,8 @@ use EmmetBlue\Core\Constant;
 class ViewBiller
 { 
 	/**
-	 * viewBillersinfo method
-	 *
+	 * viewBiller method
+	 * viewing a biller info
 	 * @param int $BillersId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
