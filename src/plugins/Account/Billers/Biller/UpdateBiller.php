@@ -27,7 +27,6 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 25/06/2016 03:27
  */
-<<<<<<< HEAD
 class UpdateBillers
 { 
 	/**
@@ -40,16 +39,3 @@ class UpdateBillers
 		
 	}
 }
-=======
-class UpdateBiller
-{
-    /**
-     * updateBiller method
-     * updating a biller data/info
-     * @param int $BillersId
-     */
-    public static function updateBiller(int $BillersId)
-    {
-    }
-}
->>>>>>> add39830168a306825267326192a98c08cecbf3e

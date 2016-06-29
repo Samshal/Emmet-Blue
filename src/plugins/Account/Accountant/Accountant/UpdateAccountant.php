@@ -6,11 +6,8 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-<<<<<<< HEAD
-namespace EmmetBlue\Plugins\Account\Accountant;
-=======
-namespace EmmetBlue\plugins\Account\Accountant\Accountant;
->>>>>>> add39830168a306825267326192a98c08cecbf3e
+
+namespace EmmetBlue\plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -32,7 +29,6 @@ use EmmetBlue\Core\Constant;
  * @since v0.0.1 25/06/2016 03:27
  */
 class UpdateAccountant
-<<<<<<< HEAD
 { 
 	/**
 	 * viewAccountantsinfo method
@@ -45,16 +41,3 @@ class UpdateAccountant
 		
 	}
 }
-=======
-{
-    /**
-     * viewAccountantsinfo method
-     *
-     * @param int $AccountantsId
-     * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
-     */
-    public static function updateAccountant(int $AccountantsId)
-    {
-    }
-}
->>>>>>> add39830168a306825267326192a98c08cecbf3e

@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Cashier;
+namespace EmmetBlue\plugins\Account\Cashier;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -35,7 +35,7 @@ class Cashier
 
 	public static function viewCashier(int $cashier)
 	{
-		return Cashier\ViewCashier::viewCashierInfo($cashier);
+		return Cashier\ViewCashier::viewCashier($cashier);
 	}
 
 	public static function deleteCashier(int $cashier)

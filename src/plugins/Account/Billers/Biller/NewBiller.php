@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Billers\Biller;
+namespace EmmetBlue\plugins\Account\Billers\Biller;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -52,13 +52,8 @@ class NewBiller
 			'LastName'=>($lastName !== 'NULL') ? QB::wrapString($lastName, "'") : $lastName,
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
-<<<<<<< HEAD
 			'BillerType' => ($billerType !== 'NULL') ? QB::wrapString($billerType, "'") : $billerType,
 			];
-=======
-			'BillerType' => ($BillerType !== 'NULL') ? QB::wrapString($BillerType, "'") : $BillerType,
-		];
->>>>>>> add39830168a306825267326192a98c08cecbf3e
-
+			
 		$result = DatabaseQueryFactory::insert('Account.Biller', $billerData);
 }
