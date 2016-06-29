@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant\Accountant;
+namespace EmmetBlue\plugins\Account\Accountant\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -28,15 +28,14 @@ use EmmetBlue\Core\Constant;
  * @since v0.0.1 25/06/2016 03:27
  */
 class UpdateAccountant
-{ 
-	/**
-	 * viewAccountantsinfo method
-	 *
-	 * @param int $AccountantsId
-	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
-	 */
-	public static function updateAccountant(int $AccountantsId)
-	{
-		
-	}
+{
+    /**
+     * viewAccountantsinfo method
+     *
+     * @param int $AccountantsId
+     * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
+     */
+    public static function updateAccountant(int $AccountantsId)
+    {
+    }
 }

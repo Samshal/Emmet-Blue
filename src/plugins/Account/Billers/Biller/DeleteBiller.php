@@ -33,9 +33,9 @@ class DeleteBiller
 	/**
 	 * delete method
 	 * deleting a biller from the database
-	 * @param int $BillersId
+	 * @param int $billersId
 	 */
-	public static function delete(int $BillerId)
+	public static function delete(int $billerId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
@@ -47,7 +47,7 @@ class DeleteBiller
 		{
 			$deleteBiller = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
 
-			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'Biller', (string)$deleteBiller);
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE, 'Account', 'Biller', (string)$deleteBiller);
 
 			if($deleteBiller)
 			{

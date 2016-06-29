@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Bardeson Lucky <flashup4all@gmail.com> <Ahead!!>
@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Cashier\Cashier;
+namespace EmmetBlue\plugins\Account\Cashier\Cashier;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -30,14 +30,12 @@ use EmmetBlue\Core\Constant;
  */
 class UpdateCashier
 {
-	/**
-	 * delete method
-	 *
-	 * @param int $CashierId
-	 */
-	public static function update(int $CashierId)
-	{
-		
-	}
-
+    /**
+     * delete method
+     *
+     * @param int $CashierId
+     */
+    public static function update(int $CashierId)
+    {
+    }
 }

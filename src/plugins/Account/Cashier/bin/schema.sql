@@ -1,5 +1,3 @@
-
-GO
 CREATE TABLE Account.Cashier(
 CashierID INT(10) PRIMARY KEY IDENTITY,
 Title VARCHAR(10) NOT NULL,
@@ -14,7 +12,7 @@ GO
 CREATE TABLE Account.PaymentStatus(
 PaymentID INT(10) PRIMARY KEY IDENTITY,
 PatientID INT(10) NOT NULL,
-InvoiceNumber(40) NOT NULL,
+InvoiceNumber VARCHAR(40) NOT NULL,
 CashierID INT(20) NOT NULL,
 ChargedAmount int(20) NOT NULL,
 AmountPaid VARCHAR (20) NOT NULL,
