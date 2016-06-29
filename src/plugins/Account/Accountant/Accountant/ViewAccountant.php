@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant\Accountant;
+namespace EmmetBlue\Plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -32,16 +32,16 @@ class ViewAccountant
 	/**
 	 * viewAccountantinfo method
 	 *
-	 * @param int $AccountantsId
+	 * @param int $accountantsId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewAccountant(int $AccountantId)
+	public static function viewAccountant(int $accountantId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
 			->from('Account.Accountant')
-			->where('AccountantID ='.$AccountantId);
+			->where('AccountantID ='.$accountantId);
 		try
 		{
 			$viewAccountant = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);

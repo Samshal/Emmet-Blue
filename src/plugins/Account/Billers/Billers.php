@@ -33,13 +33,13 @@ class Billers
 		return Billers\NewBiller::default($data);
 	}
 
-	public static function viewBiller(int $BillerId)
+	public static function viewBiller(int $billerId)
 	{
 		return Billers\ViewBiller::viewBiller($billerId);
 	}
 
-	public static function deleteBiller(int $BillerId)
+	public static function deleteBiller(int $billerId)
 	{
-		return Billers\DeleteBiller::delete($BillerId);
+		return Billers\DeleteBiller::delete($billerId);
 	}
 }

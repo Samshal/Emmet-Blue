@@ -32,16 +32,16 @@ class ViewCashier
 	/**
 	 * viewCashierinfo method
 	 *
-	 * @param int $CashierId
+	 * @param int $cashierId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewCashier(int $CashierId)
+	public static function viewCashier(int $cashierId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
 			->from('Account.Cashier')
-			->where('CashierID ='.$CashierId);
+			->where('CashierID ='.$cashierId);
 		try
 		{
 			$viewCashier = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);

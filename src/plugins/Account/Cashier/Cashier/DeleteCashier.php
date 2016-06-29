@@ -35,13 +35,13 @@ class DeleteCashier
 	 *
 	 * @param int $CashierId
 	 */
-	public static function delete(int $CashierId)
+	public static function delete(int $cashierId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
 			->from('Account.Cashier')
-			->where('Cashier.CashierID = '.$CashierId);
+			->where('Cashier.CashierID = '.$cashierId);
 
 		try
 		{

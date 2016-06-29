@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant\Accountant;
+namespace EmmetBlue\Plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -36,10 +36,10 @@ class NewAccountant
 		$middleName = $data['middleName'] ?? 'NULL';
 		$lastName = $data['lastName'] ?? 'NULL';
 		$gender = $data['gender'] ?? 'NULL';
-		$DateOfBirth = $data['dateOfBirth'] ?? 'NULL';
+		$dateOfBirth = $data['dateOfBirth'] ?? 'NULL';
 		$accountantType = $data['accountantType'] ?? 'NULL'; //chief accountant, account officer etc
 
-		$AccountantData = [
+		$accountantData = [
 			'Title' =>($title !== 'NULL') ? QB::wrapString($title, "'") : $title,
 			'FirstName'=>($firstName !== 'NULL') ? QB::wrapString($firstName, "'") : $firstName,
 			'MiddleName'=>($middleName !== 'NULL') ? QB::wrapString($middleName, "'") : $middleName,
@@ -49,5 +49,5 @@ class NewAccountant
 			'AccountantType' => ($accountantType !== 'NULL') ? QB::wrapString($accountantType, "'") : $accountantType,
 			];
 
-		$result = DatabaseQueryFactory::insert('Account.Accountant', $AccountantData);
+		$result = DatabaseQueryFactory::insert('Account.Accountant', $accountantData);
 }

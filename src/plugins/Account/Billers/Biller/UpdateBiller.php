@@ -32,9 +32,9 @@ class UpdateBillers
 	/**
 	 * updateBiller method
 	 * updating a biller data/info
-	 * @param int $BillersId
+	 * @param int $billersId
 	 */
-	public static function updateBiller(int $BillersId)
+	public static function updateBiller(int $billersId)
 	{
 		
 	}

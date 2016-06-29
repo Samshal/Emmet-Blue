@@ -33,13 +33,13 @@ class Accountants
 		return Accountant\NewAccountant::default($data);
 	}
 
-	public static function viewAccountant(int $AccountantId)
+	public static function viewAccountant(int $accountantId)
 	{
-		return Accountant\ViewAccountant::viewAccountant($AccountantId);
+		return Accountant\ViewAccountant::viewAccountant($accountantId);
 	}
 
-	public static function deleteAccountant(int $AccountantId)
+	public static function deleteAccountant(int $accountantId)
 	{
-		return Accountant\DeleteAccountant::delete($AccountantId);
+		return Accountant\DeleteAccountant::delete($accountantId);
 	}
 }

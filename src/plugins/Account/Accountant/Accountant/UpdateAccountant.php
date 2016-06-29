@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant\Accountant;
+namespace EmmetBlue\Plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -32,10 +32,10 @@ class UpdateAccountant
 	/**
 	 * viewAccountantsinfo method
 	 *
-	 * @param int $AccountantsId
+	 * @param int $accountantsId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function updateAccountant(int $AccountantsId)
+	public static function updateAccountant(int $accountantsId)
 	{
 		
 	}

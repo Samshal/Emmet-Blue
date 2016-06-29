@@ -42,8 +42,8 @@ class NewBiller
 		$middleName = $data['middleName'] ?? 'NULL';
 		$lastName = $data['lastName'] ?? 'NULL';
 		$gender = $data['gender'] ?? 'NULL';
-		$DateOfBirth = $data['dateOfBirth'] ?? 'NULL';
-		$BillerType = $data['BillerType'] ?? 'NULL';	//NHIS billing,company billing, unknown etc;
+		$dateOfBirth = $data['dateOfBirth'] ?? 'NULL';
+		$billerType = $data['BillerType'] ?? 'NULL';	//NHIS billing,company billing, unknown etc;
 
 		$billerData = [
 			'Title' =>($title !== 'NULL') ? QB::wrapString($title, "'") : $title,
@@ -52,7 +52,7 @@ class NewBiller
 			'LastName'=>($lastName !== 'NULL') ? QB::wrapString($lastName, "'") : $lastName,
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
-			'BillerType' => ($BillerType !== 'NULL') ? QB::wrapString($BillerType, "'") : $BillerType,
+			'BillerType' => ($billerType !== 'NULL') ? QB::wrapString($billerType, "'") : $billerType,
 			];
 
 		$result = DatabaseQueryFactory::insert('Account.Biller', $billerData);

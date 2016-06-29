@@ -32,16 +32,16 @@ class ViewBiller
 	/**
 	 * viewBiller method
 	 * viewing a biller info
-	 * @param int $BillersId
+	 * @param int $billersId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewBiller(int $BillerId)
+	public static function viewBiller(int $billerId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
 			->from('Account.Biller')
-			->where('BillerID ='.$BillerId);
+			->where('BillerID ='.$billerId);
 		try
 		{
 			$viewBiller = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);

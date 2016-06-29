@@ -38,18 +38,18 @@ class Cashier
 		return Cashier\NewCashier::info($data);
 	}
 
-	public static function viewCashier(int $Cashier)
+	public static function viewCashier(int $cashier)
 	{
 
 	}
 
-	public static function viewCashierInfo(int $Cashier)
+	public static function viewCashierInfo(int $cashier)
 	{
-		return Cashier\ViewCashier::viewCashierInfo($Cashier);
+		return Cashier\ViewCashier::viewCashierInfo($cashier);
 	}
 
-	public static function deleteCashier(int $Cashier)
+	public static function deleteCashier(int $cashier)
 	{
-		return Cashier\DeleteCashier::delete($Cashier);
+		return Cashier\DeleteCashier::delete($cashier);
 	}
 }

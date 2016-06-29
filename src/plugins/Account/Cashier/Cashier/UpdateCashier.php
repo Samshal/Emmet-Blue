@@ -33,9 +33,9 @@ class UpdateCashier
 	/**
 	 * delete method
 	 *
-	 * @param int $CashierId
+	 * @param int $cashierId
 	 */
-	public static function update(int $CashierId)
+	public static function update(int $cashierId)
 	{
 		
 	}

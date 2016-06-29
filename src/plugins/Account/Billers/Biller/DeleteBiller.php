@@ -33,15 +33,15 @@ class DeleteBiller
 	/**
 	 * delete method
 	 * deleting a biller from the database
-	 * @param int $BillersId
+	 * @param int $billersId
 	 */
-	public static function delete(int $BillerId)
+	public static function delete(int $billerId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
 			->from('Account.Biller')
-			->where('Biller.BillerID = '.$BillerId);
+			->where('Biller.BillerID = '.$billerId);
 
 		try
 		{
