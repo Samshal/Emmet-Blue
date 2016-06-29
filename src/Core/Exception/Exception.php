@@ -30,6 +30,6 @@ abstract class Exception extends \Exception
 
 	public function log(int $databaseUserId, string $errorNumber, string $errorSeverity)
 	{
-		ErrorLog::log($databaseUserId, $errorNumber, $errorSeverity, $this->getMessage(), serialize($this));
+		ErrorLog::log($databaseUserId, $errorNumber, $errorSeverity, $this->getMessage(), serialize(self));
 	}
 }

@@ -30,16 +30,16 @@ class Billers
 {
 	public static function newBiller(array $data)
 	{
-		return Billers\NewBiller::default($data);
+		return Biller\NewBiller::default($data);
 	}
 
 	public static function viewBiller(int $billerId)
 	{
-		return Billers\ViewBiller::viewBiller($billerId);
+		return Biller\ViewBiller::viewBiller($billerId);
 	}
 
 	public static function deleteBiller(int $billerId)
 	{
-		return Billers\DeleteBiller::delete($billerId);
+		return Biller\DeleteBiller::delete($billerId);
 	}
 }

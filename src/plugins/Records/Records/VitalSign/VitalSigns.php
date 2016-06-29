@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Records\Records\VitalSign;
+namespace EmmetBlue\plugins\Records\Records\VitalSign;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -28,24 +28,23 @@ use EmmetBlue\Core\Constant;
  */
 class VitalSigns
 {
-	#creates a new vital sign resource
-	public static function newVitalSign(array $data)
-	{
-		return VitalSIgn\NewVitalSign::newVitalSign($data);
-	}
+    #creates a new vital sign resource
+    public static function newVitalSign(array $data)
+    {
+        return VitalSIgn\NewVitalSign::newVitalSign($data);
+    }
 
-	public static function viewVitalSign(int $PatientId)
-	{
-		return VitalSign\ViewVitalSign::viewVitalSign($PatientId);
-	}
+    public static function viewVitalSign(int $PatientId)
+    {
+        return VitalSign\ViewVitalSign::viewVitalSign($PatientId);
+    }
 
-	public static function UpdateVitalSign(int $vitalSignId)
-	{
-		
-	}
+    public static function UpdateVitalSign(int $vitalSignId)
+    {
+    }
 
-	public static function deleteVitalSign(int $vitalSignId)
-	{
-		return VitalSign\DeleteVitalSign::deleteVitalSign($vitalSignId);
-	}
+    public static function deleteVitalSign(int $vitalSignId)
+    {
+        return VitalSign\DeleteVitalSign::deleteVitalSign($vitalSignId);
+    }
 }

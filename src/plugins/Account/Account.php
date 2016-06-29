@@ -42,4 +42,13 @@ class Account
 	{
 		return Account\DeleteAccount::delete($accountId);
 	}
+	public static function viewCashier(int $cashierId)
+	{
+		return Cashier\ViewCashier::viewCashier($cashierId);
+	}
+
+	public static function deleteCashier(int $cashierId)
+	{
+		return Cashier\DeleteCashier::delete($cashierId);
+	}
 }

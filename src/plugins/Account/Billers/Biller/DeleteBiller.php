@@ -47,7 +47,7 @@ class DeleteBiller
 		{
 			$deleteBiller = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
 
-			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'Biller', (string)$deleteBiller);
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE, 'Account', 'Biller', (string)$deleteBiller);
 
 			if($deleteBiller)
 			{

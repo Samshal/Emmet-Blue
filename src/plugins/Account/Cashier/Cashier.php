@@ -33,17 +33,7 @@ class Cashier
 		return Cashier\NewCashier::default($data);
 	}
 
-	public static function newCashierInfo(array $data)
-	{
-		return Cashier\NewCashier::info($data);
-	}
-
 	public static function viewCashier(int $cashier)
-	{
-
-	}
-
-	public static function viewCashierInfo(int $cashier)
 	{
 		return Cashier\ViewCashier::viewCashierInfo($cashier);
 	}

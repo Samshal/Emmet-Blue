@@ -52,8 +52,13 @@ class NewBiller
 			'LastName'=>($lastName !== 'NULL') ? QB::wrapString($lastName, "'") : $lastName,
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
+<<<<<<< HEAD
 			'BillerType' => ($billerType !== 'NULL') ? QB::wrapString($billerType, "'") : $billerType,
 			];
+=======
+			'BillerType' => ($BillerType !== 'NULL') ? QB::wrapString($BillerType, "'") : $BillerType,
+		];
+>>>>>>> add39830168a306825267326192a98c08cecbf3e
 
 		$result = DatabaseQueryFactory::insert('Account.Biller', $billerData);
 }

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare (strict_types=1);
 /**
  * @license MIT
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Billers\Biller;
+namespace EmmetBlue\plugins\Account\Billers\Biller;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -27,6 +27,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 25/06/2016 03:27
  */
+<<<<<<< HEAD
 class UpdateBillers
 { 
 	/**
@@ -39,3 +40,16 @@ class UpdateBillers
 		
 	}
 }
+=======
+class UpdateBiller
+{
+    /**
+     * updateBiller method
+     * updating a biller data/info
+     * @param int $BillersId
+     */
+    public static function updateBiller(int $BillersId)
+    {
+    }
+}
+>>>>>>> add39830168a306825267326192a98c08cecbf3e
