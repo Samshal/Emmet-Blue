@@ -16,3 +16,7 @@ BillTypeDescription VARCHAR(60) NOT NULL,
 CreationDate VARCHAR(60) NOT NULL,
 UpdatedDate VARCHAR(29) NULL,
 )
+GO
+CREATE TABLE Account.Billing(
+
+)
