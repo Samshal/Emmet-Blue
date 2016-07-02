@@ -9,5 +9,10 @@
  */
 public static function databaseconstants()
 {
-	$dbConstant =[];
+	$dbConstant =[
+	"ACCOUNTANT":"Account.Accountant",
+	"BILLER":"Account.Biller",
+	"CASHIER":"Account.Cashier",
+	"PAYMENTSTATUS":"Account.PaymentStatus",
+	];
 }

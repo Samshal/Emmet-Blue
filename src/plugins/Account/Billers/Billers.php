@@ -42,4 +42,23 @@ class Billers
 	{
 		return Biller\DeleteBiller::delete($billerId);
 	}
+	/**
+	 * BillType methods for handling all BillType resources
+	 *@author Bardeson Lucky <Ahead!!>
+	 */
+	public static function newBillType(array $data)
+	{
+		return BillType\NewBillType::create($data);
+	}
+	public static function ViewBillType()
+	{
+		return BillType\ViewBillType::viewBillType();
+	}
+	public static function deleteBillType(int $billTypeId)
+	{
+		return BillType\DeleteBillType::delete($billTypeId);
+	}
+	/**
+	 * Billing methods controller
+	 */
 }

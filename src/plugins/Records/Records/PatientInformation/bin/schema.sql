@@ -35,6 +35,11 @@ State VARCHAR(60) NOT NULL,
 Nationality VARCHAR(60) NOT NULL,
 FOREIGN KEY (PatientID) REFERENCES Records.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
 )
+GO
 CREATE TABLE Records.PatientFormerHealthProvider(
+
+)
+GO
+CREATE TABLE Records.PatienTPrescription(
 
 )

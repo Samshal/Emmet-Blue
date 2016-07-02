@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\plugins\Account\Billers\Biller;
+namespace EmmetBlue\plugins\Account\Billers\BillType;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -27,7 +27,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
  * @since v0.0.1 25/06/2016 03:27
  */
-class ViewBiller
+class ViewBillType
 { 
 	/**
 	 * viewBiller method
@@ -35,28 +35,27 @@ class ViewBiller
 	 * @param int $billersId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewBiller(int $billerId)
+	public static function viewBillType()
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Account.Biller')
-			->where('BillerID ='.$billerId);
+			->from('Account.BillType');
 		try
 		{
-			$viewBiller = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
+			$viewBillTypes = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
 
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
 				'Account',
-				'Biller',
-				(string)$viewBiller
+				'BillType',
+				(string)$viewBillTypes
 			);
 
-			if($viewBiller)
+			if($viewBillTypes)
 			{
-				return $viewBiller->fetchAll();
+				return $viewBillTypes->fetchAll();
 			}
 			throw new UndefinedValueException(
 				sprintf(
