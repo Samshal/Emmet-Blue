@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Cashier\Cashier;
+namespace EmmetBlue\plugins\Account\Cashier\Cashier;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -35,13 +35,13 @@ class DeleteCashier
 	 *
 	 * @param int $CashierId
 	 */
-	public static function delete(int $CashierId)
+	public static function delete(int $cashierId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
 			->from('Account.Cashier')
-			->where('Cashier.CashierID = '.$CashierId);
+			->where('Cashier.CashierID = '.$cashierId);
 
 		try
 		{

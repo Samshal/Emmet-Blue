@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant;
+namespace EmmetBlue\plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -33,13 +33,13 @@ class Accountants
 		return Accountant\NewAccountant::default($data);
 	}
 
-	public static function viewAccountant(int $AccountantId)
+	public static function viewAccountant(int $accountantId)
 	{
-		return Accountant\ViewAccountant::viewAccountant($AccountantId);
+		return Accountant\ViewAccountant::viewAccountant($accountantId);
 	}
 
-	public static function deleteAccountant(int $AccountantId)
+	public static function deleteAccountant(int $accountantId)
 	{
-		return Accountant\DeleteAccountant::delete($AccountantId);
+		return Accountant\DeleteAccountant::delete($accountantId);
 	}
 }

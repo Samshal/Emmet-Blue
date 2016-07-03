@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Billers;
+namespace EmmetBlue\plugins\Account\Billers;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -30,16 +30,35 @@ class Billers
 {
 	public static function newBiller(array $data)
 	{
-		return Billers\NewBiller::default($data);
+		return Biller\NewBiller::default($data);
 	}
 
-	public static function viewBiller(int $BillerId)
+	public static function viewBiller(int $billerId)
 	{
-		return Billers\ViewBiller::viewBiller($billerId);
+		return Biller\ViewBiller::viewBiller($billerId);
 	}
 
-	public static function deleteBiller(int $BillerId)
+	public static function deleteBiller(int $billerId)
 	{
-		return Billers\DeleteBiller::delete($BillerId);
+		return Biller\DeleteBiller::delete($billerId);
 	}
+	/**
+	 * BillType methods for handling all BillType resources
+	 *@author Bardeson Lucky <Ahead!!>
+	 */
+	public static function newBillType(array $data)
+	{
+		return BillType\NewBillType::create($data);
+	}
+	public static function ViewBillType()
+	{
+		return BillType\ViewBillType::viewBillType();
+	}
+	public static function deleteBillType(int $billTypeId)
+	{
+		return BillType\DeleteBillType::delete($billTypeId);
+	}
+	/**
+	 * Billing methods controller
+	 */
 }

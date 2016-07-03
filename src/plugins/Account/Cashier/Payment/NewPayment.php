@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Cashier\Payment;
+namespace EmmetBlue\plugins\Account\Cashier\Payment;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -38,6 +38,7 @@ class NewPayment
 		$amountPaid = $data['amountPaid'] ?? 'NULL';	// amount that was paid
 		$paymentStatus = $data['paymentStatus'] ?? 'NULL';	// paid or unpaid
 		$balance = $data['balance'] ?? 'NULL';			// if an incomplete amount was paid the balance b/f should be recorded
+		$comment = $data['comment'] ?? 'NULL';
 		$dateOfPayment = $data['dateOfPayment'] ?? 'NULL';
 		$timeOfPayment = $data['dateOfPayment'] ?? 'NULL';
 		$updatedDate = $data['updatedDate'] ?? 'NULL';
@@ -51,6 +52,7 @@ class NewPayment
 			'AmountPaid'=>($amountPaid !== 'NULL') ? QB::wrapString($amountPaid, "'") : $amountPaid,
 			'PaymentStatus'=>($paymentStatus !== 'NULL') ? QB::wrapString($paymentStatus, "'") : $paymentStatus,
 			'Balance'=>($balance !== 'NULL') ? QB::wrapString($balance, "'") : $balance,	//if no balance (0.00)
+			'Comment' => ($comment !== 'NULL') ? QB::wrapString($balance, "'") : $comment,
 			'DateOfPayment' => $dateOfPayment,
 			'TimeOfPayment' => $timeOfPayment,
 			'UpdatedDate' => $updatedDate,

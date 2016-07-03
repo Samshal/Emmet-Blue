@@ -30,14 +30,39 @@ use EmmetBlue\Core\Constant;
  */
 class UpdateCashier
 {
+<<<<<<< HEAD
 	/**
 	 * delete method
 	 *
 	 * @param int $CashierId
 	 */
 	public static function update(int $CashierId)
+=======
+<<<<<<< HEAD
+	/**
+	 * delete method
+	 *
+	 * @param int $cashierId
+	 */
+	public static function update(int $cashierId)
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced
 	{
 		
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+=======
+    /**
+     * delete method
+     *
+     * @param int $CashierId
+     */
+    public static function update(int $CashierId)
+    {
+    }
+}
+>>>>>>> add39830168a306825267326192a98c08cecbf3e
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced

@@ -6,7 +6,11 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
+<<<<<<< HEAD
 namespace EmmetBlue\Plugins\Account\Cashier;
+=======
+namespace EmmetBlue\plugins\Account;
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -19,7 +23,7 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class Cashier.
+ * class Account.
  *
  * Cashier Controller
  *
@@ -28,12 +32,25 @@ use EmmetBlue\Core\Constant;
  */
 class Cashier
 {
-	public static function newCashier(array $data)
+	public static function newAccount(array $data)
 	{
-		return Cashier\NewCashier::default($data);
+		return Account\NewAccount::default($data);
 	}
 
+<<<<<<< HEAD
 	public static function viewCashier(int $CashierId)
+=======
+	public static function viewAccount(int $accountId)
+	{
+		return Account\ViewAccount::viewAccount($accountId);
+	}
+
+	public static function deleteAccount(int $accountId)
+	{
+		return Account\DeleteAccount::delete($accountId);
+	}
+	public static function viewCashier(int $cashierId)
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced
 	{
 		return Cashier\ViewCashier::viewCashier($CashierId);
 	}

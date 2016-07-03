@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Billers\Biller;
+namespace EmmetBlue\plugins\Account\Billers\BillType;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -21,35 +21,46 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class DeleteBillers.
+ * class DeleteBillType.
  *
- * DeleteBillers Controller
+ * DeleteBillType Controller
  *
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 15/06/2016 14:20
  */
-class DeleteBiller
+class DeleteBillType
 {
 	/**
 	 * delete method
+<<<<<<< HEAD:src/plugins/Account/Billers/Biller/DeleteBiller.php
 	 * deleting a biller from the database
 	 * @param int $BillersId
 	 */
 	public static function delete(int $BillerId)
+=======
+	 * deleting a billType from the database
+	 * @param int $billTypeId
+	 */
+	public static function delete(int $billTypeId)
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced:src/plugins/Account/Billers/BillType/DeleteBillType.php
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
-			->from('Account.Biller')
-			->where('Biller.BillerID = '.$BillerId);
+			->from('Account.BillType')
+			->where('BillType.BillTypeID = '.$billTypeId);
 
 		try
 		{
-			$deleteBiller = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
+			$deleteBillType = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
 
+<<<<<<< HEAD:src/plugins/Account/Billers/Biller/DeleteBiller.php
 			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'Biller', (string)$deleteBiller);
+=======
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE, 'Account', 'BillType', (string)$deleteBillType);
+>>>>>>> f55a963df56d97e75e821ade4f47e08b6017cced:src/plugins/Account/Billers/BillType/DeleteBillType.php
 
-			if($deleteBiller)
+			if($deleteBillType)
 			{
 				return true;
 			}

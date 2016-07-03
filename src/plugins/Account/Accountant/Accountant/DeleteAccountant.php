@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\Account\Accountant\Accountant;
+namespace EmmetBlue\plugins\Account\Accountant;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -33,15 +33,15 @@ class DeleteAccountant
 	/**
 	 * delete method
 	 *
-	 * @param int $AccountantsId
+	 * @param int $accountantsId
 	 */
-	public static function delete(int $AccountantId)
+	public static function delete(int $accountantId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
 			->from('Account.Accountant')
-			->where('Accountant.AccountantID = '.$AccountantId);
+			->where('Accountant.AccountantID = '.$accountantId);
 
 		try
 		{

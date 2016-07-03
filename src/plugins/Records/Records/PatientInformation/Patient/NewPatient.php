@@ -98,4 +98,11 @@ class NewPatient
 
 		$result = DatabaseQueryFactory::insert('Records.NextOfKinIformation', $nextOfKinInfo);
 	}
+	/**
+	 *Patient former health provider registration details 
+	 */
+	public static function formerHealthProvider()
+	{
+
+	}
 }

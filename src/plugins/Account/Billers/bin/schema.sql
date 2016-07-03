@@ -9,3 +9,16 @@ LastName VARCHAR(60) NOT NULL,
 Gender VARCHAR(60) NOT NULL,
 BillerType VARCHAR(60) NOT NULL,
 )
+GO
+CREATE TABLE Account.BillType(
+BillTypeID INT(10) PRIMARY KEY IDENTITY,
+BillerID INT(10) NOT NULL,
+BillType VARCHAR(10) NOT NULL,
+BillTypeDescription VARCHAR(60) NOT NULL,
+CreationDate VARCHAR(60) NOT NULL,
+UpdatedDate VARCHAR(29) NULL,
+)
+GO
+CREATE TABLE Account.Billing(
+
+)
