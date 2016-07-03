@@ -52,8 +52,8 @@ class DatabaseQueryFactory
 
             $result = (
                    DBConnectionFactory::getConnection()
-                   ->query((string)$query)
-               )->fetchAll(\PDO::FETCH_ASSOC);
+                   ->prepare((string)$query)->execute()
+               );
 
             DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
 

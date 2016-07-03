@@ -50,6 +50,7 @@ class NewBody
 		];
 
 		$result = DatabaseQueryFactory::insert('Mortuary.Body', $packed);
+		return $result;
 	}
 
 	public static function info(array $data)
@@ -81,5 +82,6 @@ class NewBody
 		];
 
 		$result = DatabaseQueryFactory::insert('Mortuary.BodyInformation', $packed);
+		return $result;
 	}
 }

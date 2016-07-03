@@ -47,7 +47,7 @@ class NewAccountant
 			'Gender'=>($gender !== 'NULL') ? QB::wrapString($gender, "'") : $gender,
 			'DateOfBirth'=>$dateOfBirth,
 			'AccountantType' => ($accountantType !== 'NULL') ? QB::wrapString($accountantType, "'") : $accountantType,
-		];
+			];
 
 		$result = DatabaseQueryFactory::insert('Account.Accountant', $AccountantData);
 }

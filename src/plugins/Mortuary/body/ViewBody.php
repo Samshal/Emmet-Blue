@@ -44,27 +44,24 @@ class ViewBody
 			->where('BodyID ='.$bodyId);
 		try
 		{
-			$viewBodyOperation = (new DBConnectionFactory::getConnection())->query((string)$selectBuilder);
+			$viewBodyOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
 
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
 				'Mortuary',
 				'BodyInformation',
-				(string)$viewBodyOperation
+				(string)$selectBuilder
 			);
 
-			if($viewBodyOperation)
+			if(count($viewBodyOperation) > 0)
 			{
-				return $viewBodyOperation->fetchAll();
+				return $viewBodyOperation;
 			}
-			throw new UndefinedValueException(
-				sprintf(
-					'Database error has occured'
-				),
-				(int)Session::get('USER_ID')
-			);
-			
+			else
+			{
+				return null;
+			}			
 		} 
 		catch (\PDOException $e) 
 		{

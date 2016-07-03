@@ -1,4 +1,4 @@
-<?php declare (strict_types=1);
+<?php declare(strict_types=1);
 /**
  * @license MIT
  * @author Chukwuma Nwali
@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\plugins\Records;
+namespace EmmetBlue\Plugins\Records;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -18,6 +18,13 @@ use EmmetBlue\Core\Logger\DatabaseLog;
 use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
-class Records
-{
+
+class Records{
+
+
+
+
+
+
+	
 }
