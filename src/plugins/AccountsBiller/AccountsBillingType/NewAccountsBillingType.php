@@ -39,7 +39,7 @@ class NewAccountsBillingType
 			'BillingTypeDescription'=>($billingTypeDescription !== 'NULL') ? QB::wrapString($billingTypeDescription, "'") : $billingTypeDescription
 		];
 
-		$result = DatabaseQueryFactory::insert('Accounts.AccountsBillingType', $packed);
+		$result = DatabaseQueryFactory::insert('Accounts.BillingType', $packed);
 		return $result;
 	}
 }
