@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingType;
+namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingTypeItemsPrices;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -20,26 +20,32 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class NewAccountsBillingType.
+ * class NewAccountsBillingTypeItemsPrices.
  *
- * NewAccountsBillingType Controller
+ * NewAccountsBillingTypeItemsPrices Controller
  *
- * @author Samuel Adeshina <samueladeshina73@gmail.com>
+ * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:20
  */
-class NewAccountsBillingType
+class NewAccountsBillingTypeItemsPrices
 {
+	/**
+	 *method newBillingTypeItemsPrices
+	 * manages the creation of new billing item prices resource
+	 * @author Bardeson Lucky
+	 * @since v.0.0.1 05/07/2016 08:48pm
+	*/
 	public static function default(array $data)
 	{
-		$billingTypeName = $data['billingTypeName'] ?? 'NULL';
-		$billingTypeDescription = $data['billingTypeDescription'] ?? 'NULL';
+		$billingTypeItemId = $data['billingTypeItemId'] ?? 'NULL';
+		$billingTypeItemsPrices = $data['billingTypeItemPrice'] ?? 'NULL';
 
 		$packed = [
-			'BillingTypeName'=>($billingTypeName !== 'NULL') ? QB::wrapString($billingTypeName, "'") : $billingTypeName,
-			'BillingTypeDescription'=>($billingTypeDescription !== 'NULL') ? QB::wrapString($billingTypeDescription, "'") : $billingTypeDescription
+			'BillingTypeItemID'=>($billingTypeItemId !== 'NULL') ? QB::wrapString($billingTypeItemId, "'") : $billingTypeItemId,
+			'BillingTypeItemsPrices'=>($billingTypeItemsPrices !== 'NULL') ? QB::wrapString($billingTypeItemsPrices, "'") : $billingTypeItemsPrices
 		];
 
-		$result = DatabaseQueryFactory::insert('Accounts.BillingType', $packed);
+		$result = DatabaseQueryFactory::insert('Accounts.BillingTypeItemsPrices', $packed);
 		return $result;
 	}
 }

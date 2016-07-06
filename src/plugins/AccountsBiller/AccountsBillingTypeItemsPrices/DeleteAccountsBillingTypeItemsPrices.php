@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingType;
+namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingTypeItemsPrices;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -21,33 +21,33 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class DeleteAccountBillingType.
+ * class DeleteAccountBillingTypeItemsPrices.
  *
- * DeleteAccountBillingType Controller
+ * DeleteAccountBillingTypeItemsPrices Controller
  *
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 15/06/2016 14:20
  */
-class DeleteAccountBillingType
+class DeleteAccountBillingTypeItemsPrices
 {
 	/**
 	 * delete method
 	 * @author Bardeson Lucky
 	 * @param int $accountBillingTypeId
 	 */
-	public static function delete(int $accountBillingTypeId)
+	public static function delete(int $accountBillingTypeItemPriceId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
-			->from('Account.BillingType')
-			->where('BillingType.BillingTypeID = '.$accountBillingTypeId);
+			->from('Account.BillingTypeItemsPrices')
+			->where('BillingTypeItemsPrices.BillingTypeItemsPriceID = '.$accountBillingTypeItemPriceId);
 
 		try
 		{
 			$deleteOperation = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
 
-			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'BillingType', (string)$deleteOperation);
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'BillingTypeItemsPrices', (string)$deleteOperation);
 
 			if($deleteOperation)
 			{

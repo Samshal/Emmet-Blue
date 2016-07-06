@@ -33,29 +33,9 @@ class AccountsBillingType
 		return AccountsBillingType\NewAccountsBillingType::default($data);
 	}
 
-	public static function newAccountsBillingTypeItems(array $data)
-	{
-		return AccountsBillingType\NewAccountsBillingType::accountBillingTypeItems($data);
-	}
-
-	public static function newAccountsBillingTypeItemsPrices(array $data)
-	{
-		return AccountsBillingType\NewAccountsBillingType::accountBillingTypeItemsPrices($data);
-	}
-
 	public static function viewAccountsBillingType(int $accountsBillingTypeId)
 	{
 		return AccountsBillingType\ViewAccountsBillingType::viewAccountBillingType($accountsBillingTypeId);
-	}
-
-	public static function viewAccountBillingTypeItems(int $accountsBillingTypeItemsId)
-	{
-		return AccountsBillingType\ViewAccountsBillingType::viewAccountBillingTypeItems($accountsBillingTypeItemsId);
-	}
-
-	public static function viewAccountBillingTypeItemsPrices(int $billingTypeItemsPricesId)
-	{
-		return AccountsBillingType\ViewAccountsBillingType::viewAccountBillingTypeItemsPrices($billingTypeItemsPricesId);
 	}
 
 	public static function deleteAccountsBillingType(int $accountsBillingTypeId)

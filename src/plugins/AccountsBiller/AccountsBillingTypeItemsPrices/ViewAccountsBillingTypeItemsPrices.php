@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingType;
+namespace EmmetBlue\Plugins\AccountsBiller\AccountsBillingTypeItemsPrices;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Factory\DatabaseConnectionFactory as DBConnectionFactory;
@@ -20,43 +20,43 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class ViewAccountBillingType.
+ * class ViewAccountBillingTypeItemsPrices.
  *
- * ViewAccountBillingType Controller
+ * ViewAccountBillingTypeItemsPrices Controller
  *
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:2016
  */
-class ViewAccountBillingType
+class ViewAccountBillingTypeItemsPrices
 { 
 	/**
-	 * viewAccountBillingType method
+	 * viewAccountBillingTypeItemsPrices method
 	 *
-	 * @param int $accountBillingTypeId
+	 * @param int $BillingTypeItemsPricesId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewAccountBillingType(int $billingTypeId)
+	public static function viewAccountBillingTypeItemsPrices(int $billingTypeItemsPricesId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Account.BillingType')
-			->where('BillingTypeID ='.$billingTypeId);
+			->from('Account.BillingTypeItemsPrices')
+			->where('BillingTypeItemsPriceID ='.$billingTypeItemsPricesId);
 		try
 		{
-			$viewAccountBillingTypeOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
+			$viewBillingTypeItemspricesOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
 
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
 				'Account',
-				'AccountBillingType',
+				'BillingTypeItemsPrices',
 				(string)$selectBuilder
 			);
 
-			if(count($viewAccountBillingTypeOperation) > 0)
+			if(count($viewBillingTypeItemspricesOperation) > 0)
 			{
-				return $viewAccountBillingTypeOperation;
+				return $viewBillingTypeItemspricesOperation;
 			}
 			else
 			{
