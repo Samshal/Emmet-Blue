@@ -35,7 +35,7 @@ class AccountsBillingType
 
 	public static function viewAccountsBillingType(int $accountsBillingTypeId)
 	{
-		return AccountsBillingType\ViewAccountsBillingType::viewAccountBillingType($accountsBillingTypeId);
+		return AccountsBillingType\ViewAccountsBillingType::viewAccountsBillingType($accountsBillingTypeId);
 	}
 
 	public static function deleteAccountsBillingType(int $accountsBillingTypeId)
