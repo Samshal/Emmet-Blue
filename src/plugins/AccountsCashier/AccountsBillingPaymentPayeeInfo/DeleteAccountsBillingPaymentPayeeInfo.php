@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Plugins\AccountsCashier\AccountsBillingPayment;
+namespace EmmetBlue\Plugins\AccountsCashier\AccountsBillingPaymentPayeeInfo;
 
 use EmmetBlue\Core\Builder\BuilderFactory as Builder;
 use EmmetBlue\Core\Builder\QueryBuilder\DeleteQueryBuilder;
@@ -21,27 +21,27 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class DeleteAccountBillingType.
+ * class DeleteAccountBillingPaymentPayeeInfo.
  *
- * DeleteAccountBillingType Controller
+ * DeleteAccountBillingPaymentPayeeInfo Controller
  *
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 15/06/2016 14:20
  */
-class DeleteAccountsBillingPayment
+class DeleteAccountsBillingPaymentPayeeInfo
 {
 	/**
 	 * delete method
 	 * @author Bardeson Lucky
-	 * @param int $accountBillingTypeId
+	 * @param int $accountBillingPaymentPayeeId
 	 */
-	public static function delete(int $accountBillingPaymentId)
+	public static function delete(int $accountBillingPaymentPayeeId)
 	{
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
-			->from('Account.BillingPayment')
-			->where('BillingPayment.BillingPaymentID = '.$accountBillingPaymentId);
+			->from('Account.BillingPaymentPayeeInformation')
+			->where('BillingPaymentPayeeInformation.BillingPaymentPayeeID = '.$accountBillingPaymentPayeeId);
 
 		try
 		{

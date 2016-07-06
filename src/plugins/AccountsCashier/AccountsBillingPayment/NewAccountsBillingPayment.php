@@ -29,28 +29,13 @@ use EmmetBlue\Core\Constant;
  */
 class NewAccountsBillingPayment
 {
-	public static function newAccountBillingPaymentPayeeInfo(array $data)
-	{
-		$billingPaymentPayeeFullName = $data['billingPaymentPayeeFullName'] ?? 'NULL';
-		$billingPaymentPayeePhoneNumber = $data['billingPaymentPayeePhoneNumber'] ?? 'NULL';
-		$billingPaymentPayeeAddress = $data['billingPaymentPayeeAddress'] ?? 'NULL';
-
-		$packed = [
-			'BillingPaymentPayeeFullName'=>($billingPaymentPayeeFullName !== 'NULL') ? QB::wrapString($billingPaymentPayeeFullName, "'") : $billingPaymentPayeeFullName,
-			'BillingPaymentPayeePhoneNumber'=>($billingPaymentPayeePhoneNumber !== 'NULL') ? QB::wrapString($billingPaymentPayeePhoneNumber, "'") : $billingPaymentPayeePhoneNumber,
-			'BillingPaymentPayeeAddress'=>($billingPaymentPayeeAddress !== 'NULL') ? QB::wrapString($billingPaymentPayeeAddress, "'") : $billingPaymentPayeeAddress
-		];
-
-		$result = DatabaseQueryFactory::insert('Accounts.BillingPaymentPayeeInformation', $packed);
-		return $result;
-	}
 	/**
 	 *method newBillingPayment
 	 * manages the creation of new billing Payment resource
 	 * @author Bardeson Lucky <flashup4all@gmail.com>
 	 * @since v.0.0.1 05/07/2016 08:48pm
 	*/
-	public static function newAccountBillingPayment(array $data)
+	public static function default(array $data)
 	{
 		$billingPaymentNumber = $data['billingPaymentNumber'] ?? 'NULL';
 		$billingPaymentPaidAmount = $data['billingPaymentPaidAmount'] ?? 'NULL';

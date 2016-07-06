@@ -19,27 +19,27 @@ use EmmetBlue\Core\Logger\ErrorLog;
 use EmmetBlue\Core\Constant;
 
 /**
- * class AccountsBillingType.
+ * class AccountsBillingPaymentPayeeInfo.
  *
- * AccountsBillingType Controller
+ * AccountsBillingPaymentPayeeInfo Controller
  *
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:20
  */
-class AccountsCashier
+class AccountsCashierPaymentPayeeInfo
 {
-	public static function newAccountsBillingPayment(array $data)
+	public static function newAccountsBillingPaymentPayeeInformation(array $data)
 	{
-		return AccountsBillingPayment\NewAccountsBillingPayment::default($data);
+		return AccountsBillingPaymantPayeeInfo\NewAccountsBillingPaymentPayeeInfo::newAccountBillingPaymentPayeeInfo($data);
 	}
 
-	public static function viewAccountsBillingPayment(int $billingPaymentId)
+	public static function viewAccountsBillingPaymentPayeeInformation(int $billingPaymentPayeeId)
 	{
-		return AccountsBillingPayment\ViewAccountsBillingPayment::viewAccountBillingPayment(int $billingPaymentId);
+		return AccountsBillingPaymantPayeeInfo\ViewAccountsBillingPaymentPayeeInfo::viewAccountBillingPaymentPayeeInfo(int $billingPaymentPayeeId);
 	}
 
-	public static function deleteAccountsBillingPayment(int $accountsBillingPaymentId)
+	public static function deleteAccountsBillingPaymentPayeeInfo(int $accountsBillingPaymentPayeeId)
 	{
-		return AccountsBillingPayment\DeleteAccountsBillingPayment::delete($accountsBillingPaymentId);
+		return AccountsBillingPaymantPayeeInfo\DeleteAccountsBillingPaymentInfo::delete($accountsBillingPaymentPayeeId);
 	}
 }
