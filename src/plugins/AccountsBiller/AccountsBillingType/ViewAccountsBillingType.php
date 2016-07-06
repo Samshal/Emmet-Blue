@@ -40,8 +40,11 @@ class ViewAccountsBillingType
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Accounts.BillingType')
-			->where('BillingTypeID ='.$billingTypeId);
+			->from('Accounts.BillingType');
+		if ($billingTypeId != 0){
+			$selectBuilder->where('BillingTypeID ='.$billingTypeId);
+		}
+		
 		try
 		{
 			$viewAccountBillingTypeOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
