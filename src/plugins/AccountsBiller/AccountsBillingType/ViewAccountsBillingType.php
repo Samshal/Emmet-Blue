@@ -40,7 +40,7 @@ class ViewAccountsBillingType
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Account.BillingType')
+			->from('Accounts.BillingType')
 			->where('BillingTypeID ='.$billingTypeId);
 		try
 		{
@@ -49,8 +49,8 @@ class ViewAccountsBillingType
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
-				'Account',
-				'AccountBillingType',
+				'Accounts',
+				'BillingType',
 				(string)$selectBuilder
 			);
 
