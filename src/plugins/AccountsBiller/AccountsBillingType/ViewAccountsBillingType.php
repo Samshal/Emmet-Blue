@@ -27,7 +27,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:2016
  */
-class ViewAccountBillingType
+class ViewAccountsBillingType
 { 
 	/**
 	 * viewAccountBillingType method
@@ -35,7 +35,7 @@ class ViewAccountBillingType
 	 * @param int $accountBillingTypeId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewAccountBillingType(int $billingTypeId)
+	public static function viewAccountsBillingType(int $billingTypeId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
