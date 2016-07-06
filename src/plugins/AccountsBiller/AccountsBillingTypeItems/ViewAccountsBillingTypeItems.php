@@ -27,7 +27,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 08/06/2016 14:2016
  */
-class ViewAccountBillingTypeItems
+class ViewAccountsBillingTypeItems
 { 
 	/**
 	 * viewAccountBillingTypeItems method
@@ -35,12 +35,12 @@ class ViewAccountBillingTypeItems
 	 * @param int $BillingTypeItemsId
 	 * @author bardeson Lucky <Ahead!!> <flashup4all@gmail.com>
 	 */
-	public static function viewAccountBillingTypeItems(int $billingTypeItemId)
+	public static function viewAccountsBillingTypeItems(int $billingTypeItemId)
 	{
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Account.BillingTypeItems')
+			->from('Accounts.BillingTypeItems')
 			->where('BillingTypeItemID ='.$billingTypeItemsId);
 		try
 		{
@@ -49,7 +49,7 @@ class ViewAccountBillingTypeItems
 			DatabaseLog::log(
 				Session::get('USER_ID'),
 				Constant::EVENT_SELECT,
-				'Account',
+				'Accounts',
 				'BillingTypeItems',
 				(string)$selectBuilder
 			);

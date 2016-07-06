@@ -35,7 +35,7 @@ class AccountsBillingTypeItemsPrices
 
 	public static function viewAccountsBillingTypeItemsPrices(int $accountsBillingTypeItemPriceId)
 	{
-		return AccountsBillingTypeItemsPrices\ViewAccountsBillingTypeItemsPrices::viewAccountBillingTypeItemsPrices($accountsBillingTypeItemPriceId);
+		return AccountsBillingTypeItemsPrices\ViewAccountsBillingTypeItemsPrices::viewAccountsBillingTypeItemsPrices($accountsBillingTypeItemPriceId);
 	}
 
 	public static function deleteAccountsBillingTypeItemsPrices(int $accountsBillingTypeItemPriceId)
