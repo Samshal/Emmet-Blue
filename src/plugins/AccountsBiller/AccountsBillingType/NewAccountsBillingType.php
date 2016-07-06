@@ -42,4 +42,42 @@ class NewAccountsBillingType
 		$result = DatabaseQueryFactory::insert('Accounts.BillingType', $packed);
 		return $result;
 	}
+	/**
+	 *method newBillingTypeItems
+	 * manages the creation of new billing item resource
+	 * @author Bardeson Lucky <flashup4all@gmail.com>
+	 * @since v.0.0.1 05/07/2016 08:48pm
+	*/
+	public static function accountBillingTypeItems(array $data)
+	{
+		$billingType = $data['billingType'] ?? 'NULL';
+		$billingTypeItemName = $data['billingTypeItemName'] ?? 'NULL';
+
+		$packed = [
+			'BillingType'=>($billingType !== 'NULL') ? QB::wrapString($billingType, "'") : $billingType,
+			'BillingTypeItemName'=>($billingTypeItemName !== 'NULL') ? QB::wrapString($billingTypeItemName, "'") : $billingTypeItemName
+		];
+
+		$result = DatabaseQueryFactory::insert('Accounts.BillingTypeItems', $packed);
+		return $result;
+	}
+	/**
+	 *method newBillingTypeItemsPrices
+	 * manages the creation of new billing item prices resource
+	 * @author Bardeson Lucky <flashup4all@gmail.com>
+	 * @since v.0.0.1 05/07/2016 08:48pm
+	*/
+	public static function accountBillingTypeItemsPrices(array $data)
+	{
+		$billingTypeItemId = $data['billingTypeItemId'] ?? 'NULL';
+		$billingTypeItemsPrices = $data['billingTypeItemPrice'] ?? 'NULL';
+
+		$packed = [
+			'BillingTypeItemID'=>($billingTypeItemId !== 'NULL') ? QB::wrapString($billingTypeItemId, "'") : $billingTypeItemId,
+			'BillingTypeItemsPrices'=>($billingTypeItemsPrices !== 'NULL') ? QB::wrapString($billingTypeItemsPrices, "'") : $billingTypeItemsPrices
+		];
+
+		$result = DatabaseQueryFactory::insert('Accounts.BillingTypeItemsPrices', $packed);
+		return $result;
+	}
 }
