@@ -28,7 +28,7 @@ use EmmetBlue\Core\Constant;
  * @author Bardeson Lucky <flashup4all@gmail.com>
  * @since v0.0.1 15/06/2016 14:20
  */
-class DeleteAccountBillingType
+class DeleteAccountsBillingType
 {
 	/**
 	 * delete method
@@ -40,14 +40,14 @@ class DeleteAccountBillingType
 		$deleteBuilder = (new Builder('QueryBuilder', 'Delete'))->getBuilder();
 
 		$deleteBuilder
-			->from('Account.BillingType')
+			->from('Accounts.BillingType')
 			->where('BillingType.BillingTypeID = '.$accountBillingTypeId);
 
 		try
 		{
 			$deleteOperation = (DBConnectionFactory::getConnection())->query((string)$deleteBuilder);
 
-			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Account', 'BillingType', (string)$deleteOperation);
+			DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_DELETE,'Accounts', 'BillingType', (string)$deleteOperation);
 
 			if($deleteOperation)
 			{
