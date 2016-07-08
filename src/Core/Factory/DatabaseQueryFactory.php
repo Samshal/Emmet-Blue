@@ -57,7 +57,7 @@ class DatabaseQueryFactory
 
             DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
 
-            return $result;
+            return array_push($result, DBConnectionFactory::getConnection()->lastInsertId());
         }
         catch (\PDOException $e)
         {
