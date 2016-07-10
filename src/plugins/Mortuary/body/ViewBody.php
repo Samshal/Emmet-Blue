@@ -40,8 +40,11 @@ class ViewBody
 		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
 		$selectBuilder
 			->columns('*')
-			->from('Mortuary.BodyInformation')
-			->where('BodyID ='.$bodyId);
+			->from('Mortuary.BodyInformation');
+		if ($bodyId != 0){
+
+			$selectBuilder->where('BodyID ='.$bodyId);
+		}
 		try
 		{
 			$viewBodyOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
@@ -51,6 +54,48 @@ class ViewBody
 				Constant::EVENT_SELECT,
 				'Mortuary',
 				'BodyInformation',
+				(string)$selectBuilder
+			);
+
+			if(count($viewBodyOperation) > 0)
+			{
+				return $viewBodyOperation;
+			}
+			else
+			{
+				return null;
+			}			
+		} 
+		catch (\PDOException $e) 
+		{
+			throw new SQLException(
+				sprintf(
+					"Error procesing request"
+				),
+				Constant::UNDEFINED
+			);
+			
+		}
+	}
+
+	public static function viewBody(int $bodyId)
+	{
+		$selectBuilder = (new Builder('QueryBuilder','Select'))->getBuilder();
+		$selectBuilder
+			->columns('*')
+			->from('Mortuary.Body');
+		if ($bodyId != 0){
+			$selectBuilder->where('BodyID ='.$bodyId);
+		}
+		try
+		{
+			$viewBodyOperation = (DBConnectionFactory::getConnection()->query((string)$selectBuilder))->fetchAll(\PDO::FETCH_ASSOC);
+
+			DatabaseLog::log(
+				Session::get('USER_ID'),
+				Constant::EVENT_SELECT,
+				'Mortuary',
+				'Body',
 				(string)$selectBuilder
 			);
 

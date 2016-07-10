@@ -40,7 +40,7 @@ class Body
 
 	public static function viewBody(int $body)
 	{
-		
+		return Body\ViewBody::viewBody($body);
 	}
 
 	public static function viewBodyInfo(int $body)
