@@ -55,29 +55,25 @@ class NewBody
 
 	public static function info(array $data)
 	{
-		$bodyId = $data['bodyId'] ?? 'NULL';
-		$bodyFirstName = $data['bodyFirstName'] ?? 'NULL';
-		$bodyLastName = $data['bodyLastName'] ?? 'NULL';
-		$bodyMiddleName = $data['bodyMiddleName'] ?? 'NULL';
-		$bodyDateOfBirth = $data['bodyDateOfBirth'] ?? 'NULL';
-		$bodyGender = $data['bodyGender'] ?? 'NULL';
-		$bodyPlaceOfBirth = $data['bodyPlaceOfBirth'] ?? 'NULL';
+		$bodyId = $data['id'] ?? 'NULL';
+		$bodyFirstName = $data['firstName'] ?? 'NULL';
+		$bodyLastName = $data['lastName'] ?? 'NULL';
+		$bodyDateOfBirth = $data['dateOfBirth'] ?? 'NULL';
+		$bodyGender = $data['gender'] ?? 'NULL';
+		$bodyPlaceOfBirth = $data['placeOfBirth'] ?? 'NULL';
 		$familyMemberRelationshipType = $data['familyMemberRelationshipType'] ?? 'NULL';
 		$familyMemberName = $data['familyMemberName'] ?? 'NULL';
-		$familyMemberGender = $data['familyMemberGender'] ?? 'NULL';
 		$familyMemberPhoneNumber = $data['familyMemberPhoneNumber'] ?? 'NULL';
 
 		$packed = [
 			'BodyID'=>$bodyId,
 			'BodyFirstName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyFirstName, "'") : $bodyFirstName,
 			'BodyLastName'=>($bodyLastName !== 'NULL') ? QB::wrapString($bodyLastName, "'") : $bodyLastName,
-			'BodyMiddleName'=>($bodyFirstName !== 'NULL') ? QB::wrapString($bodyMiddleName, "'") : $bodyMiddleName,
-			'BodyDateOfBirth'=>$bodyDateOfBirth,
+			'BodyDateOfBirth'=>($bodyDateOfDeath !== 'NULL') ? QB::wrapString($bodyDateOfDeath, "'") : $bodyDateOfDeath,
 			'BodyGender'=>($bodyGender !== 'NULL') ? QB::wrapString($bodyGender, "'") : $bodyGender,
 			'BodyPlaceOfBirth'=>($bodyPlaceOfBirth !== 'NULL') ? QB::wrapString($bodyPlaceOfBirth, "'") : $bodyPlaceOfBirth,
 			'FamilyMemberRelationshipType'=>($familyMemberRelationshipType !== 'NULL') ? QB::wrapString($familyMemberRelationshipType, "'") : $familyMemberRelationshipType,
 			'FamilyMemberName'=>($familyMemberName !== 'NULL') ? QB::wrapString($familyMemberName, "'") : $familyMemberName,
-			'FamilyMemberGender'=>($familyMemberGender !== 'NULL') ? QB::wrapString($familyMemberGender, "'") : $familyMemberGender,
 			'FamilyMemberPhoneNumber'=>($familyMemberPhoneNumber !== 'NULL') ? QB::wrapString($familyMemberPhoneNumber, "'") : $familyMemberPhoneNumber
 		];
 
