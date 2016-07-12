@@ -6,7 +6,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
-namespace EmmetBlue\Core\Database\Abstraction;
+namespace EmmetBlue\Core\Builder;
 
 /**
  * QueryBuildableInterface contract
@@ -17,7 +17,7 @@ namespace EmmetBlue\Core\Database\Abstraction;
  *
  * @since v0.0.1 27/05/2016 13:14
  */
-interface QueryBuildableInterface
+interface BuildableInterface
 {
     /**
      * Builds a query object.
@@ -26,7 +26,7 @@ interface QueryBuildableInterface
      *
      * @throws {@todo Come up with exceptions thrown by this method}
      *
-     * @return QueryBuilder
+     * @return BuildableInterface
      */
     public function build(string $sqlStringToAppend);
 }

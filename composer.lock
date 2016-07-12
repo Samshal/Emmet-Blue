@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "edceb78a413ed1e218ae4dac70b41717",
+    "content-hash": "1488ada2ea501d0affc504d06ac6e05a",
+    "packages": [
+        {
+            "name": "samshal/acl",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Samshal/Acl.git",
+                "reference": "96da075dc6080c1745dedb301738211283eea0ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Samshal/Acl/zipball/96da075dc6080c1745dedb301738211283eea0ef",
+                "reference": "96da075dc6080c1745dedb301738211283eea0ef",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Samshal\\Acl\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samshal",
+                    "email": "samueladeshina73@gmail.com"
+                }
+            ],
+            "description": "This package provides a lightweight and flexible access control list for privileges and permission management.",
+            "time": "2016-06-10 10:43:53"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "7"
+    }
+}

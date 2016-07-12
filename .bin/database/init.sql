@@ -74,10 +74,10 @@ CREATE SCHEMA Staffs
 GO
 
 CREATE TABLE [Logs].[DatabaseLog] (
-	DatabaseLogID INT PRIMARY KEY,
+	DatabaseLogID INT PRIMARY KEY IDENTITY,
 	PostTime DATETIME,
 	DatabaseUserID INT,
-	Event VARCHAR(50),
+	Event VARCHAR(100),
 	ObjectSchema VARCHAR(20),
 	Object VARCHAR(20),
 	TSQL VARCHAR(MAX),
@@ -86,26 +86,26 @@ CREATE TABLE [Logs].[DatabaseLog] (
 GO
 
 CREATE TABLE [Logs].[ErrorLog] (
-	ErrorLogID INT PRIMARY KEY,
+	ErrorLogID INT PRIMARY KEY IDENTITY,
 	ErrorTime DATETIME,
 	DatabaseUserID INT,
-	ErrorNumber CHAR(3),
-	ErrorSeverity VARCHAR(20),
-	ErrorMessage VARCHAR(200),
+	ErrorNumber CHAR(100),
+	ErrorSeverity VARCHAR(100),
+	ErrorMessage VARCHAR(MAX),
 	ErrorObject VARCHAR(MAX),
 	ModifiedDate DATETIME
 )
 GO
 
 CREATE TABLE [Staffs].[DepartmentGroup] (
-	DepartmentGroupID INT PRIMARY KEY,
+	DepartmentGroupID INT PRIMARY KEY IDENTITY,
 	GroupName VARCHAR(50),
 	ModifiedDate DATETIME
 )
 GO
 
 CREATE TABLE [Staffs].[Department] (
-	DepartmentID INT PRIMARY KEY,
+	DepartmentID INT PRIMARY KEY IDENTITY,
 	Name VARCHAR(50),
 	GroupID INT,
 	ModifiedDate DATETIME
@@ -113,7 +113,7 @@ CREATE TABLE [Staffs].[Department] (
 GO
 
 CREATE TABLE [Staffs].[Role](
-	RoleID INT PRIMARY KEY,
+	RoleID INT PRIMARY KEY IDENTITY,
 	Name VARCHAR(50),
 	Description VARCHAR(200),
 	ModifiedDate DATETIME
@@ -121,14 +121,22 @@ CREATE TABLE [Staffs].[Role](
 GO
 
 CREATE TABLE [Staffs].[Permission] (
-	PermissionID INT PRIMARY KEY,
+	PermissionID INT PRIMARY KEY IDENTITY,
 	Name VARCHAR(50),
 	ModifiedDate DATETIME
 )
 GO
 
+CREATE TABLE [Staffs].[RolePermission] (
+	RolePermissionID INT PRIMARY KEY IDENTITY,
+	RoleID INT,
+	PermissionID INT,
+	ModifiedDate DATETIME
+) 
+GO
+
 CREATE TABLE [Staffs].[Staff] (
-	StaffID INT PRIMARY KEY,
+	StaffID INT PRIMARY KEY IDENTITY,
 	Username VARCHAR(20),
 	PasswordID INT,
 	ModifiedDate DATETIME
@@ -136,7 +144,7 @@ CREATE TABLE [Staffs].[Staff] (
 GO
 
 CREATE TABLE [Staffs].[StaffPassword] (
-	StaffPasswordID INT PRIMARY KEY,
+	StaffPasswordID INT PRIMARY KEY IDENTITY,
 	StaffID INT,
 	PasswordHash VARCHAR(MAX),
 	PasswordSalt VARCHAR(20),
@@ -145,14 +153,14 @@ CREATE TABLE [Staffs].[StaffPassword] (
 GO
 
 CREATE TABLE [Staffs].[StaffDepartment] (
-	StaffID INT PRIMARY KEY,
+	StaffID INT PRIMARY KEY IDENTITY,
 	DepartmentID INT,
 	ModifiedDate DATETIME
 )
 GO
 
 CREATE TABLE [Staffs].[StaffRole] (
-	StaffID INT PRIMARY KEY,
+	StaffID INT PRIMARY KEY IDENTITY,
 	RoleID INT,
 	ModifiedDate DATETIME
 )
