@@ -17,12 +17,14 @@ namespace EmmetBlue\Core\Session;
  */
 class Session
 {
+    protected $session;
+    
     /**
      * 
      */
-    public static function init()
+    public static function init($session = "")
     {
-        SESSION_START();
+        $this->session = $session;
     }
     
     /**
@@ -30,7 +32,7 @@ class Session
      */
     public static function save($key, $value)
     {
-        $_SESSION[$key] = $value;
+        $session[$key] = $value;
     }
 
     /**
@@ -38,21 +40,14 @@ class Session
      */
     public static function get($key)
     {
-        return $_SESSION[$key] ?? '';
+        return $session[$key] ?? '';
     }
 
     /**
      * 
      */
-    public static function delete($key = null)
+    public static function delete($key)
     {
-        if (is_null($key))
-        {
-            session_destroy();
-        }
-        else
-        {
-            unset($_SESSION[$key]);
-        }
+       unset($session[$key]);
     }
 }
