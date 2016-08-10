@@ -124,6 +124,7 @@ GO
 CREATE TABLE [Staffs].[Staff] (
 	StaffID INT PRIMARY KEY IDENTITY,
 	StaffUUID VARCHAR(20) UNIQUE,
+	AccountActivated BIT DEFAULT 0 NOT NULL,
 	ModifiedDate DATETIME
 )
 GO
