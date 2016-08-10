@@ -50,14 +50,15 @@ class DatabaseQueryFactory
             $schemaName = $parts[0];
             $tableName = $parts[1];
 
-            $result = (
-                   DBConnectionFactory::getConnection()
-                   ->query((string)$query)
-               )->fetchAll(\PDO::FETCH_ASSOC);
+            $connection = DBConnectionFactory::getConnection();
+
+            $result = $connection->prepare((string)$query)->execute();
 
             DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
 
-            return $result;
+            $lastInsertId = ($connection->query("SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS int) as id")->fetchColumn());
+
+            return [$result, "lastInsertId"=>$lastInsertId];
         }
         catch (\PDOException $e)
         {

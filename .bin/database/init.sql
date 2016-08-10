@@ -99,7 +99,7 @@ GO
 
 CREATE TABLE [Staffs].[DepartmentGroup] (
 	DepartmentGroupID INT PRIMARY KEY IDENTITY,
-	GroupName VARCHAR(50),
+	GroupName VARCHAR(50) UNIQUE,
 	ModifiedDate DATETIME
 )
 GO
@@ -108,61 +108,54 @@ CREATE TABLE [Staffs].[Department] (
 	DepartmentID INT PRIMARY KEY IDENTITY,
 	Name VARCHAR(50),
 	GroupID INT,
-	ModifiedDate DATETIME
+	ModifiedDate DATETIME,
+	FOREIGN KEY (GroupID) REFERENCES [Staffs].[DepartmentGroup] (DepartmentGroupID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE [Staffs].[Role](
 	RoleID INT PRIMARY KEY IDENTITY,
-	Name VARCHAR(50),
+	Name VARCHAR(50) UNIQUE,
 	Description VARCHAR(200),
 	ModifiedDate DATETIME
 )
 GO
 
-CREATE TABLE [Staffs].[Permission] (
-	PermissionID INT PRIMARY KEY IDENTITY,
-	Name VARCHAR(50),
-	ModifiedDate DATETIME
-)
-GO
-
-CREATE TABLE [Staffs].[RolePermission] (
-	RolePermissionID INT PRIMARY KEY IDENTITY,
-	RoleID INT,
-	PermissionID INT,
-	ModifiedDate DATETIME
-) 
-GO
-
 CREATE TABLE [Staffs].[Staff] (
 	StaffID INT PRIMARY KEY IDENTITY,
-	Username VARCHAR(20),
-	PasswordID INT,
+	StaffUUID VARCHAR(20) UNIQUE,
 	ModifiedDate DATETIME
 )
 GO
 
 CREATE TABLE [Staffs].[StaffPassword] (
 	StaffPasswordID INT PRIMARY KEY IDENTITY,
-	StaffID INT,
+	StaffID INT UNIQUE,
+	StaffUsername VARCHAR(20) UNIQUE,
 	PasswordHash VARCHAR(MAX),
 	PasswordSalt VARCHAR(20),
-	ModifiedDate DATETIME
+	ModifiedDate DATETIME,
+	FOREIGN KEY (StaffID) REFERENCES [Staffs].[Staff] (StaffID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE [Staffs].[StaffDepartment] (
-	StaffID INT PRIMARY KEY IDENTITY,
+	StaffDepartmentID INT PRIMARY KEY IDENTITY,
+	StaffID INT UNIQUE,
 	DepartmentID INT,
-	ModifiedDate DATETIME
+	ModifiedDate DATETIME,
+	FOREIGN KEY (DepartmentID) REFERENCES [Staffs].[Department] ON UPDATE CASCADE ON DELETE SET NULL,
+	FOREIGN KEY (StaffID) REFERENCES [Staffs].[Staff] (StaffID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
 CREATE TABLE [Staffs].[StaffRole] (
-	StaffID INT PRIMARY KEY IDENTITY,
+	StaffRoleID INT PRIMARY KEY IDENTITY,
+	StaffID INT UNIQUE,
 	RoleID INT,
-	ModifiedDate DATETIME
+	ModifiedDate DATETIME,
+	FOREIGN KEY (RoleID) REFERENCES [Staffs].[Role] ON UPDATE CASCADE ON DELETE SET NULL,
+	FOREIGN KEY (StaffID) REFERENCES [Staffs].[Staff] (StaffID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
