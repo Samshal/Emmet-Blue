@@ -70,7 +70,7 @@ class SQlServer implements ConnectableInterface
 
         try
         {
-            $this->connectionObject = new \PDO("sqlsrv:Server=$server;Database=$database;connectionPooling=0", $username, $password);
+            $this->connectionObject = new \PDO("sqlsrv:Server=$server;Database=$database;ConnectionPooling=0", $username, $password);
         }
         catch (\PDOException $e)
         {
