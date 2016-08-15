@@ -64,7 +64,10 @@
 
 ----- TSQL BEGINS HERE ----
 
-use EmmetBluePre
+CREATE DATABASE EmmetBlue
+GO
+
+use EmmetBlue
 GO
 
 CREATE SCHEMA Logs
@@ -116,8 +119,10 @@ GO
 CREATE TABLE [Staffs].[Role](
 	RoleID INT PRIMARY KEY IDENTITY,
 	Name VARCHAR(50) UNIQUE,
+	DepartmentID INT,
 	Description VARCHAR(200),
-	ModifiedDate DATETIME
+	ModifiedDate DATETIME,
+	FOREIGN KEY (DepartmentID) REFERENCES [Staffs].[Department] ON UPDATE CASCADE ON DELETE SET NULL
 )
 GO
 
