@@ -61,6 +61,15 @@
 ---> 		1. StaffID
 ---> 		2. RoleID
 ---> 		3. ModifiedDate
+--->	8. StaffProfileRecords
+--->		1. RecordID
+--->		2. RecordName
+--->		3. RecordType
+--->		4. RecordDescription
+--->	9.	StaffProfile
+--->		1. StaffProfileID
+--->		2. StaffID
+--->		3. Records
 
 ----- TSQL BEGINS HERE ----
 
@@ -118,11 +127,11 @@ GO
 
 CREATE TABLE [Staffs].[Role](
 	RoleID INT PRIMARY KEY IDENTITY,
-	Name VARCHAR(50) UNIQUE,
-	DepartmentID INT,
+	Name VARCHAR(50) NOT NULL,
+	DepartmentID INT NOT NULL,
 	Description VARCHAR(200),
 	ModifiedDate DATETIME,
-	FOREIGN KEY (DepartmentID) REFERENCES [Staffs].[Department] ON UPDATE CASCADE ON DELETE SET NULL
+	FOREIGN KEY (DepartmentID) REFERENCES [Staffs].[Department] ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
@@ -162,6 +171,21 @@ CREATE TABLE [Staffs].[StaffRole] (
 	ModifiedDate DATETIME,
 	FOREIGN KEY (RoleID) REFERENCES [Staffs].[Role] ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (StaffID) REFERENCES [Staffs].[Staff] (StaffID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+GO
+
+CREATE TABLE Staffs.StaffProfileRecords (
+	RecordID INT PRIMARY KEY IDENTITY,
+	RecordName VARCHAR(50) UNIQUE NOT NULL,
+	RecordType VARCHAR(20) NOT NULL,
+	RecordDescription VARCHAR(200)
+)
+GO
+
+CREATE TABLE Staffs.StaffProfile (
+	StaffProfile INT PRIMARY KEY IDENTITY,
+	StaffID INT NOT NULL,
+	Records VARCHAR(MAX) --SERIALIZED JSON DATA WITH RECORDS FROM StaffProfileRecords
 )
 GO
 
