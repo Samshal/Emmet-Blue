@@ -90,8 +90,8 @@ CREATE TABLE [Logs].[DatabaseLog] (
 	PostTime DATETIME,
 	DatabaseUserID INT,
 	Event VARCHAR(100),
-	ObjectSchema VARCHAR(20),
-	Object VARCHAR(20),
+	ObjectSchema VARCHAR(200),
+	Object VARCHAR(200),
 	TSQL VARCHAR(MAX),
 	ModifiedDate DATETIME
 )

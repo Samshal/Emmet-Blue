@@ -46,9 +46,7 @@ class DatabaseLog implements LogInterface
                     QB::wrapString($object, "'"),
                     QB::wrapString(str_replace("'", "\"", $tSql), "'")
                 ]);
-
-            echo (string)$insertBuilder;
-            die();
+            
             DBConnectionFactory::getConnection()->query((string)$insertBuilder);
         } catch (\PDOException $e) {
             echo $e->getMessage();
