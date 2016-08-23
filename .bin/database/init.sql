@@ -88,6 +88,9 @@ GO
 CREATE SCHEMA Accounts
 GO
 
+CREATE SCHEMA Patients
+GO
+
 CREATE TABLE [Logs].[DatabaseLog] (
 	DatabaseLogID INT PRIMARY KEY IDENTITY,
 	PostTime DATETIME,
@@ -256,6 +259,26 @@ CREATE TABLE Accounts.BillingTransaction (
 	FOREIGN KEY (BillingTransactionMetaID) REFERENCES [Accounts].[BillingTransactionMeta] (BillingTransactionMetaID) ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (BillingTransactionCustomerID) REFERENCES [Accounts].[BillingCustomerInfo] (CustomerContactID) ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (BillingPaymentMethod) REFERENCES [Accounts].[BillingPaymentMethods] (PaymentMethodName) ON UPDATE CASCADE ON DELETE NO ACTION
+)
+
+CREATE TABLE Patients.Patient (
+	PatientID INT PRIMARY KEY IDENTITY,
+	PatientUUID INT UNIQUE NOT NULL,
+)
+
+CREATE TABLE Patients.PatientDepartment (
+	PatientDepartmentID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	DepartmentID INT,
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientTransaction(
+	PatientTransactionID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	Link VARCHAR(max),
+	Meta VARCHAR(max),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
 
