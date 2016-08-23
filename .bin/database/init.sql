@@ -219,7 +219,7 @@ CREATE TABLE Accounts.BillingCustomerInfo (
 
 CREATE TABLE Accounts.BillingTypeItems (
 	BillingTypeItemID INT PRIMARY KEY IDENTITY,
-	BillingType INT,
+	BillingType INT NOT NULL,
 	BillingTypeItemName VARCHAR (100) UNIQUE,
 	BillingTypeItemPrice MONEY NOT NULL,
 	RateBased BIT,
