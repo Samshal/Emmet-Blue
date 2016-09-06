@@ -91,6 +91,18 @@ GO
 CREATE SCHEMA Patients
 GO
 
+CREATE SCHEMA Pharmacy;
+GO
+
+CREATE SCHEMA Mortuary;
+GO
+
+CREATE SCHEMA Consultancy;
+GO
+
+CREATE SCHEMA Accounts
+GO
+
 CREATE TABLE [Logs].[DatabaseLog] (
 	DatabaseLogID INT PRIMARY KEY IDENTITY,
 	PostTime DATETIME,
@@ -184,9 +196,6 @@ CREATE TABLE Staffs.StaffProfile (
 	Records VARCHAR(MAX) --SERIALIZED JSON DATA WITH RECORDS FROM StaffProfileRecords
 )
 
-CREATE SCHEMA Mortuary;
-GO
-
 CREATE TABLE Mortuary.Body (
 	BodyID INTEGER PRIMARY KEY IDENTITY NOT NULL,
 	DeathPhysicianID INTEGER,
@@ -221,9 +230,6 @@ CREATE TABLE Mortuary.DepositorDetails(
 	DepositorPhoneNumber VARCHAR(20),
 	FOREIGN KEY (BodyID) REFERENCES Mortuary.Body(BodyID) ON UPDATE CASCADE ON DELETE CASCADE
 )
-GO
-
-CREATE SCHEMA Accounts
 GO
 
 CREATE TABLE Accounts.BillingType (
@@ -329,8 +335,6 @@ INSERT INTO Staffs.DepartmentGroup (GroupName) VALUES ('__');
 INSERT INTO Staffs.Department (Name, GroupID) VALUES ('__', 1);
 INSERT INTO Staffs.Role (Name, DepartmentID) VALUES ('Administrator', 1);
 
-CREATE SCHEMA Pharmacy;
-GO
 
 CREATE TABLE Pharmacy.Store (
 	StoreID INT PRIMARY KEY IDENTITY NOT NULL,
@@ -393,9 +397,6 @@ CREATE TABLE Pharmacy.DispensedItems(
 	DispensedQuantity INT,
 	FOREIGN KEY (DispensationID) REFERENCES Pharmacy.Dispensation(DispensationID) ON UPDATE CASCADE ON DELETE CASCADE
 )
-GO
-
-CREATE SCHEMA Consultancy;
 GO
 
 CREATE TABLE Consultancy.Tags(
