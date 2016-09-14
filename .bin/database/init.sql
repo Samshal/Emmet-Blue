@@ -100,7 +100,7 @@ GO
 CREATE SCHEMA Consultancy;
 GO
 
-CREATE SCHEMA Accounts
+CREATE SCHEMA Nursing;
 GO
 
 CREATE TABLE [Logs].[DatabaseLog] (
@@ -196,15 +196,24 @@ CREATE TABLE Staffs.StaffProfile (
 	Records VARCHAR(MAX) --SERIALIZED JSON DATA WITH RECORDS FROM StaffProfileRecords
 )
 
+
+
+CREATE TABLE Mortuary.BodyStatus (
+	BodyStatusID INT PRIMARY KEY IDENTITY NOT NULL,
+	StatusShortCode VARCHAR(5) UNIQUE,
+	StatusName VARCHAR(50),
+)
+GO
+
 CREATE TABLE Mortuary.Body (
 	BodyID INTEGER PRIMARY KEY IDENTITY NOT NULL,
 	DeathPhysicianID INTEGER,
-	BodyTag VARCHAR(50) NOT NULL,
 	DateOfDeath DATE NOT NULL,
 	PlaceOfDeath VARCHAR(100) NOT NULL,
-	BodyStatus BIT,
+	BodyStatus VARCHAR(5),
 	CreationDate DATETIME NOT NULL DEFAULT GETDATE(),
-	LastModified DATETIME NOT NULL DEFAULT GETDATE()
+	LastModified DATETIME NOT NULL DEFAULT GETDATE(),
+	FOREIGN KEY (BodyStatus) REFERENCES Mortuary.BodyStatus (StatusShortCode) ON UPDATE CASCADE ON DELETE SET NULL
 )
 GO
 
@@ -231,6 +240,33 @@ CREATE TABLE Mortuary.DepositorDetails(
 	FOREIGN KEY (BodyID) REFERENCES Mortuary.Body(BodyID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
+CREATE TABLE Mortuary.Tags(
+	TagID INTEGER PRIMARY KEY IDENTITY NOT NULL,
+	TagName VARCHAR(50) UNIQUE,
+)
+GO
+CREATE TABLE Mortuary.BodyTag(
+	BodyTagID INTEGER PRIMARY KEY IDENTITY NOT NUlL,
+	BodyID INTEGER,
+	TagName VARCHAR(50),
+	FOREIGN KEY (BodyID) REFERENCES Mortuary.Body(BodyID) ON UPDATE CASCADE ON DELETE NO ACTION
+)
+GO
+
+--Insert four major Body Status types into the Mortuary.BodyStatus Table.
+
+-- Items below are listed in (StatusShortCode, StatusName) table column order respectively
+-- (RIP, Registration In Progress)
+-- (LI, Logged In)
+-- (LOP, Log Out In Progress)
+-- (LO, Logged Out)
+
+INSERT INTO Mortuary.BodyStatus VALUES
+('RIP', 'Registration In Progress'),
+('LI', 'Logged In'),
+('LOP', 'Log Out In Progress'),
+('LO', 'Logged Out');
+
 
 CREATE TABLE Accounts.BillingType (
 	BillingTypeID INT PRIMARY KEY IDENTITY,
@@ -273,11 +309,19 @@ CREATE TABLE Accounts.BillingTypeItems (
 	BillingTypeItemID INT PRIMARY KEY IDENTITY,
 	BillingType INT,
 	BillingTypeItemName VARCHAR (100) UNIQUE,
+	FOREIGN KEY (BillingType) REFERENCES [Accounts].[BillingType] (BillingTypeID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Accounts.BillingTypeItemsPrices (
+	BillingTypeItemsPricesID INT PRIMARY KEY IDENTITY,
+	BillingTypeItem INT,
+	PatientType INT,
 	BillingTypeItemPrice MONEY NOT NULL,
 	RateBased BIT,
 	RateIdentifier VARCHAR(100),
 	IntervalBased BIT,
-	FOREIGN KEY (BillingType) REFERENCES [Accounts].[BillingType] (BillingTypeID) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY (BillingTypeItem) REFERENCES [Accounts].[BillingTypeItems] (BillingTypeItemID) ON UPDATE CASCADE ON DELETE CASCADE,
+	UNIQUE(BillingTypeItem, PatientType)
 );
 
 CREATE TABLE Accounts.BillingTypeItemsInterval (
@@ -331,99 +375,212 @@ CREATE TABLE Accounts.BillingTransaction (
 )
 GO
 
+
+CREATE TABLE Patients.FieldTitleType (
+	TypeID INT PRIMARY KEY IDENTITY NOT NULL,
+	TypeName VARCHAR(50) UNIQUE,
+	TypeDescription VARCHAR(50)
+)
+
+CREATE TABLE Patients.PatientRecordsFieldTitle (
+	FieldTitleID INT PRIMARY KEY IDENTITY NOT NULL,
+	FieldTitleName VARCHAR(50) UNIQUE,
+	FieldTitleType VARCHAR(50),
+	FieldTitleDescription VARCHAR(50),
+	FOREIGN KEY (FieldTitleType) REFERENCES Patients.FieldTitleType(TypeName) ON UPDATE CASCADE ON DELETE NO ACTION
+)
+
+CREATE TABLE Patients.PatientTypeCategories (
+	CategoryID INT PRIMARY KEY IDENTITY,
+	CategoryName VARCHAR(100) UNIQUE,
+	CategoryDescription VARCHAR(500)
+)
+
+CREATE TABLE Patients.PatientType (
+	PatientTypeID INT PRIMARY KEY IDENTITY,
+	CategoryName VARCHAR(100),
+	PatientTypeName VARCHAR(100),
+	PatientTypeDescription VARCHAR(500),
+	FOREIGN KEY (CategoryName) REFERENCES Patients.PatientTypeCategories(CategoryName) ON UPDATE CASCADE ON DELETE SET NULL
+)
+
+CREATE TABLE Patients.Patient (
+	PatientID INT PRIMARY KEY IDENTITY,
+	PatientFullName VARCHAR(50),
+	PatientPicture VARCHAR(MAX),
+	PatientType INT,
+	PatientIdentificationDocument VARCHAR(MAX),
+	PatientUUID VARCHAR(20) UNIQUE NOT NULL,
+	FOREIGN KEY (PatientType) REFERENCES Patients.PatientType (PatientTypeID) ON UPDATE CASCADE ON DELETE SET NULL
+)
+
+CREATE TABLE Patients.PatientRecordsFieldValue (
+	FieldValueID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	FieldTitle VARCHAR(50),
+	FieldValue VARCHAR(max),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (FieldTitle) REFERENCES Patients.PatientRecordsFieldTitle(FieldTitleName) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientHospitalHistory (
+	HospitalHistoryID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT NOT NULL,
+	DateAttended DATETIME,
+	ReferredBy VARCHAR(50),
+	Physician VARCHAR(50),
+	Ward VARCHAR(50),
+	DateDischarged DATETIME,
+	DischargedTo VARCHAR(50),
+	Condition VARCHAR(50),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientDiagnosis (
+	DiagnosisID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT NOT NULL,
+	DaignosisDate DATETIME,
+	CodeNumber VARCHAR(50),
+	DiagnosisType VARCHAR(20),
+	Diagnosis VARCHAR(MAX),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE,
+	CHECK (DiagnosisType = 'operation' OR DiagnosisType = 'diagnosis')
+)
+
+CREATE TABLE Patients.PatientProcessCheck (
+	ProcessCheckID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT NOT NULL,
+	ProcessCheck VARCHAR(50),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientProcessCheckDates (
+	ProcessCheckDateID INT PRIMARY KEY IDENTITY NOT NULL,
+	ProcessCheckID INT NOT NULL,
+	ProcessCheckDateTitle VARCHAR(50),
+	ProcessCheckDate DATE,
+	FOREIGN KEY (ProcessCheckID) REFERENCES Patients.PatientProcessCheck(ProcessCheckID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientDepartment (
+	PatientDepartmentID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	DepartmentID INT,
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientTransaction(
+	PatientTransactionID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	Link VARCHAR(max),
+	Meta VARCHAR(max),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Patients.PatientRepository (
+	RepositoryItemID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID INT,
+	RepositoryItemNumber VARCHAR(50) NOT NULL UNIQUE,
+	RepositoryItemName VARCHAR(100),
+	RepositoryItemDescription VARCHAR(4000),
+	RepositoryItemUrl VARCHAR(MAX),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientID) ON UPDATE CASCADE ON DELETE CASCADE
+)
+GO
+
+INSERT INTO Patients.FieldTitleType (TypeName) VALUES ('Name'), ('Text'), ('Number'), ('Date'), ('File') 
+INSERT INTO Patients.PatientRecordsFieldTitle (FieldTitleName, FieldTitleType) VALUES
+('First Name', 'Name'),
+('Last Name', 'Name'),
+('Gender', 'Name'),
+('Date Of Birth', 'Date'),
+('Marital Status', 'Name'),
+('Home Address', 'Text'),
+('Mothers Maiden Name', 'Name'),
+('Medical Hand Card Number', 'Name'),
+('Phone Number', 'Name'),
+('Reference Contact, Emergency', 'Text'),
+('Reference Contact, Minor', 'Text'),
+('State Of Origin', 'Name'),
+('LGA', 'Name'),
+('State Of Residence', 'Name'),
+('Religious Affiliation', 'Name'),
+('Occupation', 'Name'),
+('Tribe', 'Name'),
+('Email Address', 'Text'),
+('Next Of Kin', 'Name');
+
 INSERT INTO Staffs.DepartmentGroup (GroupName) VALUES ('__');
 INSERT INTO Staffs.Department (Name, GroupID) VALUES ('__', 1);
 INSERT INTO Staffs.Role (Name, DepartmentID) VALUES ('Administrator', 1);
 
 
-CREATE TABLE Pharmacy.Store (
-	StoreID INT PRIMARY KEY IDENTITY NOT NULL,
-	StoreName VARCHAR(50) NOT NULL UNIQUE,
-	StoreDescription VARCHAR(100)
+CREATE TABLE Nursing.ObservationChartFieldTitleType (
+	TypeID INT PRIMARY KEY IDENTITY NOT NULL,
+	TypeName VARCHAR(50) UNIQUE,
+	TypeDescription VARCHAR(50)
 )
 GO
 
-CREATE TABLE Pharmacy.StoreInventoryProperties (
-	StoreInventoryPropertiesID INT PRIMARY KEY IDENTITY NOT NULL,
-	StoreID INT,
-	PropertyName VARCHAR(20) NOT NULL,
-	FOREIGN KEY (StoreID) REFERENCES Pharmacy.Store(StoreID) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE Nursing.ObservationChartFieldTitle (
+	FieldTitleID INT PRIMARY KEY IDENTITY NOT NULL,
+	FieldTitleName VARCHAR(50) UNIQUE,
+	FieldTitleType VARCHAR(50),
+	FieldTitleDescription VARCHAR(50),
+	FOREIGN KEY (FieldTitleType) REFERENCES Patients.FieldTitleType(TypeName) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
-CREATE TABLE Pharmacy.StoreInventory(
-	ItemID INT PRIMARY KEY IDENTITY NOT NULL,
-	StoreID INT,
-	ItemName VARCHAR(50),
-	ItemQuantity INT,
-	FOREIGN KEY (StoreID) REFERENCES Pharmacy.Store(StoreID) ON UPDATE CASCADE ON DELETE CASCADE
-)
-GO
-CREATE TABLE Pharmacy.StoreInventoryTags(
-	TagID INT PRIMARY KEY IDENTITY NOT NULL,
-	ItemID INT,
-	TagTitle VARCHAR(50),
-	TagName VARCHAR(100),
-	FOREIGN KEY (ItemID) REFERENCES Pharmacy.StoreInventory(ItemID) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE Nursing.ObservationChart(
+	ObservationChartID INT PRIMARY KEY IDENTITY NOT NULL,
+	PatientID VARCHAR(20),
+	StaffID VARCHAR(20),
+	ObservationDate DATE NOT NULL DEFAULT GETDATE(),
+	FOREIGN KEY (PatientID) REFERENCES Patients.Patient(PatientUUID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (StaffID) REFERENCES Staffs.Staff(StaffUUID) ON UPDATE CASCADE ON DELETE NO ACTION
 )
 GO
 
-CREATE TABLE Pharmacy.EligibleDispensory(
-	EligibleDispensoryID INT PRIMARY KEY IDENTITY NOT NULL,
-	EligibleDispensory VARCHAR(20) UNIQUE
+CREATE TABLE Nursing.ObservationChartFieldValue (
+	FieldValueID INT PRIMARY KEY IDENTITY NOT NULL,
+	ObservationChartID INT,
+	FieldTitle VARCHAR(50),
+	FieldValue VARCHAR(max),
+	FOREIGN KEY (FieldTitle) REFERENCES Nursing.ObservationChartFieldTitle(FieldTitleName) ON UPDATE CASCADE ON DELETE NO ACTION,
+	FOREIGN KEY (ObservationChartID) REFERENCES Nursing.ObservationChart(ObservationChartID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
-
-CREATE TABLE Pharmacy.Dispensee(
-	DispenseeID INT PRIMARY KEY IDENTITY NOT NULL,
-	DispenseeType VARCHAR(20),
-	DispenseeTypeID INT
+CREATE TABLE Nursing.Ward(
+	WardID INT PRIMARY KEY IDENTITY NOT NULL,
+	WardName VARCHAR(50) UNIQUE,
+	WardDescription VARCHAR(50),
+	CreatedDate DATE NOT NULL DEFAULT GETDATE(),
+	UpdatedDate DATE NOT NULL DEFAULT GETDATE()
 )
 GO
-CREATE TABLE Pharmacy.Dispensation(
-	DispensationID INT PRIMARY KEY IDENTITY NOT NULL,
-	DispensingStore VARCHAR(50),
-	EligibleDispensory VARCHAR(20),
-	DispenseeID INT,
-	DispensationDate DATETIME NOT NULL DEFAULT 'GETDATE()',
-	FOREIGN KEY (DispensingStore) REFERENCES Pharmacy.Store(StoreName) ON UPDATE CASCADE ON DELETE NO ACTION,
-	FOREIGN KEY (EligibleDispensory) REFERENCES Pharmacy.EligibleDispensory(EligibleDispensory) ON UPDATE CASCADE ON DELETE NO ACTION,
-	FOREIGN KEY (DispenseeID) REFERENCES Pharmacy.Dispensee(DispenseeID) on UPDATE CASCADE ON DELETE SET NULL
+CREATE TABLE Nursing.WardSection(
+	WardSectionID INT PRIMARY KEY IDENTITY NOT NULL,
+	WardID INT,
+	WardSectionName VARCHAR(50) UNIQUE,
+	WardSectionDescription VARCHAR(50),
+	CreatedDate DATE NOT NULL DEFAULT GETDATE(),
+	UpdatedDate DATE NOT NUll DEFAULT GETDATE(),
+	FOREIGN KEY (WardID) REFERENCES Nursing.Ward(WardID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
-CREATE TABLE Pharmacy.DispensedItems(
-	DispensedItemsID INT PRIMARY KEY IDENTITY NOT NULL,
-	DispensationID INT NOT NULL,
-	ItemID INT,
-	DispensedQuantity INT,
-	FOREIGN KEY (DispensationID) REFERENCES Pharmacy.Dispensation(DispensationID) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE Nursing.SectionBed(
+	SectionBedID INT PRIMARY KEY IDENTITY NOT NULL,
+	WardSectionID INT,
+	BedName VARCHAR(50) UNIQUE,
+	BedDescription VARCHAR(50),
+	FOREIGN KEY (WardSectionID) REFERENCES Nursing.WardSection(WardSectionID) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
-
-CREATE TABLE Consultancy.Tags(
-	TagID INT PRIMARY KEY IDENTITY NOT NULL,
-	TagName VARCHAR(50) UNIQUE,
-	TagDescription VARCHAR(50)
+CREATE TABLE Nursing.BedAssignment(
+	BedAssignmentID INT PRIMARY KEY IDENTITY NOT NUll,
+	BedName VARCHAR(50),
+	AssignmentLeased BIT,
+	AssignmentDate DATE NOT NULL DEFAULT GETDATE(),
+	FOREIGN KEY (BedName) REFERENCES Nursing.SectionBed(BedName) ON UPDATE CASCADE ON DELETE CASCADE
 )
 GO
-
-CREATE TABLE Consultancy.ConsultationSheet (
-	ConsultationSheetID INT PRIMARY KEY IDENTITY NOT NULL,
-	ConsultantID INT NOT NULL,
-	Title VARCHAR(100) NOT NULL,
-	Note VARCHAR(MAX) NOT NULL,
-	CreationDate DATE NOT NULL DEFAULT GETDATE(),
-	LastModified DATE NOT NULL DEFAULT GETDATE()
-)
-GO
-
-CREATE TABLE Consultancy.ConsultationSheetTags (
-	ConsultationSheetTagID INT PRIMARY KEY IDENTITY NOT NULL,
-	SheetID INT,
-	TagName VARCHAR(50),
-	FOREIGN KEY (SheetID) REFERENCES Consultancy.ConsultationSheet(ConsultationSheetID) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (TagName) REFERENCES Consultancy.Tags(TagName) ON UPDATE CASCADE ON DELETE CASCADE
-)
-GO
-
-
 ----- TSQL ENDS HERE ----
