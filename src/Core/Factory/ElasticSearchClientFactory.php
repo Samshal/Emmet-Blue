@@ -26,7 +26,7 @@ class ElasticSearchClientFactory
 
         $config = json_decode($configJson);
 
-        self::$clientObject = $config;
+        self::$clientObject = \Elasticsearch::clientBuilder()->fromConfig($config);
 	}
 
 	public static function getClient()
