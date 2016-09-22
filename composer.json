@@ -14,7 +14,8 @@
         }
     },
     "require": {
-        "samshal/acl": "dev-master"
+        "samshal/acl": "dev-master",
+        "elasticsearch/elasticsearch": "~2.0"
     },
     "autoload":{
         "psr-4":{
