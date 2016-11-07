@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e31eabe1c84b295bbfec1a23fb2d3e0",
-    "content-hash": "9fa997de245f947023354bccb9f0e58e",
+    "hash": "6974269fd19b1f033de95b854c38f450",
+    "content-hash": "8d484627519e5ad8b881a1342d0a0164",
     "packages": [
         {
             "name": "elasticsearch/elasticsearch",
@@ -252,6 +252,55 @@
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
             "time": "2016-05-03 17:50:52"
+        },
+        {
+            "name": "rmccue/requests",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmccue/Requests.git",
+                "reference": "87932f52ffad70504d93f04f15690cf16a089546"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmccue/Requests/zipball/87932f52ffad70504d93f04f15690cf16a089546",
+                "reference": "87932f52ffad70504d93f04f15690cf16a089546",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "requests/test-server": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Requests": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan McCue",
+                    "homepage": "http://ryanmccue.info"
+                }
+            ],
+            "description": "A HTTP library written in PHP, for human beings.",
+            "homepage": "http://github.com/rmccue/Requests",
+            "keywords": [
+                "curl",
+                "fsockopen",
+                "http",
+                "idna",
+                "ipv6",
+                "iri",
+                "sockets"
+            ],
+            "time": "2016-10-13 00:11:37"
         },
         {
             "name": "samshal/acl",
