@@ -25,13 +25,13 @@ class HTTPRequestFactory
 	{
 		$configJson = file_get_contents("bin/configs/http-headers-config.json");
 
-        $this->headers = json_decode($configJson);
+        self::$headers = json_decode($configJson);
 	}
 
 	public static function get($url, $extraHeaders = [])
 	{
 		self::bootstrap();
-		
-		return Requests::get($url, array_merge($this->headers, $extraHeaders));
+
+		return Requests::get($url, array_merge(self::$headers, $extraHeaders));
 	}
 }
