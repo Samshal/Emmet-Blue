@@ -25,7 +25,7 @@ class HTTPRequestFactory
 	{
 		$configJson = file_get_contents("bin/configs/http-headers-config.json");
 
-        self::$headers = json_decode($configJson);
+        self::$headers = json_decode($configJson, true);
 	}
 
 	public static function get($url, $extraHeaders = [])
