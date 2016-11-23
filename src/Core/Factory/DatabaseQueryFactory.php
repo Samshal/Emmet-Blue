@@ -44,6 +44,7 @@ class DatabaseQueryFactory
         $insertBuilder->into($table.$columns);
 
         $query = (string)$insertBuilder." VALUES ".$values;
+        // die($query);
         try
         {
             $parts = explode(".", $table);
