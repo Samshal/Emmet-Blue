@@ -163,7 +163,7 @@ class QueryBuilder implements BuildableInterface
      */
     public function andWhere(string $condition)
     {
-         $whereString = "AND WHERE $condition";
+         $whereString = "AND $condition";
 
         $this->queryBuilder = $this->queryBuilder->build($whereString);
 
@@ -179,7 +179,7 @@ class QueryBuilder implements BuildableInterface
      */
     public function orWhere(string $condition)
     {
-         $whereString = "OR WHERE $condition";
+         $whereString = "OR $condition";
 
         $this->queryBuilder = $this->queryBuilder->build($whereString);
 
