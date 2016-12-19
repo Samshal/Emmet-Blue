@@ -40,7 +40,7 @@ class DatabaseQueryFactory
         }
 
         $columns = "(".implode(", ", $columns).")";
-        $values = "(".implode(", ", $values).")";
+        $values =    "(".implode(", ", $values).")";
         $insertBuilder->into($table.$columns);
 
         $query = (string)$insertBuilder." VALUES ".$values;
