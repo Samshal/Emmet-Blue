@@ -65,7 +65,7 @@ class MySQL implements ConnectableInterface
 
         try
         {
-            $this->connectionObject = new \PDO("mysql:host=$host;Database=$database;", $username, $password);
+            $this->connectionObject = new \PDO("mysql:host=$host;dbname=$database;", $username, $password);
         }
         catch (\PDOException $e)
         {
