@@ -17,8 +17,22 @@ namespace EmmetBlue\Core\Factory;
  */
 class MailerFactory
 {
+	private $mail;
 	public function __construct(array $sender, array $recipients, array $message){
-		$mail = new PHPMailer;
+		$smtpConfigJson = file_get_contents("bin/configs/smtp-config.json");
+
+        $smtpConfig = json_decode($smtpConfigJson);
+
+		$mail = new \PHPMailer;
+		$mail->SMTPDebug = $smtpConfig->debug;
+		$mail->isSMTP();
+		$mail->Host = $smtpConfig->host;
+		$mail->SMTPAuth = $smtpConfig->auth;
+		$mail->Username = $smtpConfig->user;
+		$mail->Password = $smtpConfig->password;
+		$mail->SMTPSecure = $smtpConfig->secure;
+		$mail->Port = $smtpConfig->port;
+
 		$mail->From = $sender["address"];
 		$mail->FromName = $sender["name"];
 		$mail->addReplyTo = $sender["replyTo"];
@@ -32,6 +46,14 @@ class MailerFactory
 		$mail->AltBody = $message["alt"];
 		$mail->isHTML($message["isHtml"]);
 
-		return $mail->send();
+		$this->mail = $mail;
+	}
+
+	public function send(){
+		if (!$this->mail->send()){
+			return $this->mail->ErrorInfo;
+		}
+
+		return ["result"=>true];	
 	}
 }
