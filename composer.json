@@ -16,7 +16,8 @@
     "require": {
         "samshal/acl": "dev-master",
         "elasticsearch/elasticsearch": "~2.0",
-        "rmccue/requests": "^1.7"
+        "rmccue/requests": "^1.7",
+        "phpmailer/phpmailer": "~5.2"
     },
     "autoload":{
         "psr-4":{
