@@ -34,4 +34,11 @@ class HTTPRequestFactory
 
 		return Requests::get($url, array_merge(self::$headers, $extraHeaders));
 	}
+
+	public static function post($url, $data, $extraHeaders = [])
+	{
+		self::bootstrap();
+
+		return Requests::post($url, array_merge(self::$headers, $extraHeaders), $data);
+	}
 }
