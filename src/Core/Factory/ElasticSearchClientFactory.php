@@ -8,6 +8,8 @@
  */
 namespace EmmetBlue\Core\Factory;
 
+use EmmetBlue\Core\Constant;
+
 /**
  * Class DatabaseConnectionFactory.
  * Instantiates a new instance of ConnectableInterface
@@ -22,7 +24,7 @@ class ElasticSearchClientFactory
 
 	public static function bootstrap()
 	{
-		$configJson = file_get_contents("bin/configs/elasticsearch-config.json");
+		$configJson = file_get_contents(Constant::getGlobals()["config-dir"]["elasticsearch-config"]);
 
         $config = json_decode($configJson);
 

@@ -9,6 +9,7 @@
 namespace EmmetBlue\Core\Factory;
 
 use EmmetBlue\Core\Connection\ConnectionAdapter as Connection;
+use EmmetBlue\Core\Constant;
 
 /**
  * Class DatabaseConnectionFactory.
@@ -31,7 +32,7 @@ class DatabaseConnectionFactory
      */
     public static function bootstrap()
     {
-        $databaseConfigJson = file_get_contents("bin/configs/database-config.json");
+        $databaseConfigJson = file_get_contents(Constant::getGlobals()["config-dir"]["database-config"]);
 
         $databaseConfig = json_decode($databaseConfigJson);
 

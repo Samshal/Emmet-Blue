@@ -8,6 +8,7 @@
  */
 namespace EmmetBlue\Core\Factory;
 
+use EmmetBlue\Core\Constant;
 use Requests;
 
 /**
@@ -23,7 +24,7 @@ class HTTPRequestFactory
 
 	public static function bootstrap()
 	{
-		$configJson = file_get_contents("bin/configs/http-headers-config.json");
+		$configJson = file_get_contents(Constant::getGlobals()["config-dir"]["http-headers-config"]);
 
         self::$headers = json_decode($configJson, true);
 	}

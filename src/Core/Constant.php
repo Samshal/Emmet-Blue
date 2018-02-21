@@ -48,4 +48,8 @@ class Constant
      * 
      */
     const UNDEFINED = 0;
+
+    public static function getGlobals() {
+        return json_decode(file_get_contents("globals.json"), true);
+    }
 }

@@ -8,6 +8,8 @@
  */
 namespace EmmetBlue\Core\Factory;
 
+use EmmetBlue\Core\Constant;
+
 /**
  * Class MailerFactory.
  *
@@ -19,7 +21,7 @@ class MailerFactory
 {
 	private $mail;
 	public function __construct(array $sender, array $recipients, array $message){
-		$smtpConfigJson = file_get_contents("bin/configs/smtp-config.json");
+		$smtpConfigJson = file_get_contents(Constant::getGlobals()["config-dir"]["smtp-config"]);
 
         $smtpConfig = json_decode($smtpConfigJson);
 
