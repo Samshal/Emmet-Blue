@@ -8,6 +8,8 @@
  */
 namespace EmmetBlue\Core;
 
+use Session\Session;
+
 /**
  * Class Events
  *
@@ -49,9 +51,18 @@ class Constant
      */
     const UNDEFINED = 0;
 
-    public static function getGlobals() {
-        if (is_file("globals.json") && !is_dir("globals")){
-            return json_decode(file_get_contents("globals.json"), true);
+    public static function getGlobals($config = "configs") {        
+        if (is_file("globals.json")){
+            $globalLoc = json_decode(file_get_contents("globals.json"), true);
+
+            if (isset($globalLoc["globals"])){
+                $file = $globalLoc["globals".".json";
+
+                return json_decode(file_get_contents($file), true);
+            }
         }
+
+        throw new Exception\UndefinedValueException("No configuration data set.", 0);
+
     }
 }

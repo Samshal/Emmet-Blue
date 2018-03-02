@@ -22,7 +22,7 @@ use EmmetBlue\Core\Exception\SQLException;
  */
 class DatabaseLog implements LogInterface
 {
-    public static function log(string $databaseUserId, string $event, string $objectSchema, string $object, string $tSql)
+    public static function logDeprecated(string $databaseUserId, string $event, string $objectSchema, string $object, string $tSql)
     {
         $insertBuilder = (new Builder("QueryBuilder", "Insert"))->getBuilder();
         try {
@@ -54,5 +54,9 @@ class DatabaseLog implements LogInterface
                     "Unable to store database log"
                 ), 1);
         }
+    }
+
+    public static function log(string $databaseUserId, string $event, string $objectSchema, string $object, string $tSql){
+
     }
 }

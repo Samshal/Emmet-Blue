@@ -26,9 +26,9 @@ class ElasticSearchClientFactory
 	{
 		$configJson = file_get_contents(Constant::getGlobals()["config-dir"]["elasticsearch-config"]);
 
-        $config = json_decode($configJson);
+        $config = json_decode($configJson, true);
 
-        self::$clientObject = \Elasticsearch\ClientBuilder::create()->setHosts($config)->build();
+        self::$clientObject = \Elasticsearch\ClientBuilder::create()->setHosts($config["hosts"])->build();
 	}
 
 	public static function getClient()

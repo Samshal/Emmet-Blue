@@ -22,7 +22,7 @@ use EmmetBlue\Core\Exception\SQLException;
  */
 class ErrorLog implements LogInterface
 {
-    public static function log(int $databaseUserId, string $errorNumber, string $errorSeverity, string $errorMessage, string $errorObject=null)
+    public static function logDeprecated(int $databaseUserId, string $errorNumber, string $errorSeverity, string $errorMessage, string $errorObject=null)
     {
         /**
          * For now I am not doing anything with $errorObject yet.
@@ -55,5 +55,9 @@ class ErrorLog implements LogInterface
             ]);
             
         DBConnectionFactory::getConnection()->query((string)$insertBuilder);
+    }
+
+    public static function log(int $databaseUserId, string $errorNumber, string $errorSeverity, string $errorMessage, string $errorObject=null) {
+
     }
 }
