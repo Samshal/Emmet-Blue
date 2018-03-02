@@ -56,7 +56,7 @@ class Constant
             $globalLoc = json_decode(file_get_contents("globals.json"), true);
 
             if (isset($globalLoc["globals"])){
-                $file = $globalLoc["globals".".json";
+                $file = $globalLoc["globals"].".json";
 
                 return json_decode(file_get_contents($file), true);
             }
