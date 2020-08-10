@@ -7,9 +7,9 @@
   * This file is part of the EmmetBlue project, please read the license document
   * available in the root level of the project
   */
-namespace EmmetBlue\Test\Core\Database\Abstraction;
+namespace EmmetBlue\Tests\Core\Database\Abstraction;
 
-use EmmetBlue\Core\Database\Abstraction\InsertQueryBuilder;
+use EmmetBlue\Core\Builder\QueryBuilder\InsertQueryBuilder;
 
 /**
   * class QueryBuilderTest.
