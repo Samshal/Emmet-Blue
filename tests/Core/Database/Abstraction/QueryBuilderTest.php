@@ -17,7 +17,7 @@ use EmmetBlue\Core\Database\Abstraction\QueryBuilder;
   *
   * @since v0.0.1 27/05/2016 14:27
   */
- class QueryBuilderTest extends \PHPUnit_Framework_TestCase
+ class QueryBuilderTest extends \PHPUnit\Framework\TestCase
  {
      public function testBuilderActuallyBuilding()
      {

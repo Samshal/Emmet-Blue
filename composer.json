@@ -1,6 +1,6 @@
 {
     "name": "emmetblue/emmet-blue",
-    "type": "Library",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "samshal/acl": "dev-master",
+        "samshal/acl": "^1.0",
         "rmccue/requests": "^1.7",
         "phpmailer/phpmailer": "~5.2"
     },
