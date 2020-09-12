@@ -1,6 +1,6 @@
 {
     "name": "emmetblue/emmet-blue",
-    "type": "Library",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -8,11 +8,19 @@
             "email": "samueladeshina73@gmail.com"
         }
     ],
-    "require": {},
+    "config":{
+        "platform":{
+            "php": "7.2.0"
+        }
+    },
+    "require": {
+        "samshal/acl": "^1.0",
+        "rmccue/requests": "^1.7",
+        "phpmailer/phpmailer": "~5.2"
+    },
     "autoload":{
         "psr-4":{
-            "EmmetBlue\\":"./src",
-            "EmmetBlue\\Test\\":"./tests"
+            "EmmetBlue\\":"./src"
         }
     }
 }
