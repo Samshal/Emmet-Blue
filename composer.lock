@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2828a4f64a2ef8da6ea9d1b1e33e3830",
+    "content-hash": "b2b2acb11911b0fa31b5f7e2aa0e17f4",
     "packages": [
         {
             "name": "phpmailer/phpmailer",
@@ -156,21 +156,22 @@
         },
         {
             "name": "samshal/acl",
-            "version": "v1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Samshal/Acl.git",
-                "reference": "96da075dc6080c1745dedb301738211283eea0ef"
+                "reference": "4ed476400c9a4dd4b148e07db3f10a88a22e7e7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Samshal/Acl/zipball/96da075dc6080c1745dedb301738211283eea0ef",
-                "reference": "96da075dc6080c1745dedb301738211283eea0ef",
+                "url": "https://api.github.com/repos/Samshal/Acl/zipball/4ed476400c9a4dd4b148e07db3f10a88a22e7e7b",
+                "reference": "4ed476400c9a4dd4b148e07db3f10a88a22e7e7b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -192,13 +193,15 @@
                 "issues": "https://github.com/Samshal/Acl/issues",
                 "source": "https://github.com/Samshal/Acl/tree/master"
             },
-            "time": "2016-06-10T10:43:53+00:00"
+            "time": "2020-09-18T00:33:01+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "samshal/acl": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

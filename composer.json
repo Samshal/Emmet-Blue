@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "samshal/acl": "^1.0",
+        "samshal/acl": "dev-master",
         "rmccue/requests": "^1.7",
         "phpmailer/phpmailer": "~5.2"
     },
