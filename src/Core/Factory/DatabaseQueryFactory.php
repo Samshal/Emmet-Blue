@@ -50,7 +50,7 @@ class DatabaseQueryFactory
             $connection = DBConnectionFactory::getConnection();
 
             $result = $connection->prepare((string)$query)->execute();
-
+            
             if ($hasSchema){
                 /**
                  * This works only for sql server like databases where you have objects in the form [schema].[object_type]
@@ -61,10 +61,12 @@ class DatabaseQueryFactory
                 $tableName = $parts[1];
 
                 DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
+                $lastInsertId = ($connection->query("SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS int) as id")->fetchColumn());
             }
-
-            $lastInsertId = ($connection->query("SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS int) as id")->fetchColumn());
-
+            else {
+                $lastInsertId = $connection->lastInsertId();
+            }
+            
             return [$result, "lastInsertId"=>$lastInsertId];
         }
         catch (\PDOException $e)
