@@ -27,7 +27,7 @@ use EmmetBlue\Core\Constant;
  */
 class DatabaseQueryFactory
 {
-    public static function insert(string $table, array $data)
+    public static function insert(string $table, array $data, bool $hasSchema = true)
     {
         $insertBuilder = (new Builder("QueryBuilder","Insert"))->getBuilder();
         $columns = [];
@@ -44,18 +44,24 @@ class DatabaseQueryFactory
         $insertBuilder->into($table.$columns);
 
         $query = (string)$insertBuilder." VALUES ".$values;
-        // die($query);
         try
         {
-            $parts = explode(".", $table);
-            $schemaName = $parts[0];
-            $tableName = $parts[1];
 
             $connection = DBConnectionFactory::getConnection();
 
             $result = $connection->prepare((string)$query)->execute();
 
-            DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
+            if ($hasSchema){
+                /**
+                 * This works only for sql server like databases where you have objects in the form [schema].[object_type]
+                 * Moreover, this part of the code may not be necessary. Needs refactoring
+                 */
+                $parts = explode(".", $table);
+                $schemaName = $parts[0];
+                $tableName = $parts[1];
+
+                DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
+            }
 
             $lastInsertId = ($connection->query("SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS int) as id")->fetchColumn());
 
