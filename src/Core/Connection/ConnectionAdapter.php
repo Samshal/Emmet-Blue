@@ -20,7 +20,7 @@ class ConnectionAdapter
 {
 	public $connection;
 
-    public function __construct(string $adapter, array $dsnArray, string $username=null, string $password=null)
+    public function __construct(string $adapter, array $dsnArray, string $username="", string $password="")
     {
     	$class = __NAMESPACE__."\\Adapters\\$adapter";
     	$adapterObject = new $class;
