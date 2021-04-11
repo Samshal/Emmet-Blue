@@ -56,6 +56,7 @@ class DatabaseQueryFactory
                  * This works only for sql server like databases where you have objects in the form [schema].[object_type]
                  * Moreover, this part of the code may not be necessary. Needs refactoring
                  */
+                
                 $parts = explode(".", $table);
                 $schemaName = $parts[0];
                 $tableName = $parts[1];
