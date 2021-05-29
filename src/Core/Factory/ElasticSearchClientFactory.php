@@ -20,20 +20,24 @@ use EmmetBlue\Core\Constant;
  */
 class ElasticSearchClientFactory
 {
-	private static $clientObject;
+    private static $clientObject;
 
-	public static function bootstrap()
-	{
-		$configJson = file_get_contents(Constant::getGlobals()["config-dir"]["elasticsearch-config"]);
+    public static function bootstrap()
+    {
+        $configJson = file_get_contents(Constant::getGlobals()["config-dir"]["elasticsearch-config"]);
 
         $config = json_decode($configJson, true);
 
-        self::$clientObject = \Elasticsearch\ClientBuilder::create()->setHosts($config["hosts"])->build();
-	}
+        if (isset($config["elasticsearch-enabled"]) && $config["elasticsearch-enabled"] == false){
+            throw new \Exception("Elasticsearch unavailable");
+        }
 
-	public static function getClient()
-	{
-		self::bootstrap();
-		return self::$clientObject;
-	}
+        self::$clientObject = \Elasticsearch\ClientBuilder::create()->setHosts($config["hosts"])->build();
+    }
+
+    public static function getClient()
+    {
+        self::bootstrap();
+        return self::$clientObject;
+    }
 }
