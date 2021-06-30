@@ -17,6 +17,11 @@ use EmmetBlue\Core\Constant;
  *
  * @since v0.0.1 13/02/2017 13:06
  */
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class MailerFactory
 {
 	private $mail;
@@ -25,7 +30,7 @@ class MailerFactory
 
         $smtpConfig = json_decode($smtpConfigJson);
 
-		$mail = new \PHPMailer;
+		$mail = new PHPMailer();
 		$mail->SMTPDebug = $smtpConfig->debug;
 		$mail->isSMTP();
 		$mail->Host = $smtpConfig->host;
