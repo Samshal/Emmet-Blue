@@ -32,7 +32,7 @@ class MailerFactory
 
 		$mail = new PHPMailer();
 		$mail->SMTPDebug = $smtpConfig->debug;
-		$mail->isMail();
+		$mail->isSMTP();
 		$mail->Host = $smtpConfig->host;
 		$mail->SMTPAuth = $smtpConfig->auth;
 		$mail->Username = $smtpConfig->user;
