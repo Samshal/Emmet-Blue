@@ -33,12 +33,20 @@ class MailerFactory
 		$mail = new PHPMailer();
 		$mail->SMTPDebug = $smtpConfig->debug;
 		$mail->isSMTP();
-		$mail->Host = $smtpConfig->host;
+		$mail->Host = gethostbyname($smtpConfig->host);
 		$mail->SMTPAuth = $smtpConfig->auth;
+		$mail->AuthType = "PLAIN";
 		$mail->Username = $smtpConfig->user;
 		$mail->Password = $smtpConfig->password;
 		$mail->SMTPSecure = $smtpConfig->secure;
 		$mail->Port = $smtpConfig->port;
+		$mail->SMTPOptions = [
+			"ssl"=>[
+				'verify_peer'=>false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+			]
+		];
 
 		$mail->From = $sender["address"];
 		$mail->FromName = $sender["name"];

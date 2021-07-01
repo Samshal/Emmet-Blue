@@ -33,13 +33,13 @@ class HTTPRequestFactory
 	{
 		self::bootstrap();
 
-		return Requests::get($url, array_merge(self::$headers, $extraHeaders), ["timeout"=>0]);
+		return Requests::get($url, array_merge(self::$headers, $extraHeaders), ["timeout"=>12000]);
 	}
 
 	public static function post($url, $data, $extraHeaders = [])
 	{
 		self::bootstrap();
 
-		return Requests::post($url, array_merge(self::$headers, $extraHeaders), $data, ["timeout"=>0]);
+		return Requests::post($url, array_merge(self::$headers, $extraHeaders), $data, ["timeout"=>12000]);
 	}
 }
