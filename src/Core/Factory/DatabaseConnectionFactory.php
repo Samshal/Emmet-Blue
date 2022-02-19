@@ -30,7 +30,7 @@ class DatabaseConnectionFactory
      * Gets the config values defined in the database-config.json file
      * and uses the values to create a new connection object.
      */
-    public static function bootstrap($config="configs")
+    public static function bootstrap($config="globals.json")
     {
         $databaseConfigJson = file_get_contents(Constant::getGlobals($config)["config-dir"]["database-config"]);
 
@@ -55,7 +55,7 @@ class DatabaseConnectionFactory
      * 
      * @return \PDO
      */
-    public static function getConnection($config="configs") : \PDO
+    public static function getConnection($config="globals.json") : \PDO
     {
         self::bootstrap($config);
         return self::$connectionObject->getConnection();
