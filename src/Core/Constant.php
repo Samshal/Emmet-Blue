@@ -51,9 +51,9 @@ class Constant
      */
     const UNDEFINED = 0;
 
-    public static function getGlobals($config = "configs") {        
-        if (is_file("globals.json")){
-            $globalLoc = json_decode(file_get_contents("globals.json"), true);
+    public static function getGlobals($config = "globals.json") {        
+        if (is_file($config)){
+            $globalLoc = json_decode(file_get_contents($config), true);
 
             if (isset($globalLoc["globals"])){
                 $file = $globalLoc["globals"].".json";
