@@ -61,7 +61,7 @@ class DatabaseQueryFactory
                 $schemaName = $parts[0];
                 $tableName = $parts[1];
 
-                // DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query);
+                // DatabaseLog::log(Session::get('USER_ID'), Constant::EVENT_INSERT, $schemaName, $tableName, $query); // Allow user to roll their own implementation
                 $lastInsertId = ($connection->query("SELECT CAST(COALESCE(SCOPE_IDENTITY(), @@IDENTITY) AS int) as id")->fetchColumn());
             }
             else {
