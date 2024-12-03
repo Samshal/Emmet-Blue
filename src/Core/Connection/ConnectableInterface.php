@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 /**
  * @license MIT
  * @author Samuel Adeshina <samueladeshina73@gmail.com>
@@ -6,6 +7,7 @@
  * This file is part of the EmmetBlue project, please read the license document
  * available in the root level of the project
  */
+
 namespace EmmetBlue\Core\Connection;
 
 /**
@@ -34,14 +36,12 @@ interface ConnectableInterface
      * @throws [@todo get exceptions]
      * @return void
      */
-    public function connect(string $username, string $password="");
+    public function connect(string $username, string $password = '');
 
     /**
-     * Returns an instance a pdo intance of the connection object
-     *
-     * @return \PDO
+     * Returns an instance of the connection object
      */
-    public function getConnection() : \PDO;
+    public function getConnection();
 
     /**
      * Closes connection
