@@ -1,26 +1,27 @@
 {
-    "name": "samshal/emmet-blue",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Samshal",
-            "email": "samueladeshina73@gmail.com"
-        }
-    ],
-    "config":{
-        "platform":{
-            "php": "7.2.0"
-        }
-    },
-    "require": {
-        "samshal/acl": "dev-master",
-        "rmccue/requests": "^1.7",
-        "phpmailer/phpmailer": "~5.2 || ~6.0"
-    },
-    "autoload":{
-        "psr-4":{
-            "EmmetBlue\\":"./src"
-        }
+  "name": "samshal/emmet-blue",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Samshal",
+      "email": "samueladeshina73@gmail.com"
     }
+  ],
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    }
+  },
+  "require": {
+    "samshal/acl": "dev-master",
+    "rmccue/requests": "^1.7",
+    "phpmailer/phpmailer": "~5.2 || ~6.0",
+    "simpod/clickhouse-client": "^0.7.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "EmmetBlue\\": "./src"
+    }
+  }
 }
