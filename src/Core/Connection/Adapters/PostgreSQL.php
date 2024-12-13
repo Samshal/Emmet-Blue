@@ -69,7 +69,7 @@ class PostgreSQL implements ConnectableInterface
         $this->loginData['password'] = $password;
 
         try {
-            $this->connectionObject = new \PDO("PostgreSQL:host=$host;port=$port;dbname=$database;", $username, $password);
+            $this->connectionObject = new \PDO("pgsql:host=$host;port=$port;dbname=$database;", $username, $password);
         } catch (\PDOException $e) {
             throw new SQLException('Unable to connect to database', 400, $e);
         }
